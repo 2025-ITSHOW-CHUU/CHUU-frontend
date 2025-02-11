@@ -1,0 +1,29 @@
+body {
+  background-color: #9b9797;
+}
+.SearchBar {
+  padding: 15px 17px 18px;
+  background-color: #ffffff;
+  width: 340px;
+  height: 55px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 15px;
+}
+
+.SearchInput {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px;
+}
+
+.SearchBar > svg {
+  width: 22px;
+  height: 22px;
+  color: #aaaaaa;
+}
