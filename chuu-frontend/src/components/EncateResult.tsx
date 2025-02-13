@@ -10,9 +10,9 @@ type SurveyType = {
 };
 
 function EncateResult() {
-  const [topResults, setTopResults] = useState<Record<string, SurveyType>>({}); // 상태를 설정
+  const [topResults, setTopResults] = useState<Record<string, SurveyType>>({});
 
-  // 더미 데이터 (실제 데이터로 대체 가능)
+  // 임시 데이터
   const surveyData = [
     { questionNumber: 1, question: "가장 결혼을 빨리할 거 같은 선생님은 1" },
     { questionNumber: 2, question: "가장 결혼을 빨리할 거 같은 선생님은 2" },
@@ -21,9 +21,9 @@ function EncateResult() {
     { questionNumber: 5, question: "가장 결혼을 빨리할 거 같은 선생님은 5" },
   ];
 
-  // 점수를 가져오는 함수
   const getScores = async () => {
-    let updatedResults = {}; // 상태 업데이트를 위한 임시 객체
+    // 일부 점수 보여주기 -> 전체 점수 보여주기
+    let updatedResults = {};
 
     for (let survey of surveyData) {
       const getScoreUrl = `http://localhost:3000/home/get/${survey["questionNumber"]}`;
@@ -33,26 +33,23 @@ function EncateResult() {
         const sortedScores = Object.entries(response["data"]["scores"]).sort(
           (a: { [key: string]: any }, b: { [key: string]: any }) => b[1] - a[1]
         );
-
-        // 가장 높은 점수를 가진 사람을 업데이트
         updatedResults[survey["questionNumber"]] = {
           question: survey["question"],
-          winner: sortedScores[0][0], // 1등 (이름)
-          votes: sortedScores[0][1], // 1등 표수
+          winner: sortedScores[0][0],
+          votes: sortedScores[0][1],
         };
       } catch (error) {
         console.error("데이터 가져오기 실패:", error);
       }
     }
 
-    setTopResults(updatedResults); // 상태 업데이트
+    setTopResults(updatedResults);
   };
 
-  // 1분마다 업데이트
   useEffect(() => {
-    getScores(); // 첫 렌더링 시 실행
+    getScores();
     const interval = setInterval(getScores, 60000);
-    return () => clearInterval(interval); // 컴포넌트 언마운트 시 정리
+    return () => clearInterval(interval);
   }, []);
 
   return (
