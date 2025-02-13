@@ -29,4 +29,29 @@
   background-color: #65e9ff;
   border-radius: 12px;
   font-size: 16px;
+  border: 0;
+}
+
+.EnCateButton {
+  background-color: #25282d;
+  border-radius: 20px;
+  padding: 21.9px 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 11.97px;
+  border: 0;
+}
+
+.EnCateButton > p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.EnCateButton > svg {
+  height: 15px;
+  color: #aaaaaa;
 }
