@@ -3,8 +3,14 @@ import style from "../styles/EncateResult.module.css";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+type SurveyType = {
+  question: string;
+  votes: number;
+  winner: string;
+};
+
 function EncateResult() {
-  const [topResults, setTopResults] = useState({}); // 상태를 설정
+  const [topResults, setTopResults] = useState<Record<string, SurveyType>>({}); // 상태를 설정
 
   // 더미 데이터 (실제 데이터로 대체 가능)
   const surveyData = [
@@ -25,7 +31,7 @@ function EncateResult() {
       try {
         const response = await axios.get(getScoreUrl);
         const sortedScores = Object.entries(response["data"]["scores"]).sort(
-          (a, b) => b[1] - a[1]
+          (a: { [key: string]: any }, b: { [key: string]: any }) => b[1] - a[1]
         );
 
         // 가장 높은 점수를 가진 사람을 업데이트
@@ -53,14 +59,16 @@ function EncateResult() {
     <div className={style["EncateResult"]}>
       <p>선생님 앙케이트 결과 ☀️</p>
       <ul>
-        {Object.entries(topResults).map(([questionNumber, result]) => (
-          <li key={questionNumber}>
-            {result.question}
-            <p>
-              {result.winner} {result.votes}
-            </p>
-          </li>
-        ))}
+        {(Object.entries(topResults) as [string, SurveyType][]).map(
+          ([questionNumber, result]) => (
+            <li key={questionNumber}>
+              {result.question}
+              <p>
+                {result.winner} {result.votes}
+              </p>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
