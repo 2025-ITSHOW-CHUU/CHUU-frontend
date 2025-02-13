@@ -1,9 +1,12 @@
 body {
-  background-color: #9b9797;
+  background-color: #18191d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .SearchBar {
   padding: 15px 17px 18px;
-  background-color: #ffffff;
+  background-color: #25282d;
   width: 340px;
   height: 55px;
   box-sizing: border-box;
@@ -25,5 +28,5 @@ body {
 .SearchBar > svg {
   width: 22px;
   height: 22px;
-  color: #aaaaaa;
+  color: #d1d2d1;
 }

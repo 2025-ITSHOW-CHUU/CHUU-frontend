@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar.tsx";
+import Footer from "../components/Footer.tsx";
+import style from "../styles/Default.module.css";
 
 function Home({}) {
   const [search, setSearch] = useState("");
@@ -10,7 +12,12 @@ function Home({}) {
     console.log(value);
   };
 
-  return <SearchBar value={search} onChange={onChange} />;
+  return (
+    <div className={`${style["Body"]}`}>
+      <SearchBar value={search} onChange={onChange} />
+      <Footer />
+    </div>
+  );
 }
 
 export default Home;
