@@ -1,0 +1,32 @@
+.MainCharacter {
+  padding: 17px 18px 23px 18px;
+  background-color: #25282d;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10.41px;
+  margin-top: 27.4px;
+}
+
+.MainCharacter > div {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.MainCharacter > div > p {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.MainCharacter > button {
+  width: 271.08px;
+  height: 43.79px;
+  background-color: #65e9ff;
+  border-radius: 12px;
+  font-size: 16px;
+}

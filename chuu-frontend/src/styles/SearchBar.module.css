@@ -5,6 +5,7 @@ body {
   justify-content: center;
 }
 .SearchBar {
+  margin-top: 12px;
   padding: 15px 17px 18px;
   background-color: #25282d;
   width: 340px;

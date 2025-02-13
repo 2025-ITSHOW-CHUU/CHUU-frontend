@@ -5,6 +5,7 @@
   height: 61px;
   flex-direction: row;
   bottom: 0;
+  left: 0;
   background-color: #25282d;
   align-items: center;
   justify-content: space-around;
