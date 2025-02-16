@@ -5,10 +5,9 @@ body {
   justify-content: center;
 }
 .SearchBar {
-  margin-top: 12px;
   padding: 15px 17px 18px;
   background-color: #25282d;
-  width: 340px;
+  width: 100%;
   height: 55px;
   box-sizing: border-box;
   border-radius: 16px;

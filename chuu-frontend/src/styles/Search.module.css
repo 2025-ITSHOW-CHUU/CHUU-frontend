@@ -1,0 +1,12 @@
+.SearchDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 12px;
+  width: 100%;
+  column-gap: 22px;
+}
+
+.SearchDiv > svg {
+  color: #d1d2d1;
+}

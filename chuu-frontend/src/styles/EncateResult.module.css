@@ -4,6 +4,9 @@
   padding: 18.5px 28.5px;
   margin-top: 26.58px;
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .EncateResult > p {

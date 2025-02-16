@@ -8,13 +8,19 @@ import style from "../styles/Home.module.css";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { ReactComponent as MainCharacter } from "../assets/main_character.svg";
 import { IoIosArrowForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function Home({}) {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const onChange = (value: string) => {
     setSearch(value);
     console.log(value);
+  };
+
+  const onClick = () => {
+    navigate("/search");
   };
 
   return (
@@ -22,7 +28,9 @@ function Home({}) {
       <div className={`${def["Logo"]}`}>
         <Logo />
       </div>
-      <SearchBar value={search} onChange={onChange} />
+      <div onClick={onClick} className={`${style["SearchDiv"]}`}>
+        <SearchBar value={search} onChange={onChange} />
+      </div>
       <div className={`${style["MainCharacter"]}`}>
         <div>
           <p>나의 추구미 선생님 찾으러 가기 ✨</p>
