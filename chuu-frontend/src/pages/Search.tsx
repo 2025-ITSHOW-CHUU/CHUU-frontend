@@ -5,6 +5,7 @@ import style from "../styles/Search.module.css";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { IoIosArrowBack } from "react-icons/io";
 import teacherData from "../assets/teachers.json";
+import { useNavigate } from "react-router-dom";
 
 type TeacherType = {
   name: string;
@@ -17,6 +18,7 @@ function Search({}) {
   const [search, setSearch] = useState<string>("");
   const [teachers, setTeachers] = useState<TeacherType[]>([]);
   const [originalTeachers, setOriginalTeachers] = useState<TeacherType[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTeachers(teacherData.teachers);
@@ -43,28 +45,37 @@ function Search({}) {
     setTeachers(searchedResult);
   };
 
+  const returnBack = () => {
+    navigate("/");
+  };
+
   return (
     <div className={`${def["Body"]}`}>
-      <div className={`${def["Logo"]}`}>
-        <Logo />
-      </div>
       <div className={`${style["SearchDiv"]}`}>
-        <IoIosArrowBack size="25px" />
+        <div onClick={returnBack}>
+          <IoIosArrowBack size="25px" />
+        </div>
         <SearchBar value={search} onChange={onChange} />
       </div>
-      <div className={`${style["SearchResult"]}`}>
-        {(teachers as TeacherType[]).map((teacher) => (
-          <div>
+      {search == "" ? (
+        <div className={`${style["RecommandSearch"]}`}>
+          <p>추천 검색어</p>
+        </div>
+      ) : (
+        <div className={`${style["SearchResult"]}`}>
+          {(teachers as TeacherType[]).map((teacher) => (
             <div>
-              <img src={teacher.photo} />
+              <div>
+                <img src={teacher.photo} />
+              </div>
+              <div>
+                <p>{teacher.name}</p>
+                <p>{teacher.personality}</p>
+              </div>
             </div>
-            <div>
-              <p>{teacher.name}</p>
-              <p>{teacher.personality}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
