@@ -1,0 +1,40 @@
+*{
+  font-family: Pretendard;
+}
+
+.Card{
+  padding: 23px 18px 23px 17px;
+  background-color: #25282d;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  width: fit-content;
+  gap: 15px;
+}
+
+.Card > img{
+  float: left;
+  width: 44px;
+  height: 44px;
+  display: block;
+  border-radius: 40px;
+}
+
+.Card > div {
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  align-items: start;
+
+}
+
+.Card > div > .name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Card > div > .comment {
+  font-size: 12px;
+  font-weight: 400;
+}
