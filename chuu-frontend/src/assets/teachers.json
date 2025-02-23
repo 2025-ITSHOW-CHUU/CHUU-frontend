@@ -4,31 +4,36 @@
       "name": "김민수",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "엄격하지만 학생들에게 깊은 애정을 가지고 있음",
-      "hashtags": ["#카리스마", "#열정적인", "#학생사랑"]
+      "hashtags": ["#카리스마", "#열정적인", "#학생사랑"],
+      "comment": "포기 금지!"
     },
     {
       "name": "박지연",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "친절하고 이해심이 많으며 학생들의 고민을 잘 들어줌",
-      "hashtags": ["#따뜻한", "#상담왕", "#포용력"]
+      "hashtags": ["#따뜻한", "#상담왕", "#포용력"],
+      "comment": "힘내세요!"
     },
     {
       "name": "이준호",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "유머러스하고 수업이 재미있어 학생들에게 인기가 많음",
-      "hashtags": ["#유머감각", "#즐거운수업", "#인기쟁이"]
+      "hashtags": ["#유머감각", "#즐거운수업", "#인기쟁이"],
+      "comment": "즐겨봐요!"
     },
     {
       "name": "정수빈",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "꼼꼼하고 체계적인 수업을 진행하며 학생들에게 많은 것을 가르쳐줌",
-      "hashtags": ["#체계적", "#디테일", "#꼼꼼한"]
+      "hashtags": ["#체계적", "#디테일", "#꼼꼼한"],
+      "comment": "차근차근!"
     },
     {
       "name": "최영훈",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "학생들에게 항상 동기를 부여하고 꿈을 향해 나아가도록 도와줌",
-      "hashtags": ["#동기부여", "#멘토", "#긍정에너지"]
+      "hashtags": ["#동기부여", "#멘토", "#긍정에너지"],
+      "comment": "할 수 있어!"
     }
   ]
 }

@@ -5,6 +5,9 @@ import App from "./App.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/pages/Home.tsx";
 import Search from "../src/pages/Search.tsx";
+import Result from "../src/pages/Result.tsx";
+import Test from "../src/pages/Test.tsx";
+import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,6 +17,8 @@ root.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/search" element={<Search />} />
+      <Route path="/result" element={<Result />} />
+      <Route path="/test" element={<Test />} />
     </Routes>
   </BrowserRouter>
 );
