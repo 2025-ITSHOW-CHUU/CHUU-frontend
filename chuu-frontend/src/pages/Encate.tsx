@@ -1,69 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import encate from "../assets/encate.json";
-import def from "../styles/Default.module.css";
+import { IoIosArrowForward } from "react-icons/io";
 import style from "../styles/Encate.module.css";
-import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import def from "../styles/Default.module.css";
 import axios from "axios";
 
-function Encate({}) {
-  const [questionNo, setQuestionNo] = useState("");
-  const [question, setQuestion] = useState("");
-  const [teachers, setTeachers] = useState([]);
-  const location = useLocation();
-  const navigate = useNavigate();
+type QuestionType = {
+  question: string;
+  teacher: string[];
+};
+
+function Encate() {
+  const [encateQuestion, setEncateQuestion] = useState<QuestionType[]>([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   useEffect(() => {
-    const path = location.pathname.split("/");
-    const questionJson = encate.encate[parseInt(path[path.length - 1])];
+    setEncateQuestion(encate.encate);
+  }, []);
 
-    setQuestionNo(questionJson.questionNumber.toString().padStart(2, "0"));
-    setQuestion(questionJson.question);
-    setTeachers(questionJson.teacher);
-  }, [location]);
+  const handleAnswer = async (teacher: string) => {
+    if (currentQuestionIndex <= encateQuestion.length - 1) {
+      setCurrentQuestionIndex((prev: number) => prev + 1);
 
-  const vote = async (id: number) => {
-    const answeredNumber = questionNo;
-    const answeredTeacehr = teachers[id];
-    const voteUrl = `http://localhost:3000/home`;
+      const voteUrl = "http://localhost:3000/home";
 
-    try {
-      const response = await axios.post(voteUrl, {
-        questionNumber: answeredNumber,
-        teacherName: answeredTeacehr,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log("앙케이드 투표 실패:", error);
+      try {
+        const response = await axios.post(voteUrl, {
+          questionNumber: currentQuestionIndex,
+          teacherName: teacher,
+        });
+        console.log(response);
+      } catch (error) {
+        console.log("앙케이드 투표 오류:", error);
+      }
     }
   };
 
-  const returnBack = () => {
-    navigate("/encate");
-  };
+  const formattedQuestion = encateQuestion[currentQuestionIndex]?.question
+    .split("\n")
+    .map((part, index) => (
+      <span key={index}>
+        {part}
+        {index <
+          encateQuestion[currentQuestionIndex].question.split("\n").length -
+            1 && <br />}
+      </span>
+    ));
 
   return (
-    <div className={`${def["Body"]}`}>
-      <div onClick={returnBack} className={`${style["IconDiv"]}`}>
-        <IoIosArrowBack size="40px" />
+    <div className={`${def["Body"]} ${style["EncateContainer"]}`}>
+      <div className={`${style["TitleDiv"]}`}>
+        <p>{`${currentQuestionIndex + 1}`}.</p>
+        <p>{formattedQuestion}</p>
       </div>
-      <div className={`${style["EncateContainer"]}`}>
-        <div className={`${style["TitleDiv"]}`}>
-          <h2>{questionNo}.</h2>
-          <h2>{question}</h2>
-        </div>
-        <div className={`${style["EncateDiv"]}`}>
-          {teachers.map((teacher: string, i: number) => {
-            return (
-              <button key={i} id={i} onClick={() => vote(i)}>
-                {teacher} 선생님
-              </button>
-            );
-          })}
-        </div>
+      <div className={`${style["EncateDiv"]}`}>
+        {encateQuestion[currentQuestionIndex]?.teacher.map(
+          (teacher: string, i: number) => (
+            <button
+              key={i}
+              className={style.option}
+              onClick={() => {
+                handleAnswer(teacher);
+              }}
+            >
+              {teacher} 선생님
+            </button>
+          )
+        )}
       </div>
+      <IoIosArrowForward />
     </div>
   );
 }
+
 export default Encate;

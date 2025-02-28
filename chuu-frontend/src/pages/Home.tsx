@@ -30,7 +30,7 @@ function Home() {
       <div onClick={onClick("/search")} className={`${style["SearchDiv"]}`}>
         <SearchBar value={search} onChange={onChange} />
       </div>
-      <div className={`${style["MainCharacter"]}`}>
+      <div onClick={onClick("/test")} className={`${style["MainCharacter"]}`}>
         <div>
           <p>나의 추구미 선생님 찾으러 가기 ✨</p>
         </div>
