@@ -1,8 +1,4 @@
-*{
-  font-family: Pretendard;
-}
-
-.question{
+.question {
   color: #fff;
   font-size: 24px;
   font-weight: 700;
@@ -24,8 +20,8 @@
   margin-top: 73px;
 }
 
-.options{
-  color: #D1D2D1;;
+.options {
+  color: #d1d2d1;
   list-style: none;
   padding: 0;
   display: flex;
@@ -34,11 +30,10 @@
   margin-top: 60px;
 }
 
-.option{
+.option {
   padding: 14px 28px;
-  background-color: #25282D;
+  background-color: #25282d;
   border-radius: 16px;
   font-size: 18px;
   font-weight: 600;
-  
 }

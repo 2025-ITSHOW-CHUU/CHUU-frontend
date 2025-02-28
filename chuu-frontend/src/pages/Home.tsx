@@ -19,8 +19,8 @@ function Home({}) {
     console.log(value);
   };
 
-  const onClick = () => {
-    navigate("/search");
+  const onClick = (dir: string) => {
+    navigate(dir);
   };
 
   return (
@@ -28,7 +28,7 @@ function Home({}) {
       <div className={`${def["Logo"]}`}>
         <Logo />
       </div>
-      <div onClick={onClick} className={`${style["SearchDiv"]}`}>
+      <div onClick={onClick("/search")} className={`${style["SearchDiv"]}`}>
         <SearchBar value={search} onChange={onChange} />
       </div>
       <div className={`${style["MainCharacter"]}`}>
@@ -38,7 +38,10 @@ function Home({}) {
         <MainCharacter />
         <button>바로가기</button>
       </div>
-      <button className={`${style["EnCateButton"]}`}>
+      <button
+        onClick={onClick("/encate")}
+        className={`${style["EnCateButton"]}`}
+      >
         <p>선생님 앙케이트 하러가기</p>
         <IoIosArrowForward />
       </button>

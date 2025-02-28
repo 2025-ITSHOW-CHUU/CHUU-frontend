@@ -1,3 +1,7 @@
+* {
+  font-family: Pretendard;
+}
+
 .Body {
   display: flex;
   flex-direction: column;
