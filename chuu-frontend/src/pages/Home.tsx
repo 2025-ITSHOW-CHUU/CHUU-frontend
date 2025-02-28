@@ -1,5 +1,4 @@
-import React, { useCallback } from "react";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/SearchBar.tsx";
 import Footer from "../components/Footer.tsx";
 import EncateResult from "../components/EncateResult.tsx";
@@ -10,7 +9,7 @@ import { ReactComponent as MainCharacter } from "../assets/main_character.svg";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-function Home({}) {
+function Home() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -19,7 +18,7 @@ function Home({}) {
     console.log(value);
   };
 
-  const onClick = (dir: string) => {
+  const onClick = (dir: string) => () => {
     navigate(dir);
   };
 

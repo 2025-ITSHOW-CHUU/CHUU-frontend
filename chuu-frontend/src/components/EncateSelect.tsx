@@ -9,13 +9,12 @@ type QuestionType = {
   teacher: string[];
 };
 
-function EncateSelect({}) {
-  const [encateQuestion, setEncateQuestion] = useState([]);
+function EncateSelect() {
+  const [encateQuestion, setEncateQuestion] = useState<QuestionType[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const questions = encate.encate;
-    setEncateQuestion(questions);
+    setEncateQuestion(encate.encate);
   }, []);
 
   const onClick = (dir: string) => {
@@ -27,7 +26,9 @@ function EncateSelect({}) {
       {(Object.entries(encateQuestion) as [string, QuestionType][]).map(
         ([questionNumber, result]) => (
           <button
-            // onClick={onClick(`/encate/${questionNumber}`)}
+            key={questionNumber}
+            id={questionNumber}
+            onClick={() => onClick(`/encate/${questionNumber}`)}
             className={`${style["EnCateButton"]}`}
           >
             <p>{result.question}</p>

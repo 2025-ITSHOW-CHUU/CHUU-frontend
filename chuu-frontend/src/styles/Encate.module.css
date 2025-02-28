@@ -1,0 +1,44 @@
+.IconDiv svg {
+  color: #d1d2d1;
+  padding: 0;
+}
+
+.EncateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 174px;
+}
+
+.TitleDiv {
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+
+h2 {
+  color: white;
+  margin: 0;
+}
+
+.EncateDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+
+.EncateDiv > button {
+  background-color: #25282d;
+  padding: 14.91px 28px;
+  color: #aaaaaa;
+  font-size: 18px;
+  text-align: left;
+  border: 0;
+  outline: none;
+  border-radius: 16px;
+}
+
+.EncateDiv > button:hover {
+  color: #65e9ff;
+}
