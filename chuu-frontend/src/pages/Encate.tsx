@@ -5,6 +5,7 @@ import def from "../styles/Default.module.css";
 import style from "../styles/Encate.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Encate({}) {
   const [questionNo, setQuestionNo] = useState("");
@@ -22,8 +23,24 @@ function Encate({}) {
     setTeachers(questionJson.teacher);
   }, [location]);
 
+  const vote = async (id: number) => {
+    const answeredNumber = questionNo;
+    const answeredTeacehr = teachers[id];
+    const voteUrl = `http://localhost:3000/home`;
+
+    try {
+      const response = await axios.post(voteUrl, {
+        questionNumber: answeredNumber,
+        teacherName: answeredTeacehr,
+      });
+      console.log(response);
+    } catch (error) {
+      console.log("앙케이드 투표 실패:", error);
+    }
+  };
+
   const returnBack = () => {
-    navigate("/ㄷ");
+    navigate("/encate");
   };
 
   return (
@@ -39,8 +56,8 @@ function Encate({}) {
         <div className={`${style["EncateDiv"]}`}>
           {teachers.map((teacher: string, i: number) => {
             return (
-              <button key={i} id={i}>
-                {teacher}
+              <button key={i} id={i} onClick={() => vote(i)}>
+                {teacher} 선생님
               </button>
             );
           })}
