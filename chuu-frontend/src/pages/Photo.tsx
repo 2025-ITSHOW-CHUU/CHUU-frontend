@@ -4,6 +4,14 @@ function PhotoBooth() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [photo, setPhoto] = useState(null);
+  const [framedPhoto, setFramedPhoto] = useState(null);
+  const frames = [
+    "/images/frame.png",
+    "/images/frame1.png",
+    "/images/frame2.png",
+    "/images/frame3.png",
+  ];
+  const [frameIdx, setFrameIdx] = useState(0);
 
   const getUserCamera = () => {
     navigator.mediaDevices
@@ -27,7 +35,7 @@ function PhotoBooth() {
     tempCanvas.height = 600;
     ctx.drawImage(video, 0, 0, 400, 600);
 
-    let imageURL = tempCanvas.toDataURL("image/png"); // 이미지 저장
+    let imageURL = tempCanvas.toDataURL("image/png");
     setPhoto(imageURL);
   };
 
@@ -49,11 +57,21 @@ function PhotoBooth() {
       ctx.drawImage(img, 0, 0, 400, 600);
 
       let frame = new Image();
-      frame.src = "/images/frame.png";
+      frame.src = frames[frameIdx];
       frame.onload = () => {
         ctx.drawImage(frame, 0, 0, 400, 600);
+        setFramedPhoto(canvas.toDataURL("image/png"));
       };
     };
+  };
+
+  const downloadFile = (url, fileName = "framed_photo.png") => {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   useEffect(() => {
@@ -66,10 +84,18 @@ function PhotoBooth() {
       <button onClick={capture} disabled={photo !== null}>
         📸 캡처
       </button>
+      {frames.map((frame, idx) => (
+        <button key={idx} onClick={() => setFrameIdx(idx)}>
+          Frame {idx + 1}
+        </button>
+      ))}
       <button onClick={generateFrame} disabled={!photo}>
         🎨 프레임 만들기
       </button>
       <canvas ref={canvasRef} style={{ border: "1px solid black" }}></canvas>
+      {framedPhoto && (
+        <button onClick={() => downloadFile(framedPhoto)}>📥 다운로드</button>
+      )}
     </div>
   );
 }
