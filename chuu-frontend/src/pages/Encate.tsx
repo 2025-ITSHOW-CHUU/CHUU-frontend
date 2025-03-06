@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import encate from "../assets/encate.json";
-import { IoIosArrowForward } from "react-icons/io";
 import style from "../styles/Encate.module.css";
 import def from "../styles/Default.module.css";
 import axios from "axios";
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 type QuestionType = {
   question: string;
@@ -13,13 +14,14 @@ type QuestionType = {
 function Encate() {
   const [encateQuestion, setEncateQuestion] = useState<QuestionType[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEncateQuestion(encate.encate);
   }, []);
 
   const handleAnswer = async (teacher: string) => {
-    if (currentQuestionIndex <= encateQuestion.length - 1) {
+    if (currentQuestionIndex < encateQuestion.length) {
       setCurrentQuestionIndex((prev: number) => prev + 1);
 
       const voteUrl = "http://localhost:3000/home";
@@ -47,8 +49,14 @@ function Encate() {
       </span>
     ));
 
+  const backButton = () => {
+    navigate(-1);
+  };
   return (
     <div className={`${def["Body"]} ${style["EncateContainer"]}`}>
+      <div className={`${style["BackContainer"]}`} onClick={backButton}>
+        <IoIosArrowBack size="30px" />
+      </div>
       <div className={`${style["TitleDiv"]}`}>
         <p>{`${currentQuestionIndex + 1}`}.</p>
         <p>{formattedQuestion}</p>
@@ -68,7 +76,6 @@ function Encate() {
           )
         )}
       </div>
-      <IoIosArrowForward />
     </div>
   );
 }

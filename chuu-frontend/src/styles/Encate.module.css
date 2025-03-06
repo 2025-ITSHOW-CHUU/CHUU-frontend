@@ -3,11 +3,22 @@
   padding: 0;
 }
 
+.BackContainer {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+}
+
+.BackContainer > svg {
+  color: #d1d2d1;
+}
+
 .EncateContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   row-gap: 174px;
+  margin-top: 20px;
 }
 
 .TitleDiv {
