@@ -22,7 +22,7 @@ type SimilarTypeData = {
   comment: string;
 };
 
-function Result(){
+function Result() {
   const navigate = useNavigate();
   const [data, setData] = useState<ResultType | null>(null);
   const [similarTypeData, setSimilarTypeData] = useState<SimilarTypeData[]>([]);
@@ -36,6 +36,10 @@ function Result(){
 
   const returnBack = () => {
     navigate("/");
+  };
+
+  const onClick = (src: string) => {
+    navigate(src);
   };
 
   return (
@@ -54,27 +58,33 @@ function Result(){
         <div className={style.name}>{data?.name}</div>
       </div>
       <ul className={style.tags}>
-          {data?.hashtags.map((tag, i)=> <li key={i}>{tag}</li>)}
+        {data?.hashtags.map((tag, i) => (
+          <li key={i}>{tag}</li>
+        ))}
       </ul>
       <div className={style.description}>
         <p>"{data?.comment}"어원</p>
-        <div>
-          {data?.personality}
-        </div>
+        <div>{data?.personality}</div>
       </div>
       <div className={style.similarType}>
         <p>같은 추구미 학생</p>
         <div>
-          {similarTypeData?.map((item, i)=> <TypeCard key={i} name={item.name} photo={item.photo} comment={item.comment} />)}
+          {similarTypeData?.map((item: SimilarTypeData, i: number) => (
+            <TypeCard
+              key={i}
+              name={item.name}
+              photo={item.photo}
+              comment={item.comment}
+            />
+          ))}
         </div>
       </div>
-      <button className={style.cameraBtn}>
+      <button className={style.cameraBtn} onClick={() => onClick("/photo")}>
         <Camera />
         <p>선생님과 사진 찍기</p>
       </button>
-
     </div>
-  )
+  );
 }
 
 export default Result;

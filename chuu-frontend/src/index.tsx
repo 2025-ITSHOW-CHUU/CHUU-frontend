@@ -8,6 +8,7 @@ import Search from "../src/pages/Search.tsx";
 import Result from "../src/pages/Result.tsx";
 import Test from "../src/pages/Test.tsx";
 import Encate from "./pages/Encate.tsx";
+import Photo from "./pages/Photo.tsx";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
@@ -21,6 +22,7 @@ root.render(
       <Route path="/result" element={<Result />} />
       <Route path="/test" element={<Test />} />
       <Route path="/encate" element={<Encate />} />
+      <Route path="/photo" element={<Photo />} />
     </Routes>
   </BrowserRouter>
 );
