@@ -36,7 +36,6 @@ function PhotoBooth() {
       tempCanvas.width = 400;
       tempCanvas.height = 600;
 
-      // 좌우 반전 적용
       ctx.scale(-1, 1);
       ctx.translate(-400, 0);
 
