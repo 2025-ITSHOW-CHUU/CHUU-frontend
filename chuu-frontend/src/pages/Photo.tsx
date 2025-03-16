@@ -1,10 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
+import style from "../styles/Photo.module.css";
 
 function PhotoBooth() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [photo, setPhoto] = useState(null);
   const [framedPhoto, setFramedPhoto] = useState(null);
+  const [toggle, setToggle] = useState(true);
+
   const frames = [
     "/images/frame.png",
     "/images/frame1.png",
@@ -25,23 +28,33 @@ function PhotoBooth() {
   };
 
   const capture = () => {
-    if (photo) return;
-
     let video = videoRef.current;
     let tempCanvas = document.createElement("canvas");
     let ctx = tempCanvas.getContext("2d");
 
-    tempCanvas.width = 400;
-    tempCanvas.height = 600;
-    ctx.drawImage(video, 0, 0, 400, 600);
+    if (ctx) {
+      tempCanvas.width = 400;
+      tempCanvas.height = 600;
 
-    let imageURL = tempCanvas.toDataURL("image/png");
-    setPhoto(imageURL);
+      // 좌우 반전 적용
+      ctx.scale(-1, 1);
+      ctx.translate(-400, 0);
+
+      ctx.drawImage(video, 0, 0, 400, 600);
+
+      let imageURL = tempCanvas.toDataURL("image/png");
+      setPhoto(imageURL);
+    }
+    setToggle(!toggle);
   };
 
-  const generateFrame = () => {
-    if (!photo) return;
+  useEffect(() => {
+    if (photo) {
+      generateFrame();
+    }
+  }, [photo, frameIdx]);
 
+  const generateFrame = () => {
     let canvas = canvasRef.current;
     let ctx = canvas.getContext("2d");
 
@@ -72,6 +85,7 @@ function PhotoBooth() {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    setToggle(!toggle);
   };
 
   useEffect(() => {
@@ -79,23 +93,47 @@ function PhotoBooth() {
   }, []);
 
   return (
-    <div>
-      <video ref={videoRef} autoPlay playsInline style={{ width: "300px" }} />
-      <button onClick={capture} disabled={photo !== null}>
-        📸 캡처
-      </button>
-      {frames.map((frame, idx) => (
-        <button key={idx} onClick={() => setFrameIdx(idx)}>
-          Frame {idx + 1}
-        </button>
-      ))}
-      <button onClick={generateFrame} disabled={!photo}>
-        🎨 프레임 만들기
-      </button>
-      <canvas ref={canvasRef} style={{ border: "1px solid black" }}></canvas>
-      {framedPhoto && (
-        <button onClick={() => downloadFile(framedPhoto)}>📥 다운로드</button>
-      )}
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <video
+        ref={videoRef}
+        autoPlay
+        playsInline
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+
+      <img
+        src={frames[frameIdx]}
+        alt="Frame Preview"
+        style={{
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div className={style.CaptureContainer}>
+        {toggle ? (
+          <button onClick={capture}>📸 캡처</button>
+        ) : (
+          <button onClick={() => downloadFile(framedPhoto)}>📥 다운로드</button>
+        )}
+        {frames.map((frame, idx) => (
+          <button key={idx} onClick={() => setFrameIdx(idx)}>
+            Frame {idx + 1}
+          </button>
+        ))}
+      </div>
+
+      <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
     </div>
   );
 }
