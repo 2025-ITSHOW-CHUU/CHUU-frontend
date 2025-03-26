@@ -12,16 +12,15 @@ type SurveyType = {
 
 function EncateResult() {
   const [topResults, setTopResults] = useState<Record<string, SurveyType>>({});
-
-  // 임시 데이터
-
   const getScores = async () => {
     // 일부 점수 보여주기 -> 전체 점수 보여주기
     let updatedResults = {};
     const surveyData = encate.encate;
 
     for (let survey of surveyData) {
-      const getScoreUrl = `http://localhost:3000/home/${survey["questionNumber"]}`;
+      const getScoreUrl = `http://localhost:3000/home/${
+        survey["questionNumber"] - 1
+      }`;
 
       try {
         const response = await axios.get(getScoreUrl);
@@ -37,6 +36,8 @@ function EncateResult() {
         console.error("데이터 가져오기 실패:", error);
       }
     }
+
+    console.log(updatedResults);
 
     setTopResults(updatedResults);
   };
