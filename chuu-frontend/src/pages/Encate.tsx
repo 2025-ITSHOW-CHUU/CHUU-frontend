@@ -33,6 +33,7 @@ function Encate() {
   const handleAnswer = async (teacher: string) => {
     if (currentQuestionIndex < encateQuestion.length) {
       setCurrentQuestionIndex((prev: number) => prev + 1);
+      setAnsweredTeacher(null);
 
       const voteUrl = "http://localhost:3000/home";
 
@@ -45,6 +46,8 @@ function Encate() {
       } catch (error) {
         console.log("앙케이드 투표 오류:", error);
       }
+    } else {
+      navigate("/");
     }
   };
 
@@ -94,6 +97,7 @@ function Encate() {
         )}
       </div>
       <button
+        className={style.nextButton}
         onClick={() =>
           handleAnswer(
             encateQuestion[currentQuestionIndex]?.teacher[answeredTeacher]

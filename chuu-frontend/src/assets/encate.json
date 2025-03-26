@@ -2,32 +2,32 @@
   "encate": [
     {
       "questionNumber": 1,
-      "question": "가장 학생들과 친근한 선생님은?",
-      "teacher": ["김철수", "박영희", "이민호", "정수진", "최동훈"],
+      "question": "가장 결혼을 빨리할 것 같은 \n선생님은?",
+      "teacher": ["박지우", "박성래", "김윤환"],
       "image": "/images/Rings.png"
     },
     {
       "questionNumber": 2,
-      "question": "가장 엄격한 선생님은?",
-      "teacher": ["송지훈", "강민경", "윤도현", "차은지", "백승우"],
+      "question": "쿠팡 VIP일 것 같은 \n선생님은?",
+      "teacher": ["김영철", "손명수", "고낙은"],
       "image": "/images/Rings.png"
     },
     {
       "questionNumber": 3,
-      "question": "수업이 가장 재미있는 선생님은?",
-      "teacher": ["김서준", "박지우", "이현성", "정다혜", "최지훈"],
+      "question": "CC를 해봤을 것 같은 \n선생님은?",
+      "teacher": ["김윤지", "김종성", "임정훈"],
       "image": "/images/Rings.png"
     },
     {
       "questionNumber": 4,
-      "question": "가장 인기가 많은 선생님은?",
-      "teacher": ["한지민", "오세훈", "남주혁", "고유진", "이태성"],
+      "question": "위플래쉬를 가장 잘 출 것 \n같은 선생님은?",
+      "teacher": ["박향규", "최규정", "유병석"],
       "image": "/images/Rings.png"
     },
     {
       "questionNumber": 5,
-      "question": "가장 열정적인 선생님은?",
-      "teacher": ["유재석", "이강석", "문채원", "서진호", "조윤아"],
+      "question": "가장 열정적인 \n선생님은?",
+      "teacher": ["유재석", "이강석", "문채원"],
       "image": "/images/Rings.png"
     }
   ]
