@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  row-gap: 174px;
+  row-gap: 25.66px;
   margin-top: 20px;
 }
 
@@ -41,7 +41,7 @@ p {
   row-gap: 9px;
 }
 
-.EncateDiv > button {
+.EncateContainer button {
   background-color: #25282d;
   padding: 14.91px 28px;
   color: #aaaaaa;
@@ -52,6 +52,10 @@ p {
   border-radius: 16px;
 }
 
+.selected {
+  color: #65e9ff !important;
+}
+
 .EncateDiv > button:hover {
-  color: #65e9ff;
+  background-color: #65e8ff4c;
 }

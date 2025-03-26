@@ -3,27 +3,32 @@
     {
       "questionNumber": 1,
       "question": "가장 학생들과 친근한 선생님은?",
-      "teacher": ["김철수", "박영희", "이민호", "정수진", "최동훈"]
+      "teacher": ["김철수", "박영희", "이민호", "정수진", "최동훈"],
+      "image": "/images/Rings.png"
     },
     {
       "questionNumber": 2,
       "question": "가장 엄격한 선생님은?",
-      "teacher": ["송지훈", "강민경", "윤도현", "차은지", "백승우"]
+      "teacher": ["송지훈", "강민경", "윤도현", "차은지", "백승우"],
+      "image": "/images/Rings.png"
     },
     {
       "questionNumber": 3,
       "question": "수업이 가장 재미있는 선생님은?",
-      "teacher": ["김서준", "박지우", "이현성", "정다혜", "최지훈"]
+      "teacher": ["김서준", "박지우", "이현성", "정다혜", "최지훈"],
+      "image": "/images/Rings.png"
     },
     {
       "questionNumber": 4,
       "question": "가장 인기가 많은 선생님은?",
-      "teacher": ["한지민", "오세훈", "남주혁", "고유진", "이태성"]
+      "teacher": ["한지민", "오세훈", "남주혁", "고유진", "이태성"],
+      "image": "/images/Rings.png"
     },
     {
       "questionNumber": 5,
       "question": "가장 열정적인 선생님은?",
-      "teacher": ["유재석", "이강석", "문채원", "서진호", "조윤아"]
+      "teacher": ["유재석", "이강석", "문채원", "서진호", "조윤아"],
+      "image": "/images/Rings.png"
     }
   ]
 }
