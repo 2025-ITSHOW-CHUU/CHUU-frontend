@@ -1,21 +1,21 @@
 {
   "teachers": [
     {
-      "name": "김민수",
+      "name": "박지우 선생님",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "엄격하지만 학생들에게 깊은 애정을 가지고 있음",
       "hashtags": ["#카리스마", "#열정적인", "#학생사랑"],
       "comment": "포기 금지!"
     },
     {
-      "name": "박지연",
+      "name": "최규정 선생님",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "친절하고 이해심이 많으며 학생들의 고민을 잘 들어줌",
       "hashtags": ["#따뜻한", "#상담왕", "#포용력"],
       "comment": "힘내세요!"
     },
     {
-      "name": "이준호",
+      "name": "김윤지 선생님",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "유머러스하고 수업이 재미있어 학생들에게 인기가 많음",
       "hashtags": ["#유머감각", "#즐거운수업", "#인기쟁이"],

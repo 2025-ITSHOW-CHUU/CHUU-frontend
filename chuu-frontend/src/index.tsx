@@ -1,33 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../src/pages/Home.tsx";
-import Search from "../src/pages/Search.tsx";
-import Result from "../src/pages/Result.tsx";
-import Test from "../src/pages/Test.tsx";
+import { Provider } from "react-redux"; // Redux Provider 추가
+import { store } from "./store/index.ts"; // store import 추가
+
+import Home from "./pages/Home.tsx";
+import Search from "./pages/Search.tsx";
+import Result from "./pages/Result.tsx";
+import Test from "./pages/Test.tsx";
 import Encate from "./pages/Encate.tsx";
 import Photo from "./pages/Photo.tsx";
+import FinalResult from "./pages/FinalResult.tsx";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/result" element={<Result />} />
-      <Route path="/test" element={<Test />} />
-      <Route path="/encate" element={<Encate />} />
-      <Route path="/photo" element={<Photo />} />
-    </Routes>
-  </BrowserRouter>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/encate" element={<Encate />} />
+          <Route path="/photo" element={<Photo />} />
+          <Route path="/encate-result" element={<FinalResult />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+);

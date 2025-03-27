@@ -1,7 +1,7 @@
 .EncateResult {
   background-color: #25282d;
   border-radius: 20px;
-  padding: 18.5px 28.5px;
+  padding: 28px;
   margin-top: 26.58px;
   margin-bottom: 80px;
   display: flex;
@@ -23,10 +23,9 @@
   padding-left: 0;
   color: #ffffff;
   font-size: 14px;
-}
-
-.EncateResult > ul > li {
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
 }
 
 .EncateResult > ul p {

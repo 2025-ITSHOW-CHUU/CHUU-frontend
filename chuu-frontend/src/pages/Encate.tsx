@@ -5,17 +5,28 @@ import def from "../styles/Default.module.css"; // Ensure this file exists and c
 import axios from "axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { addItem } from "../store/slices/encateSlice.ts";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store";
 
 type QuestionType = {
   question: string;
   teacher: string[];
 };
 
+interface EncateType {
+  questionNumber: number;
+  answer: string;
+}
+
 function Encate() {
   const [encateQuestion, setEncateQuestion] = useState<QuestionType[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answeredTeacher, setAnsweredTeacher] = useState(0);
+  const [answeredList, setAnsweredList] = useState([]);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setEncateQuestion(encate.encate);
@@ -32,6 +43,12 @@ function Encate() {
 
   const handleAnswer = async (teacher: string) => {
     if (currentQuestionIndex < encateQuestion.length) {
+      const slice: EncateType = {
+        questionNumber: currentQuestionIndex,
+        answer: encateQuestion[currentQuestionIndex].teacher[answeredTeacher],
+      };
+      const newAnsweredList = [...answeredList, slice];
+      setAnsweredList(newAnsweredList);
       setCurrentQuestionIndex((prev: number) => prev + 1);
       setAnsweredTeacher(null);
 
@@ -47,7 +64,9 @@ function Encate() {
         console.log("앙케이드 투표 오류:", error);
       }
     } else {
-      navigate("/");
+      console.log(answeredList);
+      dispatch(addItem(answeredList));
+      navigate("/encate-result");
     }
   };
 

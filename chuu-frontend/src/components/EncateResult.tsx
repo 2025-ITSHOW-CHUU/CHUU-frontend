@@ -37,8 +37,6 @@ function EncateResult() {
       }
     }
 
-    console.log(updatedResults);
-
     setTopResults(updatedResults);
   };
 

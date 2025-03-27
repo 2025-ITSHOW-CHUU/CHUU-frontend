@@ -16,13 +16,13 @@
       "questionNumber": 3,
       "question": "CC를 해봤을 것 같은 \n선생님은?",
       "teacher": ["김윤지", "김종성", "임정훈"],
-      "image": "/images/Rings.png"
+      "image": "/images/Heart.png"
     },
     {
       "questionNumber": 4,
       "question": "위플래쉬를 가장 잘 출 것 \n같은 선생님은?",
       "teacher": ["박향규", "최규정", "유병석"],
-      "image": "/images/Rings.png"
+      "image": "/images/Listening.png"
     },
     {
       "questionNumber": 5,
