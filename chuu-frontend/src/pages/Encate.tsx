@@ -59,12 +59,10 @@ function Encate() {
           questionNumber: currentQuestionIndex,
           teacherName: teacher,
         });
-        console.log(response);
       } catch (error) {
         console.log("앙케이드 투표 오류:", error);
       }
     } else {
-      console.log(answeredList);
       dispatch(addItem(answeredList));
       navigate("/encate-result");
     }
