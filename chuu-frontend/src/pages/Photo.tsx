@@ -54,16 +54,7 @@ function PhotoBooth() {
       ctx.drawImage(video, 0, 0, 390, 844);
 
       let imageURL = tempCanvas.toDataURL("image/png");
-      const byteString = atob(imageURL.split(",")[1]);
-      const arrayBuffer = new ArrayBuffer(byteString.length);
-      const uint8Array = new Uint8Array(arrayBuffer);
 
-      for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-      }
-
-      const blob = new Blob([uint8Array], { type: "image/png" });
-      setFile(new File([blob], "photo.png"));
       setTeacherName("이호연");
       setPhoto(imageURL);
     }
@@ -76,6 +67,10 @@ function PhotoBooth() {
       generateFrame();
     }
   }, [photo, frameIdx]);
+
+  useEffect(() => {
+    getUserCamera();
+  }, []);
 
   const generateFrame = () => {
     let canvas = canvasRef.current;
@@ -97,6 +92,16 @@ function PhotoBooth() {
       frame.onload = () => {
         ctx.drawImage(frame, 0, 0, 390, 844);
         setFramedPhoto(canvas.toDataURL("image/png"));
+        const byteString = atob(canvas.toDataURL("image/png").split(",")[1]);
+        const arrayBuffer = new ArrayBuffer(byteString.length);
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        for (let i = 0; i < byteString.length; i++) {
+          uint8Array[i] = byteString.charCodeAt(i);
+        }
+
+        const blob = new Blob([uint8Array], { type: "image/png" });
+        setFile(new File([blob], "photo.png"));
       };
     };
   };
@@ -110,10 +115,6 @@ function PhotoBooth() {
     document.body.removeChild(a);
     setToggle(!toggle);
   };
-
-  useEffect(() => {
-    getUserCamera();
-  }, []);
 
   return (
     <div

@@ -1,0 +1,28 @@
+.PageBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PageBarContainer > svg {
+  color: #d1d2d1;
+}
+
+.PageBarContainer > div {
+  width: 306px;
+  height: 55px;
+  background-color: #25282d;
+  border-radius: 16px;
+  padding: 15px 17px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.pageNameContainer > p {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}

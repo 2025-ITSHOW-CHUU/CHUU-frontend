@@ -8,4 +8,5 @@
   background-color: #18191d;
   padding: 54.5px 25px 0 25px;
   margin: 0;
+  box-sizing: border-box;
 }
