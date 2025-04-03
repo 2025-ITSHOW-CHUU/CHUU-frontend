@@ -12,6 +12,7 @@ import Test from "./pages/Test.tsx";
 import Encate from "./pages/Encate.tsx";
 import Photo from "./pages/Photo.tsx";
 import FinalResult from "./pages/FinalResult.tsx";
+import UploadImage from "./pages/UploadImage.tsx";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
@@ -30,6 +31,7 @@ root.render(
           <Route path="/encate" element={<Encate />} />
           <Route path="/photo" element={<Photo />} />
           <Route path="/encate-result" element={<FinalResult />} />
+          <Route path="/upload-post" element={<UploadImage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

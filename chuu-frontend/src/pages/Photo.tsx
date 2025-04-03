@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import style from "../styles/Photo.module.css";
+import useImageStore from "../store/useImageStore.ts";
+import { useNavigate } from "react-router-dom";
 
 function PhotoBooth() {
   const videoRef = useRef(null);
@@ -7,6 +9,8 @@ function PhotoBooth() {
   const [photo, setPhoto] = useState(null);
   const [framedPhoto, setFramedPhoto] = useState(null);
   const [toggle, setToggle] = useState(true);
+  const { file, setFile, teacherName, setTeacherName } = useImageStore();
+  const navigate = useNavigate();
 
   const frames = [
     "/images/SelfieHoyeonLee.png",
@@ -50,6 +54,17 @@ function PhotoBooth() {
       ctx.drawImage(video, 0, 0, 390, 844);
 
       let imageURL = tempCanvas.toDataURL("image/png");
+      const byteString = atob(imageURL.split(",")[1]);
+      const arrayBuffer = new ArrayBuffer(byteString.length);
+      const uint8Array = new Uint8Array(arrayBuffer);
+
+      for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+      }
+
+      const blob = new Blob([uint8Array], { type: "image/png" });
+      setFile(new File([blob], "photo.png"));
+      setTeacherName("이호연");
       setPhoto(imageURL);
     }
     stopCamera();
@@ -150,7 +165,7 @@ function PhotoBooth() {
           />
         ) : (
           <div className={style.DownloadContainer}>
-            <button onClick={() => downloadFile(framedPhoto)}>
+            <button onClick={() => navigate("/upload-post")}>
               게시물 올리기
             </button>
             <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
