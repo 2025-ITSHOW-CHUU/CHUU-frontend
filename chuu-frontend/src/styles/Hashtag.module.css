@@ -1,0 +1,12 @@
+.hashtagContainer {
+  background-color: #33353f;
+  border-radius: 43.65px;
+  padding: 7.4px;
+  box-sizing: border-box;
+}
+
+.hashtagContainer > p {
+  color: #65e9ff;
+  font-size: 12px;
+  font-weight: bold;
+}

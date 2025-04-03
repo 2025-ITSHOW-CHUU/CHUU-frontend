@@ -8,7 +8,7 @@ function PageBar(props: { pageName: string }) {
 
   return (
     <div className={style.PageBarContainer}>
-      <IoIosArrowBack />
+      <IoIosArrowBack size={30} />
       <div className={style.pageNameContainer}>
         <p>{props.pageName}</p>
       </div>
