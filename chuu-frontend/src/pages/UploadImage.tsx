@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useImageStore from "../store/useImageStore.ts";
 import PageBar from "../components/PageBar.tsx";
 import style from "../styles/UploadImage.module.css";
@@ -16,6 +16,24 @@ type Teacher = {
 };
 
 function UploadImage() {
+  const usePreventRefresh = () => {
+    const preventClose = (e: any) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+
+    useEffect(() => {
+      (() => {
+        window.addEventListener("beforeunload", preventClose);
+      })();
+
+      return () => {
+        window.removeEventListener("beforeunload", preventClose);
+      };
+    });
+  };
+
+  usePreventRefresh();
   const { file, teacherName } = useImageStore();
   const teachersInfo = teachers["teachers"];
   const selectedTeacher = teachersInfo.filter(
@@ -25,17 +43,14 @@ function UploadImage() {
 
   const handleSubmit = async () => {
     if (file) {
+      console.log(file);
       const formData = new FormData();
       formData.append("file", file);
       formData.append("teacher", selectedTeacher.name);
       formData.append("comment", comment);
 
       try {
-        const response = await axios.post(
-          "http://localhost:3000/post/upload",
-          formData
-        );
-        console.log(response.data);
+        await axios.post("http://localhost:3000/post/upload", formData);
       } catch (error) {
         console.log(error);
       }
@@ -53,7 +68,7 @@ function UploadImage() {
         />
         <div className={style.hashtagsContainer}>
           {selectedTeacher["hashtags"].map((hashtag: string, index: number) => {
-            return <Hashtag key={index} comment={hashtag} />;
+            return <Hashtag key={index} id={index} comment={hashtag} />;
           })}
         </div>
         <textarea
@@ -64,7 +79,9 @@ function UploadImage() {
           value={comment}
         />
       </div>
-      <button onClick={handleSubmit}>완료</button>
+      <button className={style.submitButton} onClick={handleSubmit}>
+        완료
+      </button>
     </div>
   );
 }

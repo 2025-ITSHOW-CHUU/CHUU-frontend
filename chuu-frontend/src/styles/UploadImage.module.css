@@ -40,3 +40,14 @@
   top: 20px;
   font-size: 14px;
 }
+
+.submitButton {
+  background-color: #12ddff;
+  padding: 13.5px 140px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  position: fixed;
+  bottom: 23px;
+  left: calc((100% - 315px) / 2);
+}
