@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { ReactComponent as Camera } from "../assets/camera.svg";
 import { useState, useEffect } from "react";
-import TypeCard from "../components/TypeCard.tsx";
-import teachers from "../assets/teachers.json";
+import TypeCard from "../../components/TypeCard.tsx";
+import teachers from "../../assets/teachers.json";
 
 type ResultType = {
   name: string;

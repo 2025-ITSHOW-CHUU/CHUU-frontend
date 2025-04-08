@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import style from "../styles/Photo.module.css";
-import useImageStore from "../store/useImageStore.ts";
+import useImageStore from "../../store/useImageStore.ts";
 import { useNavigate } from "react-router-dom";
 
 function PhotoBooth() {

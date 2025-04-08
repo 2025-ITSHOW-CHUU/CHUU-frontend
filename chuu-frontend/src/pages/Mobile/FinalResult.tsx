@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../../store/index.ts";
 import React, { useState, useEffect } from "react";
-import { clearItem } from "../store/slices/encateSlice.ts";
+import { clearItem } from "../../store/slices/encateSlice.ts";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 

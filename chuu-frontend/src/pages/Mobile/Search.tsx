@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import SearchBar from "../components/SearchBar.tsx";
+import SearchBar from "../../components/SearchBar.tsx";
 import def from "../styles/Default.module.css";
 import style from "../styles/Search.module.css";
 import { ReactComponent as Logo } from "../assets/logo.svg";
 import { IoIosArrowBack } from "react-icons/io";
-import teacherData from "../assets/teachers.json";
+import teacherData from "../../assets/teachers.json";
 import { useNavigate } from "react-router-dom";
 
 type TeacherType = {

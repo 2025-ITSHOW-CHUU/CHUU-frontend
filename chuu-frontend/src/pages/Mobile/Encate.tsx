@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import encate from "../assets/encate.json";
+import encate from "../../assets/encate.json";
 import style from "../styles/Encate.module.css"; // Ensure this file exists and contains the required styles
 import def from "../styles/Default.module.css"; // Ensure this file exists and contains the required styles
 import axios from "axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { addItem } from "../store/slices/encateSlice.ts";
+import { addItem } from "../../store/slices/encateSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../../store/index.ts";
 
 type QuestionType = {
   question: string;
