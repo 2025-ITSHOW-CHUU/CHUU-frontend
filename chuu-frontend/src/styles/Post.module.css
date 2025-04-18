@@ -1,0 +1,9 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-container > image {
+  width: 100px;
+  height: 100px;
+}

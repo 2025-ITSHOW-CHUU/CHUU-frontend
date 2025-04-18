@@ -5,14 +5,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux"; // Redux Provider 추가
 import { store } from "./store/index.ts"; // store import 추가
 
-import Home from "./pages/Home.tsx";
-import Search from "./pages/Search.tsx";
-import Result from "./pages/Result.tsx";
-import Test from "./pages/Test.tsx";
-import Encate from "./pages/Encate.tsx";
-import Photo from "./pages/Photo.tsx";
-import FinalResult from "./pages/FinalResult.tsx";
-import UploadImage from "./pages/UploadImage.tsx";
+import Home from "./pages/Mobile/Home.tsx";
+import Search from "./pages/Mobile/Search.tsx";
+import Result from "./pages/Mobile/Result.tsx";
+import Test from "./pages/Mobile/Test.tsx";
+import Encate from "./pages/Mobile/Encate.tsx";
+import Photo from "./pages/Mobile/Photo.tsx";
+import FinalResult from "./pages/Mobile/FinalResult.tsx";
+import UploadImage from "./pages/Mobile/UploadImage.tsx";
+import Main from "./pages/Web/Main.tsx";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
@@ -32,6 +33,7 @@ root.render(
           <Route path="/photo" element={<Photo />} />
           <Route path="/encate-result" element={<FinalResult />} />
           <Route path="/upload-post" element={<UploadImage />} />
+          <Route path="web-main" element={<Main />} />
         </Routes>
       </BrowserRouter>
     </Provider>

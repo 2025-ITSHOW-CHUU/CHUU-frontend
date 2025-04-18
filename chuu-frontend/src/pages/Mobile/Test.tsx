@@ -1,6 +1,6 @@
 import React from "react";
-import def from "../styles/Default.module.css";
-import style from "../styles/Test.module.css";
+import def from "../../styles/Default.module.css";
+import style from "../../styles/Test.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Questions from "../../assets/questions.json";

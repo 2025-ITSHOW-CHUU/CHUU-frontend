@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import encate from "../../assets/encate.json";
-import style from "../styles/Encate.module.css"; // Ensure this file exists and contains the required styles
-import def from "../styles/Default.module.css"; // Ensure this file exists and contains the required styles
+import style from "../../styles/Encate.module.css"; // Ensure this file exists and contains the required styles
+import def from "../../styles/Default.module.css"; // Ensure this file exists and contains the required styles
 import axios from "axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";

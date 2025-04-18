@@ -1,9 +1,9 @@
 import React from "react";
-import def from "../styles/Default.module.css";
-import style from "../styles/Result.module.css";
+import def from "../../styles/Default.module.css";
+import style from "../../styles/Result.module.css";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-import { ReactComponent as Camera } from "../assets/camera.svg";
+import { ReactComponent as Camera } from "../../assets/camera.svg";
 import { useState, useEffect } from "react";
 import TypeCard from "../../components/TypeCard.tsx";
 import teachers from "../../assets/teachers.json";

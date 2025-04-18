@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import useImageStore from "../../store/useImageStore.ts";
 import PageBar from "../../components/PageBar.tsx";
-import style from "../styles/UploadImage.module.css";
-import def from "../styles/Default.module.css";
+import style from "../../styles/UploadImage.module.css";
+import def from "../../styles/Default.module.css";
 import teachers from "../../assets/teachers.json";
 import Hashtag from "../../components/Hashtag.tsx";
 import axios from "axios";
