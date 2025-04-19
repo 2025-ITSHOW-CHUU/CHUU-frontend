@@ -2,6 +2,7 @@ import { io } from "socket.io-client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Post from "../../components/Post.tsx";
+import style from "../../styles/Main.module.css";
 
 // const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
 
@@ -38,7 +39,7 @@ function Main() {
   }, []);
 
   return (
-    <div>
+    <div className={style["posts-container"]}>
       {posts.map((post: PostType) => {
         return <Post post={post} />;
       })}

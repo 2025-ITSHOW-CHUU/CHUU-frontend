@@ -1,9 +1,23 @@
 .post-container {
   display: flex;
   flex-direction: column;
+  background-color: #25282d;
+  padding: 28px 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
 }
 
-.post-container > image {
-  width: 100px;
-  height: 100px;
+.post-container > img {
+  height: 384px;
+  width: 216px;
+}
+
+.post-container > .hashtagsContainer {
+  display: flex;
+}
+
+.post-container > p {
+  color: #ffffff;
+  font-size: 14px;
 }
