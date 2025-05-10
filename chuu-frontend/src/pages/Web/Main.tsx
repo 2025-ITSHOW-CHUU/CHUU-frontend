@@ -4,6 +4,7 @@ import axios from "axios";
 import Post from "../../components/Post.tsx";
 import style from "../../styles/Main.module.css";
 import EncateResult from "../../components/EncateResult.tsx";
+import TotalUser from "../../components/TotalUser.tsx";
 
 // const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
 
@@ -43,6 +44,7 @@ function Main() {
     <>
       <div className={style["result-container"]}>
         <EncateResult />
+        <TotalUser />
       </div>
       <div className={style["posts-container"]}>
         {posts.map((post: PostType) => {

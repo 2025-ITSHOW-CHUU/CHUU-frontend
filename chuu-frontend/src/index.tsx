@@ -33,7 +33,7 @@ root.render(
           <Route path="/photo" element={<Photo />} />
           <Route path="/encate-result" element={<FinalResult />} />
           <Route path="/upload-post" element={<UploadImage />} />
-          <Route path="web-main" element={<Main />} />
+          <Route path="/web-main" element={<Main />} />
         </Routes>
       </BrowserRouter>
     </Provider>
