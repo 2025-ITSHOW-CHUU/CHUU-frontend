@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import style from "../styles/TotalUser.module.css";
+import axios from "axios";
 
 function TotalUser({}) {
   const [totalUser, setTotalUser] = useState(0);
@@ -16,6 +17,15 @@ function TotalUser({}) {
       console.log(data);
       setTotalUser(data.totalUser);
     });
+
+    async function getTotalUser() {
+      const res = await axios.get("http://localhost:3000/users");
+      return res;
+    }
+
+    getTotalUser()
+      .then((res) => setTotalUser(res.data))
+      .catch((err) => console.error(err));
 
     return () => {
       socket.disconnect();
