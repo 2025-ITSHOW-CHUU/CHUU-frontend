@@ -7,6 +7,7 @@ import { ReactComponent as Camera } from "../../assets/camera.svg";
 import { useState, useEffect } from "react";
 import TypeCard from "../../components/TypeCard.tsx";
 import teachers from "../../assets/teachers.json";
+import useTestScoreStore from "../../store/useTestScoreStore.ts";
 
 type ResultType = {
   name: string;
@@ -26,10 +27,12 @@ function Result() {
   const navigate = useNavigate();
   const [data, setData] = useState<ResultType | null>(null);
   const [similarTypeData, setSimilarTypeData] = useState<SimilarTypeData[]>([]);
+  const { scores, setScores } = useTestScoreStore();
 
   useEffect(() => {
     const resultData = teachers.teachers[0];
     setData(resultData);
+    console.log(scores);
 
     setSimilarTypeData(teachers.teachers.slice(1, 3));
   }, []);
