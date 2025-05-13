@@ -4,7 +4,7 @@ import useImageStore from "../../store/useImageStore.ts";
 import { useNavigate } from "react-router-dom";
 
 function PhotoBooth() {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef(null);
   const [photo, setPhoto] = useState(null);
   const [framedPhoto, setFramedPhoto] = useState(null);
@@ -66,6 +66,9 @@ function PhotoBooth() {
     if (photo) {
       generateFrame();
     }
+    if (videoRef.current) {
+      getUserCamera();
+    }
   }, [photo, frameIdx]);
 
   useEffect(() => {
@@ -122,6 +125,8 @@ function PhotoBooth() {
         position: "relative",
         width: "100%",
         height: "100vh",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
       <video
@@ -140,7 +145,7 @@ function PhotoBooth() {
         ref={canvasRef}
         style={{ display: toggle ? "none" : "block" }}
       ></canvas>
-
+      {/* 
       <img
         src={frames[frameIdx]}
         alt="Frame Preview"
@@ -150,9 +155,9 @@ function PhotoBooth() {
           left: "0",
           width: "100%",
           height: "100%",
-          pointerEvents: "none",
+          display: toggle ? "none" : "block",
         }}
-      />
+      /> */}
 
       <div className={style.CaptureContainer}>
         {toggle ? (
@@ -163,6 +168,7 @@ function PhotoBooth() {
             alt="SelfieButton"
             width="72px"
             height="72px"
+            backgroundColor="translate"
           />
         ) : (
           <div className={style.DownloadContainer}>
