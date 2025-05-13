@@ -39,10 +39,12 @@ function Result() {
 
   const returnBack = () => {
     navigate("/");
+    setScores([]);
   };
 
   const onClick = (src: string) => {
     navigate(src);
+    setScores([]);
   };
 
   return (

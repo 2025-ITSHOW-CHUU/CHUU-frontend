@@ -7,9 +7,11 @@ import Questions from "../../assets/questions.json";
 import useTestScoreStore from "../../store/useTestScoreStore.ts";
 import axios from "axios";
 
+type OptionType = { q: string; score: number };
+
 type QuestionType = {
   question: string;
-  options: string[];
+  options: { q: string; score: number }[];
   photo: string;
 };
 
@@ -36,6 +38,7 @@ function Test() {
       console.log(scores);
       setCurrentQuestionIndex((prev: number) => prev + 1);
     } else {
+      addScore(currentQuestionIndex, e.target.value);
       try {
         await axios.post("http://localhost:3000/users", {
           score: scores?.reduce((a: number, c: TestType) => a + c.testScore, 0),
@@ -46,7 +49,7 @@ function Test() {
         return;
       }
       navigate("/result");
-      setScores([]);
+      // setScores([]);
     }
   };
 
@@ -75,10 +78,14 @@ function Test() {
       ></img>
       <ul className={style.options}>
         {questions[currentQuestionIndex]?.options.map(
-          (option: string, index: number) => {
+          (option: OptionType, index: number) => {
             return (
-              <li value={index} className={style.option} onClick={handleAnswer}>
-                {option}
+              <li
+                value={option.score}
+                className={style.option}
+                onClick={handleAnswer}
+              >
+                {option.q}
               </li>
             );
           }
