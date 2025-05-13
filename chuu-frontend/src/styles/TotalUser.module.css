@@ -1,4 +1,21 @@
 .totalUser {
   background-color: #25282d;
   color: white;
+  border-radius: 20px;
+  padding: 23.33px 64.19px 36.3px 41.63px;
+  margin-top: 26.58px;
+}
+.totalUser h1{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.totalUser p{
+  font-size: 14px;
+  color: rgba(170, 170, 170, 1);
+}
+
+.totalUser .num{
+  font-size: 85px;
+  color: white;
 }

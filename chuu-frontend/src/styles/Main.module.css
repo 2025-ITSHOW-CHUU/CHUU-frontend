@@ -1,3 +1,45 @@
+* {
+  font-family: Pretendard;
+}
+
+.Logo{
+  margin: 32px;
+}
+.Body{
+  margin: 0 10.05%;
+}
+.Body h1{
+  color: white;
+  font-size: 36px;
+}
+.box{
+  display: flex;
+  gap: 20px;
+  
+}
+.result-container{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.test-mobile{
+  background-color: #25282d;
+  padding: 26.86px 40.44px;
+  border-radius: 20px;
+}
+
+.test-mobile .title{
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.test-mobile p{
+  font-size: 14px;
+  color: rgba(170, 170, 170, 1);
+}
+
 .posts-container {
   display: flex;
   flex-wrap: wrap;

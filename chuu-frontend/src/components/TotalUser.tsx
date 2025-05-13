@@ -35,7 +35,7 @@ function TotalUser({}) {
     <div className={style.totalUser}>
       <h1>지금까지 참여한 추구미</h1>
       <p>옆에 배치된 핸드폰</p>
-      <p>{totalUser}</p>
+      <p className={style.num}>{totalUser}</p>
     </div>
   );
 }
