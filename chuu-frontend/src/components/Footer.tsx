@@ -4,25 +4,35 @@ import { FiSearch } from "react-icons/fi";
 import { FaClipboardList } from "react-icons/fa";
 import { BsChatRightHeartFill } from "react-icons/bs";
 import style from "../styles/Footer.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Footer({}) {
+  const navigate = useNavigate();
+  const handleClick = (e: Event) => {
+    console.log(e.target.id);
+    navigate(`/${e.target.id}`);
+  };
   return (
     <div className={`${style["Footer"]}`}>
-      <div className="home">
-        <GoHomeFill />
-        <p>홈</p>
+      <div className="home" id="" onClick={(e: Event) => handleClick(e)}>
+        <GoHomeFill id="" />
+        <p id="">홈</p>
       </div>
-      <div className="search">
-        <FiSearch />
-        <p>검색</p>
+      <div
+        className="search"
+        id="search"
+        onClick={(e: Event) => handleClick(e)}
+      >
+        <FiSearch id="search" />
+        <p id="search">검색</p>
       </div>
-      <div className="test">
-        <FaClipboardList />
-        <p>테스트</p>
+      <div className="test" id="test" onClick={(e: Event) => handleClick(e)}>
+        <FaClipboardList id="test" />
+        <p id="test">테스트</p>
       </div>
-      <div className="chat">
-        <BsChatRightHeartFill />
-        <p>채팅</p>
+      <div className="chat" id="chat" onClick={(e: Event) => handleClick(e)}>
+        <BsChatRightHeartFill id="chat" />
+        <p id="chat">채팅</p>
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ function SearchBar(props: {
     <div className={`${style["SearchBar"]}`}>
       <IoSearchOutline />
       <input
-        placeholder="완전 럭키비키잖아?"
         className={`${style["SearchInput"]}`}
         value={props.value}
         onChange={onChange}
