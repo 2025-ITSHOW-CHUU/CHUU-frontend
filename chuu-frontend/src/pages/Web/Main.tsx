@@ -7,6 +7,8 @@ import EncateResult from "../../components/EncateResult.tsx";
 import TotalUser from "../../components/TotalUser.tsx";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as MainCharacter } from "../../assets/main_character.svg";
+import { BsArrowUpRightCircleFill } from "react-icons/bs";
+import { QRCodeCanvas } from "qrcode.react";
 
 const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
 
@@ -18,12 +20,27 @@ interface PostType {
 
 function Main() {
   const [posts, setPosts] = useState<PostType[]>([]);
-  console.log(posts.data);
+  const [clicked, setClicked] = useState<boolean>(false);
+
+  const handleClick = (e: Event) => {
+    e.preventDefault();
+    setClicked((prev: boolean) => !prev);
+  };
+
+  window.onclick = (e: Event) => {
+    console.log(e.target);
+    if (e.target!.id == "QRButton") {
+      handleClick(e);
+      return;
+    }
+
+    setClicked(false);
+  };
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get<PostType[]>("/post");
+        const response = await axios.get("/post");
         setPosts(response.data.data);
         // console.log(response.data.data);
       } catch (error) {
@@ -34,7 +51,7 @@ function Main() {
     getPosts();
 
     socket.on("newPost", (post: PostType) => {
-      setPosts((prevPosts) => [post, ...prevPosts]);
+      setPosts((prevPosts: PostType[]) => [post, ...prevPosts]);
     });
 
     return () => {
@@ -44,26 +61,39 @@ function Main() {
 
   return (
     <>
-    <div className={style["Logo"]}>
+      <div className={style["Logo"]}>
         <Logo />
-    </div>
-    <div className={style["Body"]}>
-      <h1>추구미 서비스 통계 ✨</h1>
-      <div className={style["result-container"]}>
-        <EncateResult />
-        <TotalUser />
-        <div className={style["test-mobile"]}>
-          <p className={style["title"]}>추구미 선생님 찾으러 가기</p>
-          <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>
-          <MainCharacter />
+      </div>
+      <div className={style["Body"]}>
+        <h1>추구미 서비스 통계 ✨</h1>
+        <div className={style["result-container"]}>
+          <EncateResult />
+          <TotalUser />
+          <div className={style["test-mobile"]}>
+            <p className={style["title"]}>추구미 선생님 찾으러 가기</p>
+            <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>
+            <MainCharacter />
+            <button id="QRButton">
+              <img
+                id="QRButton"
+                src="/images/ToMobileButton.png"
+                alt="toMobileButton"
+              />
+            </button>
+          </div>
         </div>
+        <div className={style["posts-container"]}>
+          {posts.map((post: PostType, index: number) => {
+            return <Post key={index} post={post} />;
+          })}
+        </div>
+
+        <QRCodeCanvas
+          className={style["QRContainer"]}
+          style={{ display: clicked ? "block" : "none" }}
+          value="http://localhost:3001"
+        />
       </div>
-      <div className={style["posts-container"]}>
-        {posts.map((post: PostType) => {
-          return <Post post={post} />;
-        })}
-      </div>
-    </div>
     </>
   );
 }
