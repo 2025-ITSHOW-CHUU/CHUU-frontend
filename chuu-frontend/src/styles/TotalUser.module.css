@@ -2,20 +2,26 @@
   background-color: #25282d;
   color: white;
   border-radius: 20px;
-  padding: 23.33px 64.19px 36.3px 41.63px;
+  padding: 20px 40px;
   margin-top: 26.58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.totalUser h1{
+.totalUser h1 {
   font-size: 18px;
   font-weight: bold;
+  align-self: start;
 }
 
-.totalUser p{
+.totalUser p {
+  align-self: start;
   font-size: 14px;
   color: rgba(170, 170, 170, 1);
 }
 
-.totalUser .num{
+.totalUser .num {
   font-size: 85px;
   color: white;
+  align-self: center;
 }

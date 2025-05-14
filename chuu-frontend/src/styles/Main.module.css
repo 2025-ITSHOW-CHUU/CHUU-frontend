@@ -24,7 +24,7 @@
 
 .test-mobile {
   background-color: #25282d;
-  padding: 26.86px 40.44px;
+  padding: 20px 50px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -34,6 +34,7 @@
 }
 
 .test-mobile .title {
+  margin: 12.06px 0;
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -42,6 +43,7 @@
 .test-mobile p {
   font-size: 14px;
   color: rgba(170, 170, 170, 1);
+  align-self: start;
 }
 
 .test-mobile button {
