@@ -30,7 +30,6 @@ function Post(props: { post: PostType }) {
       );
       return teacher.name.split(" ")[0] === props.post.teacher.split(" ")[0];
     });
-    console.log(teacher);
     if (teacher) {
       setSelectedTeacher(teacher);
     }

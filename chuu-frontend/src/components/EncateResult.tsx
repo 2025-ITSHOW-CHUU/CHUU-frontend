@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/EncateResult.module.css";
 import axios from "axios";
 import encate from "../assets/encate.json";
+import { io } from "socket.io-client";
 axios.defaults.withCredentials = true;
 
 type SurveyType = {
@@ -36,12 +37,39 @@ function EncateResult() {
         console.error("데이터 가져오기 실패:", error);
       }
     }
-
+    console.log(topResults);
     setTopResults(updatedResults);
   };
 
   useEffect(() => {
     getScores();
+
+    const socket = io("http://localhost:3000/user");
+
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+
+    socket.on("update-encate", (data) => {
+      console.log(data, topResults);
+      const newEncateRes = {
+        question: encate.encate[data.questionNumber].question,
+        votes: data.maxVotedTeacher,
+        winnder: data.teacherName,
+      };
+      console.log(newEncateRes);
+      const newResult = topResults[data.questionNumber + 1];
+      console.log("new ", newResult);
+      setTopResults((prev) => ({
+        ...prev,
+        [data.questionNumber + 1]: {
+          question: encate.encate[data.questionNumber].question,
+          winner: data.teacherName,
+          votes: data.maxVotedTeacher,
+        },
+      }));
+    });
+
     const interval = setInterval(getScores, 60000);
     return () => clearInterval(interval);
   }, []);
