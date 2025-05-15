@@ -7,7 +7,6 @@ import EncateResult from "../../components/EncateResult.tsx";
 import TotalUser from "../../components/TotalUser.tsx";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as MainCharacter } from "../../assets/main_character.svg";
-import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { QRCodeCanvas } from "qrcode.react";
 import TestResult from "../../components/TestResult.tsx";
 
@@ -74,7 +73,6 @@ function Main() {
           <EncateResult />
           <TestResult />
           <TotalUser />
-
           <div className={style["test-mobile"]}>
             <p className={style["title"]}>추구미 선생님 찾으러 가기</p>
             <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>

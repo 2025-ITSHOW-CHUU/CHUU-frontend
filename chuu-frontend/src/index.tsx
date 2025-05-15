@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux"; // Redux Provider 추가
-import { store } from "./store/index.ts"; // store import 추가
+import { store } from "./store/index"; // store import 추가
 
-import Home from "./pages/Mobile/Home.tsx";
-import Search from "./pages/Mobile/Search.tsx";
-import Result from "./pages/Mobile/Result.tsx";
-import Test from "./pages/Mobile/Test.tsx";
-import Encate from "./pages/Mobile/Encate.tsx";
-import Photo from "./pages/Mobile/Photo.tsx";
-import FinalResult from "./pages/Mobile/FinalResult.tsx";
-import UploadImage from "./pages/Mobile/UploadImage.tsx";
-import Main from "./pages/Web/Main.tsx";
+import Home from "./pages/Mobile/Home";
+import Search from "./pages/Mobile/Search";
+import Result from "./pages/Mobile/Result";
+import Test from "./pages/Mobile/Test";
+import Encate from "./pages/Mobile/Encate";
+import Photo from "./pages/Mobile/Photo";
+import FinalResult from "./pages/Mobile/FinalResult";
+import UploadImage from "./pages/Mobile/UploadImage";
+import Main from "./pages/Web/Main";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(

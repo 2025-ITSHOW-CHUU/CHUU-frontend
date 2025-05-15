@@ -1,24 +1,30 @@
 * {
   font-family: Pretendard;
+  box-sizing: border-box;
 }
 
 .Logo {
   margin: 32px;
 }
+
 .Body {
-  margin: 0 10.05%;
+  width: 100%;
+  padding: 0 4%;
 }
-.Body h1 {
+
+.Body > h1 {
   color: white;
   font-size: 36px;
 }
+
 .box {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 .result-container {
+  padding: 0;
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
   align-items: flex-start;
 }
 

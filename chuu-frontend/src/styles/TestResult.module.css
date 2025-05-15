@@ -1,8 +1,16 @@
 .TestResultContainer {
   background-color: #25282d;
+  margin-top: 26.58px;
+  padding: 20px 50px;
+  border-radius: 20px;
 }
 
-.ChartContainer {
-  width: 1000px;
-  height: 1000px;
+.TestResultContainer > h1 {
+  font-size: 18px;
+  color: white;
+}
+
+.TestResultContainer > p {
+  color: #aaaaaa;
+  font-size: 14px;
 }

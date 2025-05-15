@@ -1,13 +1,12 @@
 import React from "react";
 import style from "../styles/Chart.module.css";
-import { ResponsivePie } from "@nivo/pie";
+import { ResponsivePieCanvas } from "@nivo/pie";
 
 function Chart({ data }) {
   console.log([...data]);
   return (
-    <ResponsivePie
+    <ResponsivePieCanvas
       data={[...data]}
-      margin={{ top: 40, right: 80, bottom: 80, left: 40 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
@@ -15,6 +14,7 @@ function Chart({ data }) {
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
+      enableArcLinkLabels={false}
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor="#333333"
       arcLinkLabelsThickness={2}
@@ -34,27 +34,23 @@ function Chart({ data }) {
           padding: 1,
           stagger: true,
         },
+        {
+          id: "lines",
+          type: "patternLines",
+          background: "inherit",
+          color: "rgba(255, 255, 255, 0.3)",
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10,
+        },
       ]}
       fill={[
         { match: { id: "박지우" }, id: "dots" },
-        { match: { id: "이대형" }, id: "dots" },
+        { match: { id: "이대형" }, id: "lines" },
         { match: { id: "조예진" }, id: "dots" },
-        { match: { id: "장하나" }, id: "dots" },
+        { match: { id: "장하나" }, id: "lines" },
         { match: { id: "김윤지" }, id: "dots" },
-        { match: { id: "이호연" }, id: "dots" },
-      ]}
-      animate={false}
-      legends={[
-        {
-          anchor: "bottom",
-          direction: "row",
-          translateY: 56,
-          itemWidth: 100,
-          itemHeight: 18,
-          itemTextColor: "#999",
-          symbolSize: 18,
-          symbolShape: "circle",
-        },
+        { match: { id: "이호연" }, id: "lines" },
       ]}
     />
   );

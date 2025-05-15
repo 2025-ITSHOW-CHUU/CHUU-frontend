@@ -2,7 +2,7 @@
   background-color: #25282d;
   color: white;
   border-radius: 20px;
-  padding: 20px 40px;
+  padding: 20px 50px;
   margin-top: 26.58px;
   display: flex;
   flex-direction: column;
@@ -24,4 +24,6 @@
   font-size: 85px;
   color: white;
   align-self: center;
+  margin: 0;
+  padding: 0;
 }
