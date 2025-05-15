@@ -25,9 +25,6 @@ function Post(props: { post: PostType }) {
 
   useEffect(() => {
     const teacher = teachersInfo.find((teacher) => {
-      console.log(
-        teacher.name.split(" ")[0] === props.post.teacher.split(" ")[0]
-      );
       return teacher.name.split(" ")[0] === props.post.teacher.split(" ")[0];
     });
     if (teacher) {

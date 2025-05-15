@@ -52,14 +52,7 @@ function EncateResult() {
 
     socket.on("update-encate", (data) => {
       console.log(data, topResults);
-      const newEncateRes = {
-        question: encate.encate[data.questionNumber].question,
-        votes: data.maxVotedTeacher,
-        winnder: data.teacherName,
-      };
-      console.log(newEncateRes);
-      const newResult = topResults[data.questionNumber + 1];
-      console.log("new ", newResult);
+
       setTopResults((prev) => ({
         ...prev,
         [data.questionNumber + 1]: {
