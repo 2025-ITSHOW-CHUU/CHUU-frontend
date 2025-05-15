@@ -28,16 +28,6 @@ function Main() {
     setClicked((prev: boolean) => !prev);
   };
 
-  window.onclick = (e: Event) => {
-    console.log(e.target);
-    if (e.target!.id == "QRButton") {
-      handleClick(e);
-      return;
-    }
-
-    setClicked(false);
-  };
-
   useEffect(() => {
     const getPosts = async () => {
       try {
@@ -55,8 +45,20 @@ function Main() {
       setPosts((prevPosts: PostType[]) => [post, ...prevPosts]);
     });
 
+    const handleWindowClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.id === "QRButton") {
+        handleClick(e);
+        return;
+      }
+      setClicked(false);
+    };
+
+    window.addEventListener("click", handleWindowClick);
+
     return () => {
       socket.off("newPost");
+      window.removeEventListener("click", handleWindowClick);
     };
   }, []);
 

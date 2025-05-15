@@ -4,8 +4,8 @@
   "private": true,
   "proxy": "http://localhost:3000",
   "dependencies": {
-    "@nivo/bar": "^0.88.0",
-    "@nivo/core": "^0.88.0",
+    "@nivo/bar": "^0.96.0",
+    "@nivo/core": "^0.96.0",
     "@nivo/pie": "^0.96.0",
     "@reduxjs/toolkit": "^2.6.1",
     "ajv": "8.17.1",
@@ -23,6 +23,7 @@
     "react-scripts": "^5.0.1",
     "socket.io-client": "^4.8.1",
     "typescript": "4.9.5",
+    "web-vitals": "^5.0.1",
     "zustand": "^5.0.3"
   },
   "scripts": {
@@ -50,6 +51,8 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^19.1.4",
     "typescript-plugin-css-modules": "^5.1.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
