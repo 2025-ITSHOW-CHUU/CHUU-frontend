@@ -9,13 +9,12 @@ import { useNavigate } from "react-router-dom";
 function Footer({}) {
   const navigate = useNavigate();
   const handleClick = (e: Event) => {
-    console.log(e.target.id);
-    navigate(`/${e.target.id}`);
+    navigate(`/${e.target!.id}`);
   };
   return (
     <div className={`${style["Footer"]}`}>
       <div className="home" id="" onClick={(e: Event) => handleClick(e)}>
-        <GoHomeFill id="" />
+        <GoHomeFill />
         <p id="">홈</p>
       </div>
       <div
@@ -23,15 +22,15 @@ function Footer({}) {
         id="search"
         onClick={(e: Event) => handleClick(e)}
       >
-        <FiSearch id="search" />
+        <FiSearch />
         <p id="search">검색</p>
       </div>
       <div className="test" id="test" onClick={(e: Event) => handleClick(e)}>
-        <FaClipboardList id="test" />
+        <FaClipboardList />
         <p id="test">테스트</p>
       </div>
       <div className="chat" id="chat" onClick={(e: Event) => handleClick(e)}>
-        <BsChatRightHeartFill id="chat" />
+        <BsChatRightHeartFill />
         <p id="chat">채팅</p>
       </div>
     </div>
