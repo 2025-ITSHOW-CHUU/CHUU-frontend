@@ -2,7 +2,7 @@
   background-color: #25282d;
   color: white;
   border-radius: 20px;
-  padding: 20px 50px;
+  padding: 30px 50px;
   margin-top: 26.58px;
   display: flex;
   flex-direction: column;
@@ -12,12 +12,14 @@
   font-size: 18px;
   font-weight: bold;
   align-self: start;
+  margin: 0;
 }
 
 .totalUser p {
   align-self: start;
   font-size: 14px;
   color: rgba(170, 170, 170, 1);
+  margin: 4px 0px 12px 0px;
 }
 
 .totalUser .num {

@@ -74,7 +74,7 @@ function Main() {
           <TestResult />
           <TotalUser />
           <div className={style["test-mobile"]}>
-            <p className={style["title"]}>추구미 선생님 찾으러 가기</p>
+            <h1 className={style["title"]}>추구미 선생님 찾으러 가기</h1>
             <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>
             <MainCharacter />
             <button id="QRButton">

@@ -1,16 +1,20 @@
 .TestResultContainer {
   background-color: #25282d;
   margin-top: 26.58px;
-  padding: 20px 50px;
+  padding: 30px 50px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .TestResultContainer > h1 {
   font-size: 18px;
+  margin: 0;
   color: white;
 }
 
 .TestResultContainer > p {
   color: #aaaaaa;
   font-size: 14px;
+  margin: 4px 0px 12px 0px;
 }
