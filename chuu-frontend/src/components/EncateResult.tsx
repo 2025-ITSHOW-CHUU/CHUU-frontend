@@ -51,8 +51,6 @@ function EncateResult() {
     });
 
     socket.on("update-encate", (data) => {
-      console.log(data, topResults);
-
       setTopResults((prev) => ({
         ...prev,
         [data.questionNumber + 1]: {
@@ -64,7 +62,10 @@ function EncateResult() {
     });
 
     const interval = setInterval(getScores, 60000);
-    return () => clearInterval(interval);
+    return () => {
+      socket.disconnect();
+      clearInterval(interval);
+    };
   }, []);
 
   return (

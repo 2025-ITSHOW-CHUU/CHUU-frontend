@@ -56,7 +56,7 @@ function Main() {
     window.addEventListener("click", handleWindowClick);
 
     return () => {
-      socket.off("newPost");
+      socket.disconnect();
       window.removeEventListener("click", handleWindowClick);
     };
   }, []);

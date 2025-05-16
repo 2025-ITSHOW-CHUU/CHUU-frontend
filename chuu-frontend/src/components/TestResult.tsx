@@ -1,20 +1,34 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "../styles/TestResult.module.css";
 import Chart from "./Chart";
+import { io } from "socket.io-client";
 
-function TestResult({}) {
+function TestResult() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const socket = io("http://localhost:3000/user");
+
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+
+    socket.on("update-test", (res) => {
+      setData(res);
+      getQuestionResult();
+    });
+
     async function getQuestionResult() {
       try {
         const res = await axios.get("http://localhost:3000/users/max");
-        const transformedData = res.data.map((item) => ({
-          id: item.id + " 선생님",
-          label: item.id + "선생님",
-          value: item.teacherScore ?? 0,
-        }));
+        const transformedData = res.data.map(
+          (item: { id: string; teacherScore?: number }) => ({
+            id: item.id + " 선생님",
+            label: item.id + " 선생님",
+            value: item.teacherScore ?? 0,
+          })
+        );
         setData(transformedData);
       } catch (err) {
         console.log(err);
@@ -22,8 +36,12 @@ function TestResult({}) {
     }
 
     getQuestionResult();
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
-  console.log(data);
+
   return (
     <div className={style.TestResultContainer}>
       <h1>민수님의 추구미 찾으러 가기</h1>

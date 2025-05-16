@@ -72,7 +72,6 @@ function UploadImage() {
           })}
         </div>
         <textarea
-          type="text"
           placeholder="소감을 작성해주세요!"
           className={style.commentInputBox}
           onChange={(e) => setComment(e.target.value)}

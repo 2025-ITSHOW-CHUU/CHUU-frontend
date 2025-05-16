@@ -3,7 +3,7 @@ import style from "../styles/Chart.module.css";
 import { ResponsivePieCanvas } from "@nivo/pie";
 
 function Chart({ data }) {
-  console.log([...data]);
+  console.log(data);
   return (
     <ResponsivePieCanvas
       data={[...data]}
