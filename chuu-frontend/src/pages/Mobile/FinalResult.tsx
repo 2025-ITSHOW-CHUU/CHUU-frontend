@@ -62,7 +62,13 @@ function FinalResult() {
     }
   }
 
-  return <EncateChart />;
+  return (
+    <div>
+      {encateChart.map((val: EncateChartType, idx: number) => (
+        <EncateChart key={idx} data={val} />
+      ))}
+    </div>
+  );
 }
 
 export default FinalResult;
