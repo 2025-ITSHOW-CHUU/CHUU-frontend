@@ -4,14 +4,31 @@ import React, { useState, useEffect } from "react";
 import { clearItem } from "../../store/slices/encateSlice.ts";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import question from "../../assets/encate.json";
+import encate from "../../assets/encate.json";
+import EncateChart from "../../components/EncateChart";
 
-type ratioType = [number, number];
+type EncateChartType = {
+  question: string;
+  category: string[];
+  choice: string;
+  scores: Record<string, number>;
+};
+type EncateQuestionType = {
+  questionNumber: number;
+  question: string;
+  teacher: string[];
+  image: string;
+};
 
 function FinalResult() {
   const items = useSelector((state: RootState) => state.encate.list);
   const [totalData, setTotalData] = useState([]);
-  const [ratio, setRatio] = useState<ratioType[]>([]);
+  const [encateChart, setEncateChart] = useState<EncateChartType[]>([]);
   const dispatch = useDispatch();
+  const [encateQuestion, setEncateQuestion] = useState<
+    EncateQuestionType[] | null
+  >(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,6 +40,7 @@ function FinalResult() {
       }
     }
     fetchData();
+    setEncateQuestion(encate.encate);
   }, []);
 
   useEffect(() => {
@@ -33,33 +51,18 @@ function FinalResult() {
   }, [items, totalData]); // items 또는 totalData가 변경될 때마다 실행
 
   function ratioTotal() {
-    console.log(items[0], totalData);
-    let ratioList: ratioType[] = [];
-    for (let i = 0; i < totalData.length; i++) {
-      const myChoice = items[0][i].answer;
-      const questionAnswer = totalData[i].scores;
-      const myChoiceAnswer = questionAnswer[myChoice];
-      console.log(myChoice, questionAnswer);
-      const totalAnswer = Object.values(questionAnswer).reduce(
-        (total: number, value: unknown) =>
-          total + (typeof value === "number" ? value : 0),
-        0
-      );
-      console.log(myChoiceAnswer, totalAnswer);
-      ratioList.push([myChoiceAnswer, totalAnswer] as ratioType);
+    for (let i = 0; i < totalData.length - 1; i++) {
+      const newData = {
+        question: question.encate[i].question,
+        category: question.encate[i].teacher,
+        choice: items[0][i].answer,
+        scores: totalData[i].scores,
+      };
+      setEncateChart((prev) => [...prev, newData]);
     }
-    setRatio(ratioList);
-    console.log(ratioList);
-    dispatch(clearItem());
   }
 
-  return (
-    <ul>
-      {items.map((item: { answer: string }, index: number) => (
-        <li key={index}>{item.answer}</li>
-      ))}
-    </ul>
-  );
+  return <EncateChart />;
 }
 
 export default FinalResult;

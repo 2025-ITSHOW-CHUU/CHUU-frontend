@@ -5,9 +5,9 @@ import def from "../../styles/Default.module.css"; // Ensure this file exists an
 import axios from "axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { addItem } from "../../store/slices/encateSlice.ts";
+import { addItem } from "../../store/slices/encateSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/index.ts";
+import { RootState } from "../../store/index";
 
 type QuestionType = {
   question: string;
@@ -42,7 +42,7 @@ function Encate() {
   }, [answeredTeacher]);
 
   const handleAnswer = async (teacher: string) => {
-    if (currentQuestionIndex < encateQuestion.length) {
+    if (currentQuestionIndex < encateQuestion.length - 1) {
       const slice: EncateType = {
         questionNumber: currentQuestionIndex,
         answer: encateQuestion[currentQuestionIndex].teacher[answeredTeacher],
