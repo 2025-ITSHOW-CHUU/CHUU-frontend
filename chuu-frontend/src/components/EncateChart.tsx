@@ -15,13 +15,23 @@ function EncateChart(props: { data: EncateChartType }) {
   useEffect(() => {
     const { scores, question } = props.data;
 
-    const allTeachers = Object.keys(scores);
+    const allTeachers = Object.keys(scores).map(
+      (teacher: string) => `${teacher} 선생님`
+    );
     const total = Object.values(scores).reduce((sum, val) => sum + val, 0);
 
-    const newSeries = allTeachers.map((teacher) => ({
-      name: teacher,
-      data: [((scores[teacher] / total) * 100).toFixed(2)],
-    }));
+    const newSeries = allTeachers.map((teacher) => {
+      return {
+        name: teacher.split(" ")[0],
+        data: [
+          total === 0
+            ? 0
+            : Number(
+                ((scores[teacher.split(" ")[0]] / total) * 100).toFixed(2)
+              ),
+        ],
+      };
+    });
 
     setSeries(newSeries);
 
@@ -30,17 +40,64 @@ function EncateChart(props: { data: EncateChartType }) {
         type: "bar",
         stacked: true,
         stackType: "100%",
+        toolbar: {
+          show: false,
+        },
       },
       plotOptions: {
         bar: {
           horizontal: true,
+          startingShape: "rounded",
+          endingShape: "rounded",
+          barHeight: "60",
+          borderRadius: 9,
+          colors: {
+            backgroundBarColors: ["#E6F0FF"],
+            backgroundBarOpacity: 1,
+            backgroundBarRadius: 9,
+          },
         },
       },
+      grid: {
+        show: false,
+      },
       title: {
-        text: question,
+        text: `${question} : ${props.data.choice} 선생님`,
+        style: {
+          fontSize: "18px",
+          color: "#ffffff",
+          fontFamily: "Pretendard",
+          fontWeight: "600",
+        },
       },
       xaxis: {
         categories: [question],
+        labels: {
+          show: false,
+        },
+        axisTicks: { show: false },
+        axisBorder: { show: false },
+      },
+      yaxis: {
+        labels: {
+          show: false, // y축 레이블 제거
+        },
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+      },
+      dataLabels: {
+        enabled: true, // 바 안에 값 없애기
+        formatter: function (val, opts) {
+          const teacher = opts.w.config.series[opts.seriesIndex].name;
+          return `   ${teacher} 선생님`; // ✨ 네 맘대로!
+        },
+      },
+      legend: {
+        show: false, // 범례 제거
       },
       tooltip: {
         y: {
