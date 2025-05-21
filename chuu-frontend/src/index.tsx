@@ -14,6 +14,8 @@ import Photo from "./pages/Mobile/Photo";
 import FinalResult from "./pages/Mobile/FinalResult";
 import UploadImage from "./pages/Mobile/UploadImage";
 import Main from "./pages/Web/Main";
+import FourCut from "./pages/Tablet/FourCut";
+import FourCutResult from "./pages/Tablet/FourCutResult";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
@@ -34,6 +36,8 @@ root.render(
           <Route path="/encate-result" element={<FinalResult />} />
           <Route path="/upload-post" element={<UploadImage />} />
           <Route path="/web-main" element={<Main />} />
+          <Route path="/four-cut" element={<FourCut />} />
+          <Route path="/four-cut-result" element={<FourCutResult />} />
         </Routes>
       </BrowserRouter>
     </Provider>
