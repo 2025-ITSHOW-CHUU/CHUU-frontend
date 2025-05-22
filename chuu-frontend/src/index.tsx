@@ -14,6 +14,7 @@ import Photo from "./pages/Mobile/Photo";
 import FinalResult from "./pages/Mobile/FinalResult";
 import UploadImage from "./pages/Mobile/UploadImage";
 import Main from "./pages/Web/Main";
+import SelectFourCut from "./pages/Tablet/SelectFourCut";
 import FourCut from "./pages/Tablet/FourCut";
 import FourCutResult from "./pages/Tablet/FourCutResult";
 import "./fonts/Font.css";
@@ -36,6 +37,7 @@ root.render(
           <Route path="/encate-result" element={<FinalResult />} />
           <Route path="/upload-post" element={<UploadImage />} />
           <Route path="/web-main" element={<Main />} />
+          <Route path="/select-four-cut" element={<SelectFourCut />} />
           <Route path="/four-cut" element={<FourCut />} />
           <Route path="/four-cut-result" element={<FourCutResult />} />
         </Routes>

@@ -10,6 +10,7 @@ function FourCutResult() {
   const [finalImage, setFinalImage] = useState<string | null>(null);
 
   const images: string[] = location.state?.images || [];
+  const finalFrame: string = location.state?.finalFrame || "";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -37,7 +38,7 @@ function FourCutResult() {
     });
 
     const frameImage = new Image();
-    frameImage.src = "/images/fourcut/frame_final.png";
+    frameImage.src = finalFrame;
 
     let loadedCount = 0;
 

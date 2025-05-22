@@ -1,19 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/Photo.module.css";
-
-const frames = [
-  "/images/SelfieHoyeonLee.png",
-  "/images/frame1.png",
-  "/images/frame2.png",
-  "/images/frame3.png",
-];
+import { useLocation } from "react-router-dom";
 
 function FourCut() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [capturedPhotos, setCapturedPhotos] = useState<string[]>([]);
+  const [frames, setFrames] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const startCamera = () => {
     navigator.mediaDevices
@@ -52,18 +48,23 @@ function FourCut() {
     const newPhotos = [...capturedPhotos, dataUrl];
     setCapturedPhotos(newPhotos);
 
-      if (newPhotos.length === 4) {
-        stopCamera();
-        navigate("/four-cut-result", { state: { images: newPhotos } });
-      } else {
-        setCurrentStep((prev) => prev + 1);
-      }
+    if (newPhotos.length === 4) {
+      stopCamera();
+      navigate("/four-cut-result", {
+        state: { images: newPhotos, finalFrame: location.state.finalFrame },
+      });
+    } else {
+      setCurrentStep((prev) => prev + 1);
+    }
   };
 
   useEffect(() => {
     startCamera();
+    setFrames(location.state.frames);
     return () => stopCamera();
   }, []);
+
+  console.log(frames);
 
   return (
     <div
@@ -73,7 +74,8 @@ function FourCut() {
         height: "100vh",
         display: "flex",
         justifyContent: "center",
-      }}>
+      }}
+    >
       <video
         ref={videoRef}
         autoPlay
@@ -88,7 +90,13 @@ function FourCut() {
       <img
         src={frames[currentStep]}
         alt="frame"
-        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+        }}
       />
       <div className={style.CaptureContainer}>
         <img

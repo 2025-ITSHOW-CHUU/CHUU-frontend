@@ -1,0 +1,24 @@
+[
+  {
+    "teacher ": "이호연",
+    "title": "흰색 호연~",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_final.png"
+  },
+  {
+    "teacher ": "이호연",
+    "title": "검정색 호연~",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_final.png"
+  }
+]
