@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Result from "../Mobile/Result";
 
 function FourCutResult() {
   const location = useLocation();
@@ -10,7 +12,6 @@ function FourCutResult() {
   const images: string[] = location.state?.images || [];
 
   useEffect(() => {
-
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -46,10 +47,28 @@ function FourCutResult() {
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-        ctx.drawImage(photoImages[0], startX, startY, imageWidth, imageHeight);                           
-        ctx.drawImage(photoImages[1], startX + imageWidth + gap, startY, imageWidth, imageHeight);           
-        ctx.drawImage(photoImages[2], startX, startY + imageHeight + gap, imageWidth, imageHeight);          
-        ctx.drawImage(photoImages[3], startX + imageWidth + gap, startY + imageHeight + gap, imageWidth, imageHeight);
+        ctx.drawImage(photoImages[0], startX, startY, imageWidth, imageHeight);
+        ctx.drawImage(
+          photoImages[1],
+          startX + imageWidth + gap,
+          startY,
+          imageWidth,
+          imageHeight
+        );
+        ctx.drawImage(
+          photoImages[2],
+          startX,
+          startY + imageHeight + gap,
+          imageWidth,
+          imageHeight
+        );
+        ctx.drawImage(
+          photoImages[3],
+          startX + imageWidth + gap,
+          startY + imageHeight + gap,
+          imageWidth,
+          imageHeight
+        );
 
         ctx.drawImage(frameImage, 0, 0, canvasWidth, canvasHeight);
 
@@ -61,11 +80,36 @@ function FourCutResult() {
     [...photoImages, frameImage].forEach((img) => {
       img.onload = handleImageLoad;
     });
-
   }, [images, navigate]);
 
+  const handleClick = async () => {
+    const blob = await (await fetch(finalImage)).blob(); // Base64 → Blob
+    const file = new File([blob], "fourcut.png", { type: "image/png" });
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("teacher", "이호연");
+    formData.append("comment", "히하");
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/post/upload",
+        formData
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div style={{ textAlign: "center", padding: "20px", background: "rgba(37, 40, 45, 1)" }}>
+    <div
+      style={{
+        textAlign: "center",
+        padding: "20px",
+        background: "rgba(37, 40, 45, 1)",
+      }}
+    >
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {finalImage && (
         <>
@@ -74,6 +118,7 @@ function FourCutResult() {
             alt="4컷 사진"
             style={{ width: "100%", maxWidth: "360px" }}
           />
+          <button onClick={handleClick}>업로드</button>
         </>
       )}
     </div>

@@ -68,6 +68,7 @@ function EncateChart(props: { data: EncateChartType }) {
           color: "#ffffff",
           fontFamily: "Pretendard",
           fontWeight: "600",
+          screenLeft: "100px",
         },
       },
       xaxis: {
@@ -93,7 +94,7 @@ function EncateChart(props: { data: EncateChartType }) {
         enabled: true, // 바 안에 값 없애기
         formatter: function (val, opts) {
           const teacher = opts.w.config.series[opts.seriesIndex].name;
-          return `   ${teacher} 선생님`; // ✨ 네 맘대로!
+          return `${teacher} 선생님`;
         },
       },
       legend: {

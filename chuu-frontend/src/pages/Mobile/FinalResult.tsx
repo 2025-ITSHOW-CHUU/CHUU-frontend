@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/index.ts";
+import { RootState } from "../../store/index";
 import React, { useState, useEffect } from "react";
-import { clearItem } from "../../store/slices/encateSlice.ts";
+import { clearItem } from "../../store/slices/encateSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import question from "../../assets/encate.json";
@@ -59,9 +59,11 @@ function FinalResult() {
         scores: totalData[i].scores,
       };
       setEncateChart((prev) => [...prev, newData]);
+      dispatch(clearItem());
     }
   }
 
+  console.log(encateChart);
   return (
     <div>
       {encateChart.map((val: EncateChartType, idx: number) => (
