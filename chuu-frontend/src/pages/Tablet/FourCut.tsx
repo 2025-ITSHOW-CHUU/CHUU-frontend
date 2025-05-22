@@ -8,6 +8,7 @@ function FourCut() {
   const [capturedPhotos, setCapturedPhotos] = useState<string[]>([]);
   const [frames, setFrames] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [count, setCount] = useState<number | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -57,14 +58,38 @@ function FourCut() {
       setCurrentStep((prev) => prev + 1);
     }
   };
+  useEffect(() => {
+    if (count === null) return;
+    if (count === 0) {
+      capturePhoto(); // 카운트 끝났을 때 실행
+      setCount(null); // 다시 초기화
+      return;
+    }
+    const timer = setTimeout(() => {
+      setCount((prev) => (prev !== null ? prev - 1 : null));
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [count]);
 
   useEffect(() => {
     startCamera();
     setFrames(location.state.frames);
-    return () => stopCamera();
-  }, []);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        event.preventDefault(); // 스크롤 방지용 (선택)
+        if (count === null) {
+          setCount(3); // 카운트 시작!
+        }
+      }
+    };
 
-  console.log(frames);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      stopCamera();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div
@@ -76,13 +101,26 @@ function FourCut() {
         justifyContent: "center",
       }}
     >
+      <div
+        style={{
+          textAlign: "center",
+          color: "white",
+          fontSize: "48px",
+          zIndex: 1000,
+        }}
+      >
+        {count !== null && <div>{count}</div>}
+      </div>
+
       <video
         ref={videoRef}
         autoPlay
         playsInline
         style={{
-          width: "100%",
-          height: "100%",
+          position: "absolute",
+          top: 20,
+          width: "500px",
+          height: "100vh",
           objectFit: "cover",
           display: "block",
         }}
@@ -92,10 +130,9 @@ function FourCut() {
         alt="frame"
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
+          top: 20,
+          width: "500px",
+          height: "100vh",
         }}
       />
       <div className={style.CaptureContainer}>
