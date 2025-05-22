@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 import teachers from "../../assets/teachers.json";
 import Hashtag from "../../components/Hashtag";
 import axios from "axios";
+import style from "../../styles/FourCutUpload.module.css";
+import { useNavigate } from "react-router-dom";
+
+type FourCutInfoType = {
+  teacher: string;
+  title: string;
+  frames: string[];
+  finalFrame: string;
+};
 
 type Teacher = {
   name: string;
@@ -13,13 +22,26 @@ type Teacher = {
 };
 
 function FourCutUpload() {
-  const { fourCutInfo, fourCutImage } = useFourCutInfoStore();
-  console.log(fourCutImage);
+  const { fourCutImage, getFourCutInfo } = useFourCutInfoStore();
   const [inputedComment, setInputedComment] = useState<string>("");
   const teachersInfo = teachers["teachers"];
-  const selectedTeacher = teachersInfo.filter(
-    (teacher: Teacher) => teacher.name === fourCutInfo.teacher + " 선생님"
-  )[0];
+  const [fourCutInfo, setFourCutInfo] = useState<FourCutInfoType | null>(null);
+  const navigate = useNavigate();
+  const selectedTeacher = fourCutInfo
+    ? teachersInfo.filter((teacher: Teacher) => {
+        return teacher.name.split(" ")[0] === fourCutInfo.teacher;
+      })[0]
+    : teachersInfo[0];
+
+  useEffect(() => {
+    async function fetchData() {
+      const savedFourCutInfo = await getFourCutInfo();
+      setFourCutInfo(savedFourCutInfo);
+    }
+    fetchData();
+  }, [getFourCutInfo]);
+
+  // console.log(fourCutInfo);
   const handleSubmit = async () => {
     if (!fourCutImage || !(fourCutImage instanceof File)) {
       console.error(
@@ -39,25 +61,32 @@ function FourCutUpload() {
         formData
       );
       console.log(response);
+      navigate("/web-main");
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <div className={style.fourCutContainer}>
       <img src={URL.createObjectURL(fourCutImage!)} alt="Uploaded" />
-      <div>
-        {selectedTeacher["hashtags"].map((hashtag: string, index: number) => {
-          return <Hashtag key={index} id={index} comment={hashtag} />;
-        })}
+      <div className={style.uploadContainer}>
+        <p>{selectedTeacher.name}</p>
+        <div className={style.hashtagsContainer}>
+          {selectedTeacher["hashtags"].map((hashtag: string, index: number) => {
+            return <Hashtag key={index} id={index} comment={hashtag} />;
+          })}
+        </div>
+        <textarea
+          placeholder="소감을 작성해주세요!"
+          onChange={(e) => setInputedComment(e.target.value)}
+          value={inputedComment}
+          className={style.commentInputBox}
+        />
+        <button className={style.submitButton} onClick={() => handleSubmit()}>
+          완료
+        </button>
       </div>
-      <textarea
-        placeholder="소감을 작성해주세요!"
-        onChange={(e) => setInputedComment(e.target.value)}
-        value={inputedComment}
-      />
-      <button onClick={() => handleSubmit()}>완료</button>
     </div>
   );
 }

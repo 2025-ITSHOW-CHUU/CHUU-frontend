@@ -1,0 +1,68 @@
+.fourCutContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  column-gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.fourCutContainer > img {
+  width: 400px;
+}
+
+.uploadContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  align-items: center;
+}
+
+.uploadContainer > p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  align-self: flex-start;
+}
+
+.hashtagsContainer {
+  display: flex;
+  column-gap: 5px;
+  align-self: start;
+}
+
+.commentInputBox {
+  width: 100%;
+  background-color: #25282d;
+  border-radius: 20px;
+  height: 50%;
+  outline: none;
+  min-height: 300px;
+  position: relative;
+  border: 0;
+  color: #767676;
+  padding: 20px; /* Added padding to match the placeholder's position */
+  text-align: start;
+  text-justify: start;
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+  color: #767676;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 14px;
+}
+
+.submitButton {
+  background-color: #12ddff;
+  padding: 13.5px 140px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 0;
+  bottom: 23px;
+  left: calc((100% - 315px) / 2);
+}

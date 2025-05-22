@@ -9,12 +9,8 @@ function SelectFourCut() {
   const { fourCutInfo, setFourCutInfo } = useFourCutInfoStore();
   const handleClick = (selectedFrame) => {
     setFourCutInfo(selectedFrame);
-    navigate("/four-cut", {
-      state: {
-        frames: selectedFrame.frames,
-        finalFrame: selectedFrame.finalFrame,
-      },
-    });
+    sessionStorage.setItem("fourcutInfo", JSON.stringify(selectedFrame));
+    navigate("/four-cut");
   };
   return (
     <div className={style.selectFrameContainer}>
