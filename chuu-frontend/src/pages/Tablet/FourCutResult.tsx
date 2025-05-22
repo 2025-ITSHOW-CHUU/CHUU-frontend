@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function FourCutResult() {
@@ -8,9 +7,9 @@ function FourCutResult() {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [finalImage, setFinalImage] = useState<string | null>(null);
-  const { fourCutInfo, setFourCutImage } = useFourCutInfoStore();
+  const { getFourCutInfo, setFourCutImage } = useFourCutInfoStore();
   const images: string[] = location.state?.images || [];
-  const finalFrame = fourCutInfo?.finalFrame || "";
+  const finalFrame = getFourCutInfo()?.finalFrame || "";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -88,7 +87,7 @@ function FourCutResult() {
       const blob = await (await fetch(finalImage)).blob(); // Base64 → Blob
       const file = new File([blob], "fourcut.png", { type: "image/png" });
       setFourCutImage(file);
-      console.log(method);
+
       navigate("/upload-four-cut");
     } else {
       navigate("/four-cut");

@@ -9,8 +9,8 @@ function FourCut() {
   const [frames, setFrames] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [count, setCount] = useState<number | null>(null);
-  const { fourCutInfo } = useFourCutInfoStore();
-  const selectFrame = fourCutInfo;
+  const { getFourCutInfo } = useFourCutInfoStore();
+  const selectFrame = getFourCutInfo();
   const navigate = useNavigate();
 
   const startCamera = () => {

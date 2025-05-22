@@ -22,7 +22,7 @@ type Teacher = {
 };
 
 function FourCutUpload() {
-  const { fourCutImage, getFourCutInfo } = useFourCutInfoStore();
+  const { getFourCutInfo, getFourCutImage } = useFourCutInfoStore();
   const [fourCutInfo, setFourCutInfo] = useState<FourCutInfoType | null>(null);
   const [inputedComment, setInputedComment] = useState<string>("");
   const teachersInfo = teachers["teachers"];
@@ -40,16 +40,16 @@ function FourCutUpload() {
 
   // console.log(fourCutInfo);
   const handleSubmit = async () => {
-    if (!fourCutImage || !(fourCutImage instanceof File)) {
+    if (!getFourCutImage() || !(getFourCutImage() instanceof File)) {
       console.error(
         "이미지가 File 타입이 아니거나 존재하지 않음:",
-        fourCutImage
+        getFourCutImage()
       );
       alert("이미지를 다시 선택해주세요");
       return;
     }
     const formData = new FormData();
-    formData.append("file", fourCutImage);
+    formData.append("file", getFourCutImage());
     formData.append("teacher", fourCutInfo.teacher);
     formData.append("comment", inputedComment);
     try {
@@ -66,7 +66,7 @@ function FourCutUpload() {
 
   return (
     <div className={style.fourCutContainer}>
-      <img src={URL.createObjectURL(fourCutImage!)} alt="Uploaded" />
+      <img src={URL.createObjectURL(getFourCutImage()!)} alt="Uploaded" />
       <div className={style.uploadContainer}>
         <p>{selectedTeacher.name}</p>
         <div className={style.hashtagsContainer}>
