@@ -23,9 +23,9 @@ type Teacher = {
 
 function FourCutUpload() {
   const { fourCutImage, getFourCutInfo } = useFourCutInfoStore();
+  const [fourCutInfo, setFourCutInfo] = useState<FourCutInfoType | null>(null);
   const [inputedComment, setInputedComment] = useState<string>("");
   const teachersInfo = teachers["teachers"];
-  const [fourCutInfo, setFourCutInfo] = useState<FourCutInfoType | null>(null);
   const navigate = useNavigate();
   const selectedTeacher = fourCutInfo
     ? teachersInfo.filter((teacher: Teacher) => {
@@ -34,12 +34,9 @@ function FourCutUpload() {
     : teachersInfo[0];
 
   useEffect(() => {
-    async function fetchData() {
-      const savedFourCutInfo = await getFourCutInfo();
-      setFourCutInfo(savedFourCutInfo);
-    }
-    fetchData();
-  }, [getFourCutInfo]);
+    const savedInfo = getFourCutInfo();
+    setFourCutInfo(savedInfo);
+  }, []);
 
   // console.log(fourCutInfo);
   const handleSubmit = async () => {

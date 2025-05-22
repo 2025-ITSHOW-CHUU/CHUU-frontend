@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/Photo.module.css";
+import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function FourCut() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -8,7 +9,8 @@ function FourCut() {
   const [frames, setFrames] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [count, setCount] = useState<number | null>(null);
-  const selectFrame = JSON.parse(sessionStorage.getItem("fourcutInfo")) || "";
+  const { fourCutInfo } = useFourCutInfoStore();
+  const selectFrame = fourCutInfo;
   const navigate = useNavigate();
 
   const startCamera = () => {

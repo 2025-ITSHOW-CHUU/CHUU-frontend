@@ -8,10 +8,9 @@ function FourCutResult() {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [finalImage, setFinalImage] = useState<string | null>(null);
-  const selectFrame = JSON.parse(sessionStorage.getItem("fourcutInfo")) || "";
-  const { setFourCutImage } = useFourCutInfoStore();
+  const { fourCutInfo, setFourCutImage } = useFourCutInfoStore();
   const images: string[] = location.state?.images || [];
-  const finalFrame: string = selectFrame.finalFrame;
+  const finalFrame = fourCutInfo?.finalFrame || "";
 
   useEffect(() => {
     const canvas = canvasRef.current;
