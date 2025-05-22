@@ -17,6 +17,7 @@ import Main from "./pages/Web/Main";
 import SelectFourCut from "./pages/Tablet/SelectFourCut";
 import FourCut from "./pages/Tablet/FourCut";
 import FourCutResult from "./pages/Tablet/FourCutResult";
+import FourCutUpload from "./pages/Tablet/FourCutUpload";
 import "./fonts/Font.css";
 
 const root = ReactDOM.createRoot(
@@ -40,6 +41,7 @@ root.render(
           <Route path="/select-four-cut" element={<SelectFourCut />} />
           <Route path="/four-cut" element={<FourCut />} />
           <Route path="/four-cut-result" element={<FourCutResult />} />
+          <Route path="/upload-four-cut" element={<FourCutUpload />} />
         </Routes>
       </BrowserRouter>
     </Provider>

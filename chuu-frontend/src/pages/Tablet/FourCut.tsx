@@ -78,9 +78,9 @@ function FourCut() {
     setFrames(selectFrame.frames);
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
-        event.preventDefault(); // 스크롤 방지용 (선택)
+        event.preventDefault();
         if (count === null) {
-          setCount(3); // 카운트 시작!
+          setCount(3);
         }
       }
     };

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Result from "../Mobile/Result";
+import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function FourCutResult() {
   const location = useLocation();
@@ -9,7 +9,7 @@ function FourCutResult() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [finalImage, setFinalImage] = useState<string | null>(null);
   const selectFrame = JSON.parse(sessionStorage.getItem("fourcutInfo")) || "";
-
+  const { setFourCutImage } = useFourCutInfoStore();
   const images: string[] = location.state?.images || [];
   const finalFrame: string = selectFrame.finalFrame;
 
@@ -88,21 +88,9 @@ function FourCutResult() {
     if (method === "upload") {
       const blob = await (await fetch(finalImage)).blob(); // Base64 → Blob
       const file = new File([blob], "fourcut.png", { type: "image/png" });
-
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("teacher", "이호연");
-      formData.append("comment", "히하");
-      try {
-        const response = await axios.post(
-          "http://localhost:3000/post/upload",
-          formData
-        );
-
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
+      setFourCutImage(file);
+      console.log(method);
+      navigate("/upload-four-cut");
     } else {
       navigate("/four-cut");
     }

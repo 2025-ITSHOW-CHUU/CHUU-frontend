@@ -10,6 +10,8 @@ type FourCutInfoType = {
 const useFourCutInfoStore = create<{
   fourCutInfo: FourCutInfoType | null;
   setFourCutInfo: (fourCutInfo: FourCutInfoType) => void;
+  fourCutImage: File | null;
+  setFourCutImage: (file: File | null) => void;
 }>((set) => ({
   fourCutInfo: null,
   setFourCutInfo: (fourCutInfo) => {
@@ -17,6 +19,10 @@ const useFourCutInfoStore = create<{
     sessionStorage.setItem("fourcutInfo", JSON.stringify(fourCutInfo));
 
     return { fourCutInfo: fourCutInfo };
+  },
+  fourCutImage: null,
+  setFourCutImage: (fourCutImage) => {
+    set({ fourCutImage });
   },
 }));
 
