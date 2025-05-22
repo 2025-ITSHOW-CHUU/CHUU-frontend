@@ -2,10 +2,13 @@ import React from "react";
 import filterJson from "../../assets/filter.json";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/SelectFourCut.module.css";
+import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function SelectFourCut() {
   const navigate = useNavigate();
+  const { fourCutInfo, setFourCutInfo } = useFourCutInfoStore();
   const handleClick = (selectedFrame) => {
+    setFourCutInfo(selectedFrame);
     navigate("/four-cut", {
       state: {
         frames: selectedFrame.frames,

@@ -8,9 +8,10 @@ function FourCutResult() {
   const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [finalImage, setFinalImage] = useState<string | null>(null);
+  const selectFrame = JSON.parse(sessionStorage.getItem("fourcutInfo")) || "";
 
   const images: string[] = location.state?.images || [];
-  const finalFrame: string = location.state?.finalFrame || "";
+  const finalFrame: string = selectFrame.finalFrame;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -83,23 +84,27 @@ function FourCutResult() {
     });
   }, [images, navigate]);
 
-  const handleClick = async () => {
-    const blob = await (await fetch(finalImage)).blob(); // Base64 → Blob
-    const file = new File([blob], "fourcut.png", { type: "image/png" });
+  const handleClick = async (method: string) => {
+    if (method === "upload") {
+      const blob = await (await fetch(finalImage)).blob(); // Base64 → Blob
+      const file = new File([blob], "fourcut.png", { type: "image/png" });
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("teacher", "이호연");
-    formData.append("comment", "히하");
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/post/upload",
-        formData
-      );
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("teacher", "이호연");
+      formData.append("comment", "히하");
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/post/upload",
+          formData
+        );
 
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigate("/four-cut");
     }
   };
 
@@ -119,7 +124,10 @@ function FourCutResult() {
             alt="4컷 사진"
             style={{ width: "100%", maxWidth: "360px" }}
           />
-          <button onClick={handleClick}>업로드</button>
+          <div>
+            <button onClick={() => handleClick("upload")}>업로드</button>
+            <button onClick={() => handleClick("recapture")}>다시 찍기</button>
+          </div>
         </>
       )}
     </div>

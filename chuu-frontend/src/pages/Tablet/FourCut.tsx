@@ -9,6 +9,7 @@ function FourCut() {
   const [frames, setFrames] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [count, setCount] = useState<number | null>(null);
+  const selectFrame = JSON.parse(sessionStorage.getItem("fourcutInfo")) || "";
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -52,7 +53,7 @@ function FourCut() {
     if (newPhotos.length === 4) {
       stopCamera();
       navigate("/four-cut-result", {
-        state: { images: newPhotos, finalFrame: location.state.finalFrame },
+        state: { images: newPhotos },
       });
     } else {
       setCurrentStep((prev) => prev + 1);
@@ -74,7 +75,7 @@ function FourCut() {
 
   useEffect(() => {
     startCamera();
-    setFrames(location.state.frames);
+    setFrames(selectFrame.frames);
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault(); // 스크롤 방지용 (선택)
