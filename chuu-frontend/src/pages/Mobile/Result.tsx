@@ -1,13 +1,13 @@
 import React from "react";
 import def from "../../styles/Default.module.css";
 import style from "../../styles/Result.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { ReactComponent as Camera } from "../../assets/camera.svg";
 import { useState, useEffect } from "react";
-import TypeCard from "../../components/TypeCard.tsx";
+import TypeCard from "../../components/TypeCard";
 import teachers from "../../assets/teachers.json";
-import useTestScoreStore from "../../store/useTestScoreStore.ts";
+import useTestScoreStore from "../../store/useTestScoreStore";
 
 type ResultType = {
   name: string;
@@ -25,26 +25,45 @@ type SimilarTypeData = {
 
 function Result() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [data, setData] = useState<ResultType | null>(null);
   const [similarTypeData, setSimilarTypeData] = useState<SimilarTypeData[]>([]);
-  const { scores, setScores } = useTestScoreStore();
+  const selectedType = location.state?.type;
 
   useEffect(() => {
-    const resultData = teachers.teachers[0];
-    setData(resultData);
-    console.log(scores);
 
-    setSimilarTypeData(teachers.teachers.slice(1, 3));
+    const idx = teachers.teachers.findIndex(
+      (t) => t.name == selectedType
+    );
+
+    setData(teachers.teachers[idx]);
+
+    let similar = []
+
+    console.log(`idx : ${idx}`);
+    if (idx === 0) {
+      similar = teachers.teachers.slice(1, 3);
+    }
+    else if (idx === teachers.teachers.length - 1) {
+      similar = teachers.teachers.slice(teachers.teachers.length - 3, teachers.teachers.length - 1);
+    }
+    else {
+      similar = [
+        teachers.teachers[idx - 1],
+        teachers.teachers[idx + 1],
+      ];
+    }
+
+    setSimilarTypeData(similar);
   }, []);
 
   const returnBack = () => {
     navigate("/");
-    setScores([]);
+    setSimilarTypeData([]);
   };
 
   const onClick = (src: string) => {
     navigate(src);
-    setScores([]);
   };
 
   return (
