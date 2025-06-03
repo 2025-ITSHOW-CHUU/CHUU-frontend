@@ -48,7 +48,7 @@ const useFourCutInfoStore = create<StoreType>((set, get) => ({
   },
   getFourCutInfo: () => {
     const storedInfo = sessionStorage.getItem("fourcutInfo");
-    console.log(storedInfo);
+
     return storedInfo ? JSON.parse(storedInfo) : null;
   },
   fourCutImage: null,

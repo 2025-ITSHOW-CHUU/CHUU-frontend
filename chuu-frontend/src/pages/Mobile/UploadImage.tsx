@@ -43,6 +43,8 @@ function UploadImage() {
   )[0];
   const [comment, setComment] = useState("");
 
+  console.log(selectedTeacher);
+
   const handleSubmit = async () => {
     if (file) {
       console.log(file);

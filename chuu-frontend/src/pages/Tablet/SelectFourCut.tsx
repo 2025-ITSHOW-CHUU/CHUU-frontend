@@ -8,6 +8,7 @@ function SelectFourCut() {
   const navigate = useNavigate();
   const { setFourCutInfo } = useFourCutInfoStore();
   const handleClick = (selectedFrame) => {
+    console.log(selectedFrame);
     setFourCutInfo(selectedFrame);
     navigate("/four-cut");
   };
