@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import style from "../../styles/Photo.module.css";
-import useImageStore from "../../store/useImageStore.ts";
+import useImageStore from "../../store/useImageStore";
 import { useNavigate } from "react-router-dom";
 
 function PhotoBooth() {
@@ -162,13 +162,15 @@ function PhotoBooth() {
       <div className={style.CaptureContainer}>
         {toggle ? (
           <img
-            onClick={() => capture()}
+            onClick={capture}
             className={style.CaptureButton}
             src="/images/SelfieButton.png"
             alt="SelfieButton"
-            width="72px"
-            height="72px"
-            backgroundColor="translate"
+            style={{
+              width: "72px",
+              height: "72px",
+              backgroundColor: "translate",
+            }}
           />
         ) : (
           <div className={style.DownloadContainer}>

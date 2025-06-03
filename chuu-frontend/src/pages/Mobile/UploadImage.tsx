@@ -6,6 +6,7 @@ import def from "../../styles/Default.module.css";
 import teachers from "../../assets/teachers.json";
 import Hashtag from "../../components/Hashtag";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type Teacher = {
   name: string;
@@ -16,6 +17,7 @@ type Teacher = {
 };
 
 function UploadImage() {
+  const navigate = useNavigate();
   const usePreventRefresh = () => {
     const preventClose = (e: any) => {
       e.preventDefault();
@@ -51,6 +53,7 @@ function UploadImage() {
 
       try {
         await axios.post("http://localhost:3000/post/upload", formData);
+        navigate("/");
       } catch (error) {
         console.log(error);
       }
