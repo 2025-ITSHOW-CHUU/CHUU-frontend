@@ -6,7 +6,7 @@ import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function SelectFourCut() {
   const navigate = useNavigate();
-  const { fourCutInfo, setFourCutInfo } = useFourCutInfoStore();
+  const { setFourCutInfo } = useFourCutInfoStore();
   const handleClick = (selectedFrame) => {
     setFourCutInfo(selectedFrame);
     navigate("/four-cut");
@@ -15,16 +15,31 @@ function SelectFourCut() {
     <div className={style.selectFrameContainer}>
       <h1>프레임을 선택하세요!</h1>
       <div className={style.framesContainer}>
-        {filterJson.map((filter) => {
+        {filterJson.map((filter, index) => {
           return (
-            <div className={style.frameContainer}>
-              <img
-                onClick={() => handleClick(filter)}
-                src={filter.finalFrame}
-                alt={filter.title}
-              />
-              <p>{filter.title}</p>
-            </div>
+            <>
+              <div
+                className={style.frameContainer}
+                style={{
+                  width: "240px",
+                }}
+              >
+                <img
+                  onClick={() => handleClick(filter)}
+                  src={filter.finalFrame}
+                  alt={filter.title}
+                  style={{
+                    height: "427px",
+                    width: "auto",
+                  }}
+                />
+                <p>{filter.title}</p>
+              </div>
+              {filter.teacher !==
+                (filterJson[index + 1]?.teacher || filter.teacher) && (
+                <div style={{ width: "100%" }} />
+              )}
+            </>
           );
         })}
       </div>

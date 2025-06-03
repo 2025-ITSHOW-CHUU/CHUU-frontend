@@ -1,6 +1,17 @@
 [
   {
     "teacher": "이호연",
+    "title": "검정색 수직 호연~",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/vertical_frame_hoyeon_black.png"
+  },
+  {
+    "teacher": "이호연",
     "title": "흰색 호연~",
     "frames": [
       "/images/SelfieHoyeonLee.png",
@@ -8,7 +19,7 @@
       "/images/frame2.png",
       "/images/frame3.png"
     ],
-    "finalFrame": "/images/fourcut/hoyeonFrameWhite.png"
+    "finalFrame": "/images/fourcut/frame_hoyeon_white.png"
   },
   {
     "teacher": "이호연",
@@ -19,6 +30,94 @@
       "/images/frame2.png",
       "/images/frame3.png"
     ],
-    "finalFrame": "/images/fourcut/frame_final.png"
+    "finalFrame": "/images/fourcut/frame_hoyeon_black.png"
+  },
+  {
+    "teacher": "유병석",
+    "title": "검정색 수직 병석~",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/vertical_frame_beongseok_black.png"
+  },
+  {
+    "teacher": "유병석",
+    "title": "하얀색 병석~",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_beongseok_white.png"
+  },
+  {
+    "teacher": "김윤지",
+    "title": "검정 수직 윤지쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/vertical_frame_yunji_black.png"
+  },
+  {
+    "teacher": "김윤지",
+    "title": "하얀색 수직 윤지쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_yunji_white.png"
+  },
+  {
+    "teacher": "박지우",
+    "title": "검정 수직 지우쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/vertical_frame_jiwoo_black.png"
+  },
+  {
+    "teacher": "박지우",
+    "title": "하얀색 수직 지우쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_jiwoo_white.png"
+  },
+  {
+    "teacher": "이대형",
+    "title": "검정 수직 대형쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/vertical_frame_daehyeong_black.png"
+  },
+  {
+    "teacher": "이대형",
+    "title": "하얀색 수직 대형쌤",
+    "frames": [
+      "/images/SelfieHoyeonLee.png",
+      "/images/frame1.png",
+      "/images/frame2.png",
+      "/images/frame3.png"
+    ],
+    "finalFrame": "/images/fourcut/frame_daehyeong_white.png"
   }
 ]
