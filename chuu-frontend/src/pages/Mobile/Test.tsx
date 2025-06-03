@@ -4,7 +4,7 @@ import style from "../../styles/Test.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Questions from "../../assets/questions.json";
-import useTestScoreStore from "../../store/useTestScoreStore.ts";
+import useTestScoreStore from "../../store/useTestScoreStore";
 import axios from "axios";
 
 type OptionType = { q: string; score: number };
@@ -30,6 +30,15 @@ function Test() {
     setQuestions(Questions.questions);
   }, []);
 
+  function getType(score) {
+    if (score <= 8) return "박지우 선생님";
+    if (score <= 12) return "이호연 선생님";
+    if (score <= 16) return "정하나 선생님";
+    if (score <= 20) return "이대형 선생님";
+    if (score <= 24) return "김윤지 선생님";
+    return "조예진 선생님";
+  }  
+
   const handleAnswer = async (e) => {
     e.preventDefault();
     console.log(e.target.value);
@@ -38,18 +47,26 @@ function Test() {
       console.log(scores);
       setCurrentQuestionIndex((prev: number) => prev + 1);
     } else {
-      addScore(currentQuestionIndex, e.target.value);
+
+      const totalScore = scores?.reduce((a: number, c: TestType) => a + c.testScore, 0) + e.target.value;
+      const type = getType(totalScore);
+
       try {
         await axios.post("http://localhost:3000/users", {
-          score: scores?.reduce((a: number, c: TestType) => a + c.testScore, 0),
-          type: "박지우",
+          score: totalScore,
+          type: type,
         });
       } catch (e) {
         console.log(e);
         return;
       }
-      navigate("/result");
-      // setScores([]);
+      navigate("/result", {
+        state: {
+          type: type,
+        },
+      });
+      
+      setScores([]);
     }
   };
 

@@ -1,32 +1,11 @@
 {
   "teachers": [
     {
-      "name": "조예진 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“ 여러분 오늘까지 해볼까요~? “",
-      "hashtags": ["#카리스마", "#열정적인", "#학생사랑"],
-      "comment": "포기 금지!"
-    },
-    {
-      "name": "정하나 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“ 하나만 살려 ^^ ”",
-      "hashtags": ["#따뜻한", "#상담왕", "#포용력"],
-      "comment": "힘내세요!"
-    },
-    {
       "name": "박지우 선생님",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "“ swag~ ”",
       "hashtags": ["#유머감각", "#즐거운수업", "#인기쟁이"],
       "comment": "즐겨봐요!"
-    },
-    {
-      "name": "김윤지 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“ 🪷🌷미림 유일 생기발랄🌼🌹 ”",
-      "hashtags": ["#체계적", "#디테일", "#꼼꼼한"],
-      "comment": "차근차근!"
     },
     {
       "name": "이호연 선생님",
@@ -36,11 +15,32 @@
       "comment": "할 수 있어!"
     },
     {
+      "name": "정하나 선생님",
+      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "personality": "“ 하나만 살려 ^^ ”",
+      "hashtags": ["#따뜻한", "#상담왕", "#포용력"],
+      "comment": "힘내세요!"
+    },
+    {
       "name": "이대형 선생님",
       "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
       "personality": "“ AI가 되.. ”",
       "hashtags": ["#동기부여", "#멘토", "#긍정에너지"],
       "comment": "할 수 있어!"
+    },
+    {
+      "name": "김윤지 선생님",
+      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "personality": "“ 🪷🌷미림 유일 생기발랄🌼🌹 ”",
+      "hashtags": ["#체계적", "#디테일", "#꼼꼼한"],
+      "comment": "차근차근!"
+    },    
+    {
+      "name": "조예진 선생님",
+      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "personality": "“ 여러분 오늘까지 해볼까요~? “",
+      "hashtags": ["#카리스마", "#열정적인", "#학생사랑"],
+      "comment": "포기 금지!"
     }
   ]
 }
