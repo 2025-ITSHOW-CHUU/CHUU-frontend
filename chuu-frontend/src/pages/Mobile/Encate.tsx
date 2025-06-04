@@ -42,29 +42,31 @@ function Encate() {
   }, [answeredTeacher]);
 
   const handleAnswer = async (teacher: string) => {
-    if (currentQuestionIndex <= encateQuestion.length - 1) {
-      const slice: EncateType = {
+    const isLast = currentQuestionIndex === encateQuestion.length - 1;
+
+    const slice: EncateType = {
+      questionNumber: currentQuestionIndex,
+      answer: encateQuestion[currentQuestionIndex].teacher[answeredTeacher],
+    };
+    const newAnsweredList = [...answeredList, slice];
+    setAnsweredList(newAnsweredList);
+
+    try {
+      await axios.post("http://localhost:3000/home", {
         questionNumber: currentQuestionIndex,
-        answer: encateQuestion[currentQuestionIndex].teacher[answeredTeacher],
-      };
-      const newAnsweredList = [...answeredList, slice];
-      setAnsweredList(newAnsweredList);
-      setCurrentQuestionIndex((prev: number) => prev + 1);
-      setAnsweredTeacher(null);
+        teacherName: teacher,
+      });
+    } catch (error) {
+      console.log("앙케이드 투표 오류:", error);
+    }
 
-      const voteUrl = "http://localhost:3000/home";
-
-      try {
-        await axios.post(voteUrl, {
-          questionNumber: currentQuestionIndex,
-          teacherName: teacher,
-        });
-      } catch (error) {
-        console.log("앙케이드 투표 오류:", error);
-      }
-    } else {
-      dispatch(addItem(answeredList));
+    if (isLast) {
+      console.log(newAnsweredList);
+      dispatch(addItem(newAnsweredList));
       navigate("/encate-result");
+    } else {
+      setCurrentQuestionIndex((prev) => prev + 1);
+      setAnsweredTeacher(null);
     }
   };
 

@@ -38,7 +38,6 @@ function FinalResult() {
       }
     }
     fetchData();
-    console.log(encate.encate);
     setEncateQuestion(encate.encate);
   }, []);
 
@@ -54,15 +53,13 @@ function FinalResult() {
       const newData = {
         question: question.encate[i].question,
         category: question.encate[i].teacher,
-        choice: items[0][i].answer,
+        choice: items[i].answer,
         scores: totalData[i].scores,
       };
       setEncateChart((prev) => [...prev, newData]);
-      dispatch(clearItem());
+      dispatch(clearItem()); // items 초기화
     }
   }
-
-  console.log(encateChart);
   return (
     <div>
       {encateChart.map((val: EncateChartType, idx: number) => (
