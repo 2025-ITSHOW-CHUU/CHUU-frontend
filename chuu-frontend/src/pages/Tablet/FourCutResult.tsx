@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
+import style from "../../styles/FourcutResult.module.css";
 
 function FourCutResult() {
   const location = useLocation();
@@ -137,8 +138,18 @@ function FourCutResult() {
             style={{ width: "100%", maxWidth: "360px" }}
           />
           <div>
-            <button onClick={() => handleClick("upload")}>업로드</button>
-            <button onClick={() => printFile(finalImage)}>프린트하기</button>
+            <button
+              onClick={() => handleClick("upload")}
+              className={style.submitButton}
+            >
+              업로드
+            </button>
+            <button
+              onClick={() => printFile(finalImage)}
+              className={style.submitButton}
+            >
+              프린트하기
+            </button>
           </div>
         </>
       )}

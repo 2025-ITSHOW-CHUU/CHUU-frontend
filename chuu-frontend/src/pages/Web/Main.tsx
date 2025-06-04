@@ -10,6 +10,7 @@ import { ReactComponent as MainCharacter } from "../../assets/main_character.svg
 import { QRCodeCanvas } from "qrcode.react";
 import TestResult from "../../components/TestResult";
 import ModalPortal from "../../components/ModalPortal";
+import { useNavigate } from "react-router-dom";
 
 const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
 
@@ -22,6 +23,7 @@ interface PostType {
 function Main() {
   const [posts, setPosts] = useState<PostType[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleClick = (e: Event) => {
     e.preventDefault();
@@ -77,6 +79,12 @@ function Main() {
               />
             </button>
           </div>
+        </div>
+        <div className={style.mirimFourCutTitle}>
+          <h1>미림네컷 ✨</h1>
+          <button onClick={() => navigate("/select-four-cut")}>
+            미림네컷 찍기
+          </button>
         </div>
         <div className={style["posts-container"]}>
           {posts.map((post: PostType, index: number) => {

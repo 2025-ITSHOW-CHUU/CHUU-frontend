@@ -124,6 +124,7 @@ function FourCut() {
           height: "100vh",
           objectFit: "cover",
           display: "block",
+          transform: "scaleX(-1)",
         }}
       />
       <img

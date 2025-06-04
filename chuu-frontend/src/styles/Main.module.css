@@ -69,11 +69,35 @@
   height: 40px;
 }
 
+.mirimFourCutTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mirimFourCutTitle > h1 {
+  color: white;
+  font-size: 36px;
+}
+
+.mirimFourCutTitle > button {
+  background-color: #12ddff;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 0;
+  height: min-content;
+  color: #ffffff;
+  font-weight: bold;
+}
+
 .posts-container {
   display: flex;
   flex-wrap: wrap;
   column-gap: 49px;
   row-gap: 70px;
+  justify-content: space-between;
 }
 
 .QRContainer {
