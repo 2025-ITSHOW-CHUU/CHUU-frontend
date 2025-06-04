@@ -45,13 +45,13 @@ function PhotoBooth() {
     let ctx = tempCanvas.getContext("2d");
 
     if (ctx) {
-      tempCanvas.width = 390;
-      tempCanvas.height = 844;
+      tempCanvas.width = 450;
+      tempCanvas.height = 600;
 
       ctx.scale(-1, 1);
-      ctx.translate(-390, 0);
+      ctx.translate(-450, 0);
 
-      ctx.drawImage(video, 0, 0, 390, 844);
+      ctx.drawImage(video, 0, 0, 450, 600);
 
       let imageURL = tempCanvas.toDataURL("image/png");
 
@@ -79,8 +79,8 @@ function PhotoBooth() {
     let canvas = canvasRef.current;
     let ctx = canvas.getContext("2d");
 
-    canvas.width = 390;
-    canvas.height = 844;
+    canvas.width = 450;
+    canvas.height = 600;
 
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -88,12 +88,12 @@ function PhotoBooth() {
     let img = new Image();
     img.src = photo;
     img.onload = () => {
-      ctx.drawImage(img, 0, 0, 390, 844);
+      ctx.drawImage(img, 0, 0, 450, 600);
 
       let frame = new Image();
       frame.src = frames[frameIdx];
       frame.onload = () => {
-        ctx.drawImage(frame, 0, 0, 390, 844);
+        ctx.drawImage(frame, 0, 0, 450, 600);
         setFramedPhoto(canvas.toDataURL("image/png"));
         const byteString = atob(canvas.toDataURL("image/png").split(",")[1]);
         const arrayBuffer = new ArrayBuffer(byteString.length);
@@ -119,32 +119,6 @@ function PhotoBooth() {
     setToggle(!toggle);
   };
 
-  const printFile = async (base64Url: string) => {
-    try {
-      const base64Data = base64Url.split(",")[1];
-
-      const response = await fetch("http://localhost:3000/upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ file: base64Data }),
-      });
-
-      const html = await response.text();
-
-      const printWindow = window.open("", "_blank");
-      if (printWindow) {
-        printWindow.document.write(html);
-        printWindow.document.close();
-      } else {
-        alert("팝업 차단을 해제해주세요!");
-      }
-    } catch (err) {
-      console.error("프린트 에러 발생:", err);
-    }
-  };
-
   return (
     <div
       style={{
@@ -153,6 +127,7 @@ function PhotoBooth() {
         height: "100vh",
         display: "flex",
         justifyContent: "center",
+        padding: "20px 20px 100px",
       }}
     >
       <video
@@ -160,16 +135,23 @@ function PhotoBooth() {
         autoPlay
         playsInline
         style={{
-          width: "100%",
-          height: "100%",
+          width: "374px",
+          height: "498.6px",
           objectFit: "cover",
           display: toggle ? "block" : "none",
+          borderRadius: "20px",
+          transform: "scaleX(-1)",
         }}
       />
 
       <canvas
         ref={canvasRef}
-        style={{ display: toggle ? "none" : "block" }}
+        style={{
+          display: toggle ? "none" : "block",
+          borderRadius: "20px",
+          width: "100%",
+          objectFit: "contain",
+        }}
       ></canvas>
 
       <div className={style.CaptureContainer}>
@@ -187,7 +169,7 @@ function PhotoBooth() {
           />
         ) : (
           <div className={style.DownloadContainer}>
-            <button onClick={() => printFile(framedPhoto)}>프린트 하기</button>
+            <button onClick={() => getUserCamera()}>다시 찍기</button>
             <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
           </div>
         )}

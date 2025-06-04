@@ -94,6 +94,32 @@ function FourCutResult() {
     }
   };
 
+  const printFile = async (base64Url: string) => {
+    try {
+      const base64Data = base64Url.split(",")[1];
+
+      const response = await fetch("http://localhost:3000/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ file: base64Data }),
+      });
+
+      const html = await response.text();
+
+      const printWindow = window.open("", "_blank");
+      if (printWindow) {
+        printWindow.document.write(html);
+        printWindow.document.close();
+      } else {
+        alert("팝업 차단을 해제해주세요!");
+      }
+    } catch (err) {
+      console.error("프린트 에러 발생:", err);
+    }
+  };
+
   return (
     <div
       style={{
@@ -112,7 +138,7 @@ function FourCutResult() {
           />
           <div>
             <button onClick={() => handleClick("upload")}>업로드</button>
-            <button onClick={() => handleClick("recapture")}>다시 찍기</button>
+            <button onClick={() => printFile(finalImage)}>프린트하기</button>
           </div>
         </>
       )}
