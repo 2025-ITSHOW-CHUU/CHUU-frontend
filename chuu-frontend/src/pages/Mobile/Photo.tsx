@@ -119,6 +119,27 @@ function PhotoBooth() {
     setToggle(!toggle);
   };
 
+  const printFile = async (base64Url: string) => {
+    try {
+      const response = await fetch("http://localhost:3000/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ image: base64Url.split(",")[1] }),
+      });
+
+      const data = await response.json();
+
+      if (data.filename) {
+        const printUrl = `http://localhost:3000/print/${data.filename}`;
+        window.open(printUrl, "_blank");
+      }
+    } catch (err) {
+      console.error("프린트 에러 발생:", err);
+    }
+  };
+
   return (
     <div
       style={{
@@ -145,19 +166,6 @@ function PhotoBooth() {
         ref={canvasRef}
         style={{ display: toggle ? "none" : "block" }}
       ></canvas>
-      {/* 
-      <img
-        src={frames[frameIdx]}
-        alt="Frame Preview"
-        style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          width: "100%",
-          height: "100%",
-          display: toggle ? "none" : "block",
-        }}
-      /> */}
 
       <div className={style.CaptureContainer}>
         {toggle ? (
@@ -174,9 +182,7 @@ function PhotoBooth() {
           />
         ) : (
           <div className={style.DownloadContainer}>
-            <button onClick={() => navigate("/upload-post")}>
-              게시물 올리기
-            </button>
+            <button onClick={() => printFile(framedPhoto)}>프린트 하기</button>
             <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
           </div>
         )}

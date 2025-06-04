@@ -50,3 +50,26 @@
 .DownloadContainer > button:last-child {
   background-color: #ffffff;
 }
+
+@media print {
+  @page {
+    size: 80mm, 80mm;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .canvas,
+  .canvas * {
+    visibility: visible;
+  }
+  #jsCanvas {
+    position: absolute;
+    left: 50%;
+    top: 45.1%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    border: none;
+  }
+}
