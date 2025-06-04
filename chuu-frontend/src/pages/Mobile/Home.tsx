@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import SearchBar from "../../components/SearchBar.tsx";
-import Footer from "../../components/Footer.tsx";
-import EncateResult from "../../components/EncateResult.tsx";
+import SearchBar from "../../components/SearchBar";
+import EncateResult from "../../components/EncateResult";
 import def from "../../styles/Default.module.css";
 import style from "../../styles/Home.module.css";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
@@ -45,7 +44,6 @@ function Home() {
         <IoIosArrowForward />
       </button>
       <EncateResult />
-      <Footer />
     </div>
   );
 }

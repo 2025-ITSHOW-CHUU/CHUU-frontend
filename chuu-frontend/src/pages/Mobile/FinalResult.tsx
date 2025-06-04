@@ -26,9 +26,7 @@ function FinalResult() {
   const [totalData, setTotalData] = useState([]);
   const [encateChart, setEncateChart] = useState<EncateChartType[]>([]);
   const dispatch = useDispatch();
-  const [encateQuestion, setEncateQuestion] = useState<
-    EncateQuestionType[] | null
-  >(null);
+  const [_, setEncateQuestion] = useState<EncateQuestionType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -40,6 +38,7 @@ function FinalResult() {
       }
     }
     fetchData();
+    console.log(encate.encate);
     setEncateQuestion(encate.encate);
   }, []);
 

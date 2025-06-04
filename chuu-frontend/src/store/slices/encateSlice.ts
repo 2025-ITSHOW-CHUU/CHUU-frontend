@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface Encate {
+export interface EncateType {
   questionNumber: number;
   answer: string;
 }
 
 interface EncateState {
-  list: Encate[];
+  list: EncateType[];
 }
 
 const initialState: EncateState = {
@@ -17,8 +16,8 @@ const encateSlice = createSlice({
   name: "encateResults",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<Encate>) => {
-      state.list.push(action.payload);
+    addItem: (state, action: PayloadAction<EncateType[]>) => {
+      state.list = action.payload;
     },
     clearItem: (state) => {
       state.list = [];

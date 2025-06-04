@@ -6,12 +6,12 @@ import axios from "axios";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { addItem } from "../../store/slices/encateSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/index";
+import { useDispatch } from "react-redux";
 
 type QuestionType = {
   question: string;
   teacher: string[];
+  image: string;
 };
 
 interface EncateType {
@@ -23,7 +23,7 @@ function Encate() {
   const [encateQuestion, setEncateQuestion] = useState<QuestionType[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answeredTeacher, setAnsweredTeacher] = useState(0);
-  const [answeredList, setAnsweredList] = useState([]);
+  const [answeredList, setAnsweredList] = useState<EncateType[]>([]);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function Encate() {
   }, [answeredTeacher]);
 
   const handleAnswer = async (teacher: string) => {
-    if (currentQuestionIndex < encateQuestion.length - 1) {
+    if (currentQuestionIndex <= encateQuestion.length - 1) {
       const slice: EncateType = {
         questionNumber: currentQuestionIndex,
         answer: encateQuestion[currentQuestionIndex].teacher[answeredTeacher],
@@ -55,7 +55,7 @@ function Encate() {
       const voteUrl = "http://localhost:3000/home";
 
       try {
-        const response = await axios.post(voteUrl, {
+        await axios.post(voteUrl, {
           questionNumber: currentQuestionIndex,
           teacherName: teacher,
         });
