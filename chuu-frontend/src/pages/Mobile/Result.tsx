@@ -31,27 +31,22 @@ function Result() {
   const selectedType = location.state?.type;
 
   useEffect(() => {
-
-    const idx = teachers.teachers.findIndex(
-      (t) => t.name == selectedType
-    );
+    const idx = teachers.teachers.findIndex((t) => t.name == selectedType);
 
     setData(teachers.teachers[idx]);
 
-    let similar = []
+    let similar = [];
 
     console.log(`idx : ${idx}`);
     if (idx === 0) {
       similar = teachers.teachers.slice(1, 3);
-    }
-    else if (idx === teachers.teachers.length - 1) {
-      similar = teachers.teachers.slice(teachers.teachers.length - 3, teachers.teachers.length - 1);
-    }
-    else {
-      similar = [
-        teachers.teachers[idx - 1],
-        teachers.teachers[idx + 1],
-      ];
+    } else if (idx === teachers.teachers.length - 1) {
+      similar = teachers.teachers.slice(
+        teachers.teachers.length - 3,
+        teachers.teachers.length - 1
+      );
+    } else {
+      similar = [teachers.teachers[idx - 1], teachers.teachers[idx + 1]];
     }
 
     setSimilarTypeData(similar);
@@ -87,11 +82,11 @@ function Result() {
         ))}
       </ul>
       <div className={style.description}>
-        <p>"{data?.comment}"어원</p>
+        <p>"{data?.comment}"</p>
         <div>{data?.personality}</div>
       </div>
       <div className={style.similarType}>
-        <p>같은 추구미 학생</p>
+        <p>비슷한 추구미 선생님 </p>
         <div>
           {similarTypeData?.map((item: SimilarTypeData, i: number) => (
             <TypeCard

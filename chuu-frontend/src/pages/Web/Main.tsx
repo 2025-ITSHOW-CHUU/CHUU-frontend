@@ -1,14 +1,15 @@
 import { io } from "socket.io-client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Post from "../../components/Post.tsx";
+import Post from "../../components/Post";
 import style from "../../styles/Main.module.css";
-import EncateResult from "../../components/EncateResult.tsx";
-import TotalUser from "../../components/TotalUser.tsx";
+import EncateResult from "../../components/EncateResult";
+import TotalUser from "../../components/TotalUser";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as MainCharacter } from "../../assets/main_character.svg";
 import { QRCodeCanvas } from "qrcode.react";
-import TestResult from "../../components/TestResult.tsx";
+import TestResult from "../../components/TestResult";
+import ModalPortal from "../../components/ModalPortal";
 
 const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
 
@@ -44,20 +45,8 @@ function Main() {
       setPosts((prevPosts: PostType[]) => [post, ...prevPosts]);
     });
 
-    const handleWindowClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.id === "QRButton") {
-        handleClick(e);
-        return;
-      }
-      setClicked(false);
-    };
-
-    window.addEventListener("click", handleWindowClick);
-
     return () => {
       socket.disconnect();
-      window.removeEventListener("click", handleWindowClick);
     };
   }, []);
 
@@ -77,7 +66,10 @@ function Main() {
             <h1 className={style["title"]}>추구미 선생님 찾으러 가기</h1>
             <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>
             <MainCharacter />
-            <button id="QRButton">
+            <button
+              id="QRButton"
+              onClick={(e) => handleClick(e as unknown as Event)}
+            >
               <img
                 id="QRButton"
                 src="/images/ToMobileButton.png"
@@ -92,11 +84,24 @@ function Main() {
           })}
         </div>
 
-        <QRCodeCanvas
-          className={style["QRContainer"]}
-          style={{ display: clicked ? "block" : "none" }}
-          value="http://localhost:3001"
-        />
+        {clicked && (
+          <ModalPortal>
+            <div
+              className={style["modal-overlay"]}
+              onClick={(e) => handleClick(e as unknown as Event)}
+            >
+              <div
+                className={style["modal-content"]}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <QRCodeCanvas
+                  className={style["QRContainer"]}
+                  value="http://localhost:3001"
+                />
+              </div>
+            </div>
+          </ModalPortal>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchBar from "../../components/SearchBar.tsx";
+import SearchBar from "../../components/SearchBar";
 import def from "../../styles/Default.module.css";
 import style from "../../styles/Search.module.css";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
@@ -57,7 +57,7 @@ function Search({}) {
         </div>
         <SearchBar value={search} onChange={onChange} />
       </div>
-      {search == "" ? (
+      {search === "" ? (
         <div className={`${style["RecommandSearch"]}`}>
           <p>추천 검색어</p>
         </div>
