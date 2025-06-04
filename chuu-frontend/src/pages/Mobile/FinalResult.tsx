@@ -7,6 +7,8 @@ import axios from "axios";
 import question from "../../assets/encate.json";
 import encate from "../../assets/encate.json";
 import EncateChart from "../../components/EncateChart";
+import style from "../../styles/FinalResult.module.css";
+import { useNavigate } from "react-router-dom";
 
 type EncateChartType = {
   question: string;
@@ -26,6 +28,7 @@ function FinalResult() {
   const [totalData, setTotalData] = useState([]);
   const [encateChart, setEncateChart] = useState<EncateChartType[]>([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [_, setEncateQuestion] = useState<EncateQuestionType[]>([]);
 
   useEffect(() => {
@@ -49,7 +52,7 @@ function FinalResult() {
   }, [items, totalData]); // items 또는 totalData가 변경될 때마다 실행
 
   function ratioTotal() {
-    for (let i = 0; i < totalData.length - 1; i++) {
+    for (let i = 0; i < totalData.length; i++) {
       const newData = {
         question: question.encate[i].question,
         category: question.encate[i].teacher,
@@ -61,10 +64,31 @@ function FinalResult() {
     }
   }
   return (
-    <div>
-      {encateChart.map((val: EncateChartType, idx: number) => (
-        <EncateChart key={idx} data={val} />
-      ))}
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "24px",
+          fontWeight: "bold",
+          color: "white",
+        }}
+      >
+        결과 ✨
+      </h1>
+      {encateChart.map((val: EncateChartType, idx: number) => {
+        return <EncateChart key={idx} data={val} />;
+      })}
+      <button onClick={() => navigate("/")} className={style.homeButton}>
+        홈으로 돌아가기
+      </button>
     </div>
   );
 }

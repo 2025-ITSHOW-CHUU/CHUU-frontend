@@ -109,14 +109,19 @@ function EncateChart(props: { data: EncateChartType }) {
   }, [props.data]);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       {series.length > 0 && options?.xaxis ? (
         <Chart
           options={options}
           series={series}
           type="bar"
           height={180}
-          width={"80%"}
+          width={"100%"}
         />
       ) : (
         <p>로딩 중...</p>
