@@ -9,11 +9,9 @@ function PhotoBooth() {
   const [photo, setPhoto] = useState(null);
   const [framedPhoto, setFramedPhoto] = useState(null);
   const [toggle, setToggle] = useState(true);
-  const { file, setFile, teacherName, setTeacherName } = useImageStore();
+  const { setFile, teacherName } = useImageStore();
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(location.state);
 
   const frames = {
     "이호연 선생님": "/images/SelfieHoyeonLee.png",
@@ -60,7 +58,6 @@ function PhotoBooth() {
 
       let imageURL = tempCanvas.toDataURL("image/png");
 
-      setTeacherName("이호연");
       setPhoto(imageURL);
     }
     stopCamera();
@@ -74,6 +71,15 @@ function PhotoBooth() {
     if (videoRef.current) {
       getUserCamera();
     }
+
+    if (location.state.type) {
+      for (let i = 0; i < Object.keys(frames).length; i++) {
+        if (location.state.type === Object.keys(frames)[i]) {
+          setFrameIdx(i);
+          break;
+        }
+      }
+    }
   }, [photo, frameIdx]);
 
   useEffect(() => {
@@ -81,6 +87,7 @@ function PhotoBooth() {
   }, []);
 
   const generateFrame = () => {
+    console.log(frames[location.state.type]);
     let canvas = canvasRef.current;
     let ctx = canvas.getContext("2d");
 
@@ -96,7 +103,8 @@ function PhotoBooth() {
       ctx.drawImage(img, 0, 0, 450, 600);
 
       let frame = new Image();
-      frame.src = frames[`${teacherName} 선생님`];
+      frame.src = frames[location.state.type];
+
       frame.onload = () => {
         ctx.drawImage(frame, 0, 0, 450, 600);
         setFramedPhoto(canvas.toDataURL("image/png"));
@@ -149,7 +157,7 @@ function PhotoBooth() {
       />
 
       <img
-        src={frames[`${teacherName} 선생님`]}
+        src={frames[location.state.type]}
         alt="frame"
         style={{
           position: "relative",

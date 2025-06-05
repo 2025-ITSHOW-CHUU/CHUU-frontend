@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import TypeCard from "../../components/TypeCard";
 import teachers from "../../assets/teachers.json";
 import useTestScoreStore from "../../store/useTestScoreStore";
+import useImageStore from "../../store/useImageStore";
 
 type ResultType = {
   name: string;
@@ -29,7 +30,7 @@ function Result() {
   const [data, setData] = useState<ResultType | null>(null);
   const [similarTypeData, setSimilarTypeData] = useState<SimilarTypeData[]>([]);
   const selectedType = location.state?.type;
-  console.log(selectedType);
+  const { setTeacherName } = useImageStore();
 
   useEffect(() => {
     const idx = teachers.teachers.findIndex((t) => t.name === selectedType);
@@ -38,7 +39,6 @@ function Result() {
 
     let similar = [];
 
-    console.log(`idx : ${idx}`);
     if (idx === 0) {
       similar = teachers.teachers.slice(1, 3);
     } else if (idx === teachers.teachers.length - 1) {
@@ -56,6 +56,7 @@ function Result() {
   const returnBack = () => {
     navigate("/");
     setSimilarTypeData([]);
+    setTeacherName("이대형");
   };
 
   const onClick = (src: string) => {
