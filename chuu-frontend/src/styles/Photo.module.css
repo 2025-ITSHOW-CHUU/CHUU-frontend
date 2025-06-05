@@ -1,6 +1,24 @@
+.PhotoContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 20px 100px;
+  row-gap: 30px;
+}
+
+.VideoContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
 .CaptureContainer {
-  position: fixed;
-  bottom: 20px;
   display: flex;
   column-gap: 30px;
   width: 100vw;
@@ -49,6 +67,11 @@
 
 .DownloadContainer > button:last-child {
   background-color: #ffffff;
+}
+
+.ToggleDownloadContainer {
+  position: fixed;
+  bottom: 20px;
 }
 
 @media print {

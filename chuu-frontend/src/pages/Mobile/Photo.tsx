@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import style from "../../styles/Photo.module.css";
 import useImageStore from "../../store/useImageStore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function PhotoBooth() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -11,13 +11,18 @@ function PhotoBooth() {
   const [toggle, setToggle] = useState(true);
   const { file, setFile, teacherName, setTeacherName } = useImageStore();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const frames = [
-    "/images/SelfieHoyeonLee.png",
-    "/images/frame1.png",
-    "/images/frame2.png",
-    "/images/frame3.png",
-  ];
+  console.log(location.state);
+
+  const frames = {
+    "이호연 선생님": "/images/SelfieHoyeonLee.png",
+    "박지우 선생님": "/images/SelfieJiwoo.png",
+    "조예진 선생님": "/images/SelfieHoyeonLee.png",
+    "김윤지 선생님": "/images/SelfieYunji.png",
+    "이대형 선생님": "/images/SelfieDaehyeong.png",
+    "정하나 선생님": "/images/SelfieHoyeonLee.png",
+  };
   const [frameIdx, setFrameIdx] = useState(0);
 
   const getUserCamera = () => {
@@ -45,13 +50,13 @@ function PhotoBooth() {
     let ctx = tempCanvas.getContext("2d");
 
     if (ctx) {
-      tempCanvas.width = 450;
-      tempCanvas.height = 600;
+      tempCanvas.width = window.innerWidth;
+      tempCanvas.height = window.innerHeight;
 
       ctx.scale(-1, 1);
-      ctx.translate(-450, 0);
+      ctx.translate(-window.innerWidth, 0);
 
-      ctx.drawImage(video, 0, 0, 450, 600);
+      ctx.drawImage(video, 0, 0, window.innerWidth, window.innerHeight);
 
       let imageURL = tempCanvas.toDataURL("image/png");
 
@@ -91,7 +96,7 @@ function PhotoBooth() {
       ctx.drawImage(img, 0, 0, 450, 600);
 
       let frame = new Image();
-      frame.src = frames[frameIdx];
+      frame.src = frames[`${teacherName} 선생님`];
       frame.onload = () => {
         ctx.drawImage(frame, 0, 0, 450, 600);
         setFramedPhoto(canvas.toDataURL("image/png"));
@@ -117,30 +122,44 @@ function PhotoBooth() {
     a.click();
     document.body.removeChild(a);
     setToggle(!toggle);
+    navigate("/");
+  };
+
+  const retry = () => {
+    setPhoto(null);
+    setFramedPhoto(null);
+    setToggle(true);
+    getUserCamera();
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        padding: "20px 20px 100px",
-      }}
-    >
+    <div className={toggle ? style.VideoContainer : style.PhotoContainer}>
       <video
         ref={videoRef}
         autoPlay
         playsInline
         style={{
-          width: "374px",
-          height: "498.6px",
+          position: "absolute",
+          width: "100vw",
+          height: "100vh",
           objectFit: "cover",
           display: toggle ? "block" : "none",
-          borderRadius: "20px",
           transform: "scaleX(-1)",
+        }}
+      />
+
+      <img
+        src={frames[`${teacherName} 선생님`]}
+        alt="frame"
+        style={{
+          position: "relative",
+          left: 0,
+          bottom: 0,
+          width: "500px",
+          height: "100vh",
+          zIndex: 0, // frame 위
+          pointerEvents: "none", // 클릭 방지!
+          display: toggle ? "block" : "none",
         }}
       />
 
@@ -165,11 +184,15 @@ function PhotoBooth() {
               width: "72px",
               height: "72px",
               backgroundColor: "translate",
+              zIndex: 1000,
+              position: "fixed",
+              bottom: "30px",
+              left: "calc(50% - 36px)",
             }}
           />
         ) : (
           <div className={style.DownloadContainer}>
-            <button onClick={() => getUserCamera()}>다시 찍기</button>
+            <button onClick={retry}>다시 찍기</button>
             <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
           </div>
         )}

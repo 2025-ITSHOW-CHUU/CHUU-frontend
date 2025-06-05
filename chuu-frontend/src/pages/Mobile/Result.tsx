@@ -29,9 +29,10 @@ function Result() {
   const [data, setData] = useState<ResultType | null>(null);
   const [similarTypeData, setSimilarTypeData] = useState<SimilarTypeData[]>([]);
   const selectedType = location.state?.type;
+  console.log(selectedType);
 
   useEffect(() => {
-    const idx = teachers.teachers.findIndex((t) => t.name == selectedType);
+    const idx = teachers.teachers.findIndex((t) => t.name === selectedType);
 
     setData(teachers.teachers[idx]);
 
@@ -98,7 +99,10 @@ function Result() {
           ))}
         </div>
       </div>
-      <button className={style.cameraBtn} onClick={() => onClick("/photo")}>
+      <button
+        className={style.cameraBtn}
+        onClick={() => navigate("/photo", { state: { type: selectedType } })}
+      >
         <Camera />
         <p>선생님과 사진 찍기</p>
       </button>
