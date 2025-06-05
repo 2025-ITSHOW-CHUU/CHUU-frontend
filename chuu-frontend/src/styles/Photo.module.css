@@ -24,8 +24,9 @@
   width: 100vw;
   overflow-x: auto;
   white-space: nowrap;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  z-index: 100;
 }
 
 .CaptureContainer::-webkit-scrollbar {
