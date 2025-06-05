@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Questions from "../../assets/questions.json";
 import useTestScoreStore from "../../store/useTestScoreStore";
 import axios from "axios";
+import { IoIosArrowBack } from "react-icons/io";
 
 type OptionType = { q: string; score: number };
 
@@ -37,7 +38,7 @@ function Test() {
     if (score <= 20) return "이대형 선생님";
     if (score <= 24) return "김윤지 선생님";
     return "조예진 선생님";
-  }  
+  }
 
   const handleAnswer = async (e) => {
     e.preventDefault();
@@ -47,8 +48,9 @@ function Test() {
       console.log(scores);
       setCurrentQuestionIndex((prev: number) => prev + 1);
     } else {
-
-      const totalScore = scores?.reduce((a: number, c: TestType) => a + c.testScore, 0) + e.target.value;
+      const totalScore =
+        scores?.reduce((a: number, c: TestType) => a + c.testScore, 0) +
+        e.target.value;
       const type = getType(totalScore);
 
       try {
@@ -65,7 +67,7 @@ function Test() {
           type: type,
         },
       });
-      
+
       setScores([]);
     }
   };
@@ -82,8 +84,15 @@ function Test() {
       </span>
     ));
 
+  const backButton = () => {
+    navigate(-1);
+  };
+
   return (
     <div className={def.Body}>
+      <div className={`${style["BackContainer"]}`} onClick={backButton}>
+        <IoIosArrowBack size="30px" />
+      </div>
       <div className={style.question}>
         <p>0{currentQuestionIndex + 1}.</p>
         <p>{formattedQuestion}</p>
