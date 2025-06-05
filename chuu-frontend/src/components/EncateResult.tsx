@@ -30,7 +30,7 @@ function EncateResult() {
         );
         updatedResults[survey["questionNumber"]] = {
           question: survey["question"],
-          winner: sortedScores[0][0],
+          winner: sortedScores[0][0] + " 선생님",
           votes: sortedScores[0][1],
         };
       } catch (error) {
