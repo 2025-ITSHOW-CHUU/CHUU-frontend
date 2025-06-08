@@ -17,30 +17,31 @@ type TeacherType = {
 function Search({}) {
   const [search, setSearch] = useState<string>("");
   const [teachers, setTeachers] = useState<TeacherType[]>([]);
-  const [originalTeachers, setOriginalTeachers] = useState<TeacherType[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     setTeachers(teacherData.teachers);
-    setOriginalTeachers(teacherData.teachers);
   }, []);
 
   const onChange = (value: string) => {
     setSearch(value);
+    console.log(value === "");
     searchResult(value);
   };
 
   const searchResult = (value: string) => {
     if (value === "") {
-      setTeachers(originalTeachers);
+      setTeachers(teacherData.teachers);
       return;
     }
 
-    const searchedResult = originalTeachers.filter(
+    const searchedResult = teacherData.teachers.filter(
       (teacher: TeacherType) =>
         teacher.name.includes(value) ||
         teacher.hashtags.some((hashtag) => hashtag.includes(value))
     );
+
+    console.log(searchedResult);
 
     setTeachers(searchedResult);
   };
@@ -57,7 +58,7 @@ function Search({}) {
         </div>
         <SearchBar value={search} onChange={onChange} />
       </div>
-      {search === "" ? (
+      {teachers === [] ? (
         <div className={`${style["RecommandSearch"]}`}>
           <p>추천 검색어</p>
         </div>

@@ -4,6 +4,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+
 .SearchBar {
   padding: 15px 17px 18px;
   background-color: #25282d;
@@ -26,6 +27,7 @@ body {
   color: #ffffff;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .SearchBar > svg {
