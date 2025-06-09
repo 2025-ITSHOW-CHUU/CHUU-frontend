@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import style from "../../styles/Photo.module.css";
 import useImageStore from "../../store/useImageStore";
 import { useNavigate, useLocation } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
 function PhotoBooth() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -142,6 +143,9 @@ function PhotoBooth() {
 
   return (
     <div className={toggle ? style.VideoContainer : style.PhotoContainer}>
+      <div className={style.HeaderContainer} onClick={() => navigate(-1)}>
+        <IoIosArrowBack />
+      </div>
       <video
         ref={videoRef}
         autoPlay

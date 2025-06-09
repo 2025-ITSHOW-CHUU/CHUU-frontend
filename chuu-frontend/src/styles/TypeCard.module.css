@@ -3,13 +3,14 @@
 }
 
 .Card {
-  padding: 23px 18px 23px 17px;
+  padding: 14px;
   background-color: #25282d;
   display: flex;
   align-items: center;
   border-radius: 20px;
   width: fit-content;
   gap: 15px;
+  width: 50%;
 }
 
 .Card > img {
@@ -39,4 +40,5 @@
 .Card > div > .comment {
   font-size: 12px;
   font-weight: 400;
+  text-align: left;
 }

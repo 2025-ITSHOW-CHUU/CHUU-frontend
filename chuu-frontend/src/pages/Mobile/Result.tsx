@@ -73,7 +73,7 @@ function Result() {
       </div>
       <div className={style.Main}>
         <div>
-          <p className={style.comment}>{data?.comment}</p>
+          <p className={style.comment}>{data?.name} ☘️</p>
         </div>
         <img src={data?.photo} alt={`${data?.name} 선생님 사진`}></img>
         <div className={style.name}>{data?.name}</div>
@@ -87,6 +87,15 @@ function Result() {
         <p>"{data?.comment}"</p>
         <div>{data?.personality}</div>
       </div>
+
+      <button
+        className={style.cameraBtn}
+        onClick={() => navigate("/photo", { state: { type: selectedType } })}
+      >
+        <Camera />
+        <p>{data?.name}과 사진 찍기</p>
+      </button>
+
       <div className={style.similarType}>
         <p>비슷한 추구미 선생님 </p>
         <div>
@@ -100,13 +109,6 @@ function Result() {
           ))}
         </div>
       </div>
-      <button
-        className={style.cameraBtn}
-        onClick={() => navigate("/photo", { state: { type: selectedType } })}
-      >
-        <Camera />
-        <p>선생님과 사진 찍기</p>
-      </button>
     </div>
   );
 }

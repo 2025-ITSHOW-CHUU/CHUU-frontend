@@ -16,6 +16,7 @@
   width: 100%;
   gap: 10px;
 }
+
 .header .title {
   padding: 15px 17px 18px;
   background-color: #25282d;
@@ -123,6 +124,10 @@
   line-height: 157%;
 }
 
+.similarType {
+  margin-bottom: 80px;
+}
+
 .similarType > p {
   font-size: 18px;
   font-weight: 600;
@@ -145,7 +150,6 @@
   background-color: var(--color-bg-dark);
   border-radius: 20px;
   margin-top: 31px;
-  margin-bottom: 80px;
   border: 0;
 }
 

@@ -18,6 +18,17 @@
   overflow: hidden;
 }
 
+.PhotoContainer svg,
+.VideoContainer svg {
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  left: 20px;
+  top: 20px;
+  position: fixed;
+  color: #ffffff;
+}
+
 .CaptureContainer {
   display: flex;
   column-gap: 30px;
@@ -55,45 +66,24 @@
   align-items: center;
 }
 
+.DownloadContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: calc(100% - 40px);
+}
+
 .DownloadContainer > button {
-  padding: 13.5px 32.5px;
-  border-radius: 10px;
-  font-size: 20px;
+  padding: 21px 16px;
+  background-color: var(--color-bg-dark);
+  border-radius: 20px;
   border: 0;
-}
-
-.DownloadContainer > button:first-child {
-  background-color: #12ddff;
-}
-
-.DownloadContainer > button:last-child {
-  background-color: #ffffff;
+  width: 100%;
+  color: #c2c2c2;
+  font-size: 20px;
 }
 
 .ToggleDownloadContainer {
   position: fixed;
   bottom: 20px;
-}
-
-@media print {
-  @page {
-    size: 80mm, 80mm;
-    margin: 0;
-  }
-  body * {
-    visibility: hidden;
-  }
-  .canvas,
-  .canvas * {
-    visibility: visible;
-  }
-  #jsCanvas {
-    position: absolute;
-    left: 50%;
-    top: 45.1%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    border: none;
-  }
 }

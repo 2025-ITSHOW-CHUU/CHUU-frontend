@@ -2,32 +2,32 @@
   "teachers": [
     {
       "name": "박지우 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "photo": "/images/profiles/jiwoo.jpg",
       "personality": "지우쌤의 친구는 88년생 동갑내기 GD, 해인이, 혁수 Let's go!",
-      "hashtags": ["#유머감각", "#즐거운수업", "#인기쟁이"],
+      "hashtags": ["#진행시켜", "#SWAG", "#Fm"],
       "comment": "머리 어깨 무릎 발 SWAG",
       "selfie": "/images/SelfieJiwoo.png"
     },
     {
       "name": "이호연 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“난 이름으로 외우지 않아. 좌표로 외우지 ”",
-      "hashtags": ["#동기부여", "#멘토", "#긍정에너지"],
-      "comment": "할 수 있어!",
+      "photo": "/images/profiles/hoyeon.jpg",
+      "personality": "호연쌤 엠비티아이는 CUTE..? 아니.. TTTT",
+      "hashtags": ["#개발자는아닌데개발자마인드", "#수학자", "#TTTT"],
+      "comment": "난 이름으로 외우지 않아. 좌표로 외우지",
       "selfie": "/images/SelfieHoyeon.png"
     },
 
     {
       "name": "유병석 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“지식의 저주 ”",
+      "photo": "/images/profiles/byeongseok.jpg",
+      "personality": "미림의 천재.. 아니 이걸 모른다고? 이걸 왜 모르지?",
       "hashtags": ["#지식의 저주", "#미(림)천(재)", "#요정병석"],
       "comment": "미림요정병석",
       "selfie": "/images/SelfieByeongseok.png"
     },
     {
       "name": "정하나 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "photo": "/images/profiles/yunji.jpg",
       "personality": "“ 하나만 살려 ^^ ”",
       "hashtags": ["#따뜻한", "#상담왕", "#포용력"],
       "comment": "하나만 살려 ^^",
@@ -35,26 +35,26 @@
     },
     {
       "name": "이대형 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
+      "photo": "/images/profiles/daehyeong.jpg",
       "personality": "AI를 너무 사랑하신 나머지.. AI 그 자체가 되어버린 대형쌤...\nAI와 함께라면 무엇이든 할 수 있어!",
-      "hashtags": ["#aicreator.z", "#suno대형", "#긍정에너지"],
+      "hashtags": ["#aicreator.z", "#AI", "#폭주기관차"],
       "comment": "ae대형",
       "selfie": "/images/SelfieDaehyeong.png"
     },
     {
       "name": "김윤지 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“ 🪷🌷미림 유일 생기발랄🌼🌹 ”",
-      "hashtags": ["#체계적", "#디테일", "#꼼꼼한"],
+      "photo": "/images/profiles/yunji.jpg",
+      "personality": "미림의 유일한 꽃!",
+      "hashtags": ["#상큼 발랄", "#공감형 개발자", "#꼼꼼한"],
       "comment": "미림의 꽃",
       "selfie": "/images/SelfieYunji.png"
     },
     {
       "name": "조예진 선생님",
-      "photo": "https://item.kakaocdn.net/do/57282cd5bee7a66ab3c7e72c7d69acf88f324a0b9c48f77dbce3a43bd11ce785",
-      "personality": "“ 여러분 오늘까지 해볼까요~? “",
+      "photo": "/images/profiles/yunji.jpg",
+      "personality": "미림의 뽀야미!",
       "hashtags": ["#카리스마", "#열정적인", "#학생사랑"],
-      "comment": "포기 금지!",
+      "comment": "여러분 오늘까지 해볼까요~?",
       "selfie": "/images/SelfieJiwoo.png"
     }
   ]
