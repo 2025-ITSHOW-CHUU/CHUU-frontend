@@ -3,10 +3,28 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  row-gap: 40px;
 }
 
-.selectFrameContainer > h1 {
+.headerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.headerContainer > svg {
   color: #ffffff;
+  width: 30px;
+  font-size: 30px;
+}
+
+.headerContainer > h1 {
+  color: #ffffff;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .framesContainer {
@@ -29,4 +47,44 @@
 
 .frameContainer > p {
   color: #ffffff;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #c6e4e9;
+  padding: 20px;
+  border-radius: 1rem;
+  width: 350px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.modal-content > img {
+  width: 100%;
+}
+
+.modal-content > button {
+  background-color: #12ddff;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 0;
+  height: min-content;
+  color: #ffffff;
+  font-weight: bold;
 }
