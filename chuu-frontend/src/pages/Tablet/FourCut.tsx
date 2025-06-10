@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "../../styles/Photo.module.css";
+import style from "../../styles/Fourcut.module.css";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 
 function FourCut() {
@@ -93,59 +93,35 @@ function FourCut() {
   }, []);
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          textAlign: "center",
-          color: "white",
-          fontSize: "48px",
-          zIndex: 1000,
-        }}
-      >
+    <div className={style.PhotoBoxContainer}>
+      <div className={style.CountdownContainer}>
         {count !== null && <div>{count}</div>}
       </div>
 
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        style={{
-          position: "absolute",
-          top: 20,
-          width: "500px",
-          height: "100vh",
-          objectFit: "cover",
-          display: "block",
-          transform: "scaleX(-1)",
-        }}
-      />
-      <img
-        src={frames[currentStep]}
-        alt="frame"
-        style={{
-          position: "absolute",
-          top: 20,
-          width: "500px",
-          height: "100vh",
-        }}
-      />
-      <div className={style.CaptureContainer}>
-        <img
-          onClick={capturePhoto}
-          className={style.CaptureButton}
-          src="/images/SelfieButton.png"
-          alt="SelfieButton"
-          width="72px"
-          height="72px"
-        />
+      <div className={style.VideoBoxContainer}>
+        <video ref={videoRef} autoPlay playsInline className={style.Video} />
+        <img src={frames[currentStep]} alt="frame" className={style.FrameImg} />
+      </div>
+      <button className={style.CaptureContainer} onClick={() => setCount(3)}>
+        사진 찍기
+      </button>
+      <div className={style.LineContainer}>
+        <div
+          className={style.Line}
+          style={{ borderColor: currentStep < 1 ? "#f1f1f1" : "#65e9ff" }}
+        ></div>
+        <div
+          className={style.Line}
+          style={{ borderColor: currentStep < 2 ? "#f1f1f1" : "#65e9ff" }}
+        ></div>
+        <div
+          className={style.Line}
+          style={{ borderColor: currentStep < 3 ? "#f1f1f1" : "#65e9ff" }}
+        ></div>
+        <div
+          className={style.Line}
+          style={{ borderColor: currentStep < 4 ? "#f1f1f1" : "#65e9ff" }}
+        ></div>
       </div>
     </div>
   );

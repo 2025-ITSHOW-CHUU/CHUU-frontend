@@ -20,33 +20,13 @@
 
 .PhotoContainer svg,
 .VideoContainer svg {
-  z-index: 10000;
+  z-index: 1000;
   width: 40px;
   height: 40px;
   left: 20px;
   top: 20px;
   position: fixed;
   color: #ffffff;
-}
-
-.CaptureContainer {
-  display: flex;
-  column-gap: 30px;
-  width: 100vw;
-  overflow-x: auto;
-  white-space: nowrap;
-  align-items: flex-end;
-  justify-content: center;
-  z-index: 100;
-}
-
-.CaptureContainer::-webkit-scrollbar {
-  height: 8px;
-}
-
-.CaptureContainer::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
 }
 
 .CaptureContainer > button {

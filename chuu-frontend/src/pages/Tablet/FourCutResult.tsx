@@ -122,22 +122,12 @@ function FourCutResult() {
   };
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-        padding: "20px",
-        background: "rgba(37, 40, 45, 1)",
-      }}
-    >
+    <div className={style.FourcutContainer}>
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {finalImage && (
-        <>
-          <img
-            src={finalImage}
-            alt="4컷 사진"
-            style={{ width: "100%", maxWidth: "360px" }}
-          />
-          <div>
+        <div className={style.ResultContainer}>
+          <img src={finalImage} alt="4컷 사진" className={style.FourCutImage} />
+          <div className={style.ButtonContainer}>
             <button
               onClick={() => handleClick("upload")}
               className={style.submitButton}
@@ -151,7 +141,7 @@ function FourCutResult() {
               프린트하기
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

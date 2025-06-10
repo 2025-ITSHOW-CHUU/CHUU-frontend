@@ -1,7 +1,46 @@
+.FourcutContainer {
+  text-align: center;
+  padding: 20px 20px;
+  background: linear-gradient(135deg, #2c2f36, #1e1f24);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ResultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.FourCutImage {
+  height: 600px;
+  object-fit: contain;
+  border-radius: 16px;
+  padding: 10px;
+  /* border: 50px solid #ffffff outset; */
+}
+
+.ButtonContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .submitButton {
-  background-color: #12ddff;
-  padding: 13.5px 140px;
-  font-size: 20px;
-  border-radius: 10px;
-  border: 0;
+  background: #00e0ff;
+  color: #0b0b0b;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 224, 255, 0.3);
+  width: 200px;
 }
