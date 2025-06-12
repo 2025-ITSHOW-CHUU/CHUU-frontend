@@ -54,7 +54,7 @@ function Test() {
       const type = getType(totalScore);
 
       try {
-        await axios.post("http://localhost:3000/users", {
+        await axios.post("https://chuu.mirim-it-show.site/users", {
           score: totalScore,
           type: type,
         });

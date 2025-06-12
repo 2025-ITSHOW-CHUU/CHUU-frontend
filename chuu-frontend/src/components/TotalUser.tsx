@@ -7,7 +7,7 @@ function TotalUser({}) {
   const [totalUser, setTotalUser] = useState(0);
 
   useEffect(() => {
-    const socket = io("http://localhost:3000/user"); // 서버 URL을 여기에 맞게 변경
+    const socket = io("https://chuu.mirim-it-show.site/user"); // 서버 URL을 여기에 맞게 변경
 
     socket.on("connect", () => {
       console.log("connected");
@@ -19,7 +19,7 @@ function TotalUser({}) {
     });
 
     async function getTotalUser() {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get("https://chuu.mirim-it-show.site/users");
       return res;
     }
 

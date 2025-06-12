@@ -12,7 +12,7 @@ import TestResult from "../../components/TestResult";
 import ModalPortal from "../../components/ModalPortal";
 import { useNavigate } from "react-router-dom";
 
-const socket = io("http://localhost:3000"); // 배포 시 사용하는 주소로 변경
+const socket = io("https://chuu.mirim-it-show.site"); // 배포 시 사용하는 주소로 변경
 
 interface PostType {
   teacher: string;
@@ -104,7 +104,7 @@ function Main() {
               >
                 <QRCodeCanvas
                   className={style["QRContainer"]}
-                  value="http://localhost:3001"
+                  value="https://chuu.mirim-it-show.site"
                 />
               </div>
             </div>

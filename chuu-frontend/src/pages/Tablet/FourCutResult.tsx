@@ -99,7 +99,7 @@ function FourCutResult() {
     try {
       const base64Data = base64Url.split(",")[1];
 
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch("https://chuu.mirim-it-show.site/upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

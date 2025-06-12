@@ -54,7 +54,10 @@ function UploadImage() {
       formData.append("comment", comment);
 
       try {
-        await axios.post("http://localhost:3000/post/upload", formData);
+        await axios.post(
+          "https://chuu.mirim-it-show.site/post/upload",
+          formData
+        );
         navigate("/");
       } catch (error) {
         console.log(error);

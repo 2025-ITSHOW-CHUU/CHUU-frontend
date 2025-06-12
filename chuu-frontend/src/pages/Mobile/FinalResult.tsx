@@ -34,7 +34,9 @@ function FinalResult() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const total_result = await axios.get("http://localhost:3000/home");
+        const total_result = await axios.get(
+          "https://chuu.mirim-it-show.site/home"
+        );
         setTotalData(total_result.data.scores);
       } catch (error) {
         console.error("Error fetching data:", error);

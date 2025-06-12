@@ -52,7 +52,7 @@ function Encate() {
     setAnsweredList(newAnsweredList);
 
     try {
-      await axios.post("http://localhost:3000/home", {
+      await axios.post("https://chuu.mirim-it-show.site/home", {
         questionNumber: currentQuestionIndex,
         teacherName: teacher,
       });

@@ -54,7 +54,7 @@ function FourCutUpload() {
     formData.append("comment", inputedComment);
     try {
       const response = await axios.post(
-        "http://localhost:3000/post/upload",
+        "https://chuu.mirim-it-show.site/post/upload",
         formData
       );
       console.log(response);

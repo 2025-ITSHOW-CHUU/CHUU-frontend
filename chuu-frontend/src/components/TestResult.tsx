@@ -8,7 +8,7 @@ function TestResult() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const socket = io("http://localhost:3000/user");
+    const socket = io("https://chuu.mirim-it-show.site/user");
 
     socket.on("connect", () => {
       console.log("connected");
@@ -21,7 +21,9 @@ function TestResult() {
 
     async function getQuestionResult() {
       try {
-        const res = await axios.get("http://localhost:3000/users/max");
+        const res = await axios.get(
+          "https://chuu.mirim-it-show.site/users/max"
+        );
         const transformedData = res.data.map(
           (item: { id: string; teacherScore?: number }) => ({
             id: item.id + " 선생님",

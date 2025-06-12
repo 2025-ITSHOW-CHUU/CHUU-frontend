@@ -19,7 +19,7 @@ function EncateResult() {
     const surveyData = encate.encate;
 
     for (let survey of surveyData) {
-      const getScoreUrl = `http://localhost:3000/home/${
+      const getScoreUrl = ` https://chuu.mirim-it-show.site/home/${
         survey["questionNumber"] - 1
       }`;
 
@@ -44,7 +44,7 @@ function EncateResult() {
   useEffect(() => {
     getScores();
 
-    const socket = io("http://localhost:3000/user");
+    const socket = io("https://chuu.mirim-it-show.site/user");
 
     socket.on("connect", () => {
       console.log("connected");
