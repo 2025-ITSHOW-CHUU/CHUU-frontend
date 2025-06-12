@@ -3,16 +3,19 @@ import style from "../styles/EncateResult.module.css";
 import axios from "axios";
 import encate from "../assets/encate.json";
 import { io } from "socket.io-client";
+import teachers from "../assets/teachers.json";
 axios.defaults.withCredentials = true;
 
 type SurveyType = {
   question: string;
   votes: number;
   winner: string;
+  image: string;
 };
 
 function EncateResult() {
   const [topResults, setTopResults] = useState<Record<string, SurveyType>>({});
+  console.log(teachers);
   const getScores = async () => {
     // 일부 점수 보여주기 -> 전체 점수 보여주기
     let updatedResults = {};
@@ -32,6 +35,10 @@ function EncateResult() {
           question: survey["question"],
           winner: sortedScores[0][0] + " 선생님",
           votes: sortedScores[0][1],
+          image:
+            teachers.teachers.filter(
+              (teacher) => teacher.name === sortedScores[0][0] + " 선생님"
+            )[0]?.selfie || "",
         };
       } catch (error) {
         console.error("데이터 가져오기 실패:", error);
@@ -57,6 +64,10 @@ function EncateResult() {
           question: encate.encate[data.questionNumber].question,
           winner: data.teacherName,
           votes: data.maxVotedTeacher,
+          image:
+            teachers.teachers.filter(
+              (teacher) => teacher.name === data.teacherName + " 선생님"
+            )[0]?.selfie || "",
         },
       }));
     });
@@ -75,10 +86,13 @@ function EncateResult() {
         {(Object.entries(topResults) as [string, SurveyType][]).map(
           ([questionNumber, result]) => (
             <li key={questionNumber}>
-              {result.question}
-              <p>
-                {result.winner} {result.votes}
-              </p>
+              <img src={result.image} alt={result.winner} />
+              <div>
+                {result.question}
+                <p>
+                  {result.winner} {result.votes}
+                </p>
+              </div>
             </li>
           )
         )}
