@@ -35,10 +35,6 @@ function EncateResult() {
           question: survey["question"],
           winner: sortedScores[0][0] + " 선생님",
           votes: sortedScores[0][1],
-          image:
-            teachers.teachers.filter(
-              (teacher) => teacher.name === sortedScores[0][0] + " 선생님"
-            )[0]?.selfie || "",
         };
       } catch (error) {
         console.error("데이터 가져오기 실패:", error);
@@ -64,10 +60,6 @@ function EncateResult() {
           question: encate.encate[data.questionNumber].question,
           winner: data.teacherName,
           votes: data.maxVotedTeacher,
-          image:
-            teachers.teachers.filter(
-              (teacher) => teacher.name === data.teacherName + " 선생님"
-            )[0]?.selfie || "",
         },
       }));
     });
@@ -86,7 +78,6 @@ function EncateResult() {
         {(Object.entries(topResults) as [string, SurveyType][]).map(
           ([questionNumber, result]) => (
             <li key={questionNumber}>
-              <img src={result.image} alt={result.winner} />
               <div>
                 {result.question}
                 <p>
