@@ -251,7 +251,11 @@ const Chatbot: React.FC = () => {
               // placeholder="메시지를 입력하세요."
               disabled={isLoading}
             />
-            <TextSymbol type="submit" disabled={isLoading || !input.trim()} />
+            {/* disabled={isLoading || !input.trim()} */}
+            <TextSymbol
+              type="submit"
+              style={{ color: isLoading ? "#ffffff" : "#65e9ff" }}
+            />
             {/* <button className={style["chatbotButton"]}></button> */}
           </div>
         </form>
