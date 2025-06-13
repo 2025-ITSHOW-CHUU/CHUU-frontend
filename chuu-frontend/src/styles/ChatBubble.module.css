@@ -1,0 +1,46 @@
+.bubble {
+  max-width: 80%;
+  padding: 5.5px 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  position: relative;
+  background-color: #2b2c31;
+  color: white;
+  transition: border-radius 0.2s ease;
+  word-break: break-word;
+}
+
+.chatMessage {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.chatMessage.user {
+  flex-direction: row-reverse;
+}
+
+.chatMessage.assistant {
+  flex-direction: row;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 9px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.user > .bubble {
+  background: #35373f;
+  color: #fff;
+  margin-right: 30px;
+}
+
+.assistant > .bubble {
+  background: #12DDFF;
+  color: #000;
+  margin-left: 9px;
+}
