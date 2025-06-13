@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { IoIosArrowBack } from "react-icons/io";
 import teacherData from "../../assets/teachers.json";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 type TeacherType = {
   name: string;
@@ -77,6 +78,7 @@ function Search({}) {
           ))}
         </div>
       )}
+      <Footer />
     </div>
   );
 }

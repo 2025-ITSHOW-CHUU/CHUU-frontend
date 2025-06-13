@@ -58,11 +58,11 @@ function Home() {
             선생님 AI와 대화해 보세요!
             <div className={style["chatTail"]}></div>
           </div>
-          <div 
-            className={`${style["chatIcon"]}`} 
+          <div
+            className={`${style["chatIcon"]}`}
             onClick={handleChatWidgetClick}
           >
-            <Widget/>
+            <Widget />
           </div>
         </div>
       </div>
