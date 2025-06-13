@@ -1,0 +1,61 @@
+.messageContainer {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messageContent {
+    display: flex;
+    flex: 1;
+}
+
+.profileSection {
+    margin-right: 12px;
+}
+
+.profileImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.textSection {
+    flex: 1;
+}
+
+.messageHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.messageTime {
+    font-size: 12px;
+    color: #8a8a8a;
+    margin-left: 6px;
+}
+
+.messageText {
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* .readIndicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #0084ff;
+    margin-left: 10px;
+    margin-right: 4px;
+} */
