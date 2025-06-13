@@ -3,7 +3,7 @@ import style from "../../styles/Chat.module.css";
 import ChatHeader from "../../components/ChatHeader";
 import ChatBubble from "../../components/ChatBubble";
 import axios from "axios";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 import { ReactComponent as TextSymbol } from "../../assets/text_symbol.svg";
 
@@ -20,11 +20,13 @@ const Chatbot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [typingContent, setTypingContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const roomId = location.search.split("?")[1];
   const { teacherId } = useParams();
-  const roomId = searchParams.get("roomId");
   const messageEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  console.log(roomId, teacherId);
 
   const [teacherInfo, setTeacherInfo] = useState<{
     name: string;
@@ -46,7 +48,7 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     if (teacherId && roomId) {
       axios
-        .get(`https://chuu.mirim-it-show.site/${teacherId}?roomId=${roomId}`)
+        .get(`https://chuu.mirim-it-show.site/chatbot?teacherId=${teacherId}`)
         .then((res) => setTeacherInfo(res.data))
         .catch((err) => console.error("선생님 정보 불러오기 실패", err));
     }
@@ -249,13 +251,8 @@ const Chatbot: React.FC = () => {
               // placeholder="메시지를 입력하세요."
               disabled={isLoading}
             />
-            <button
-              className={style["chatbotButton"]}
-              type="submit"
-              disabled={isLoading || !input.trim()}
-            >
-              <TextSymbol />
-            </button>
+            <TextSymbol type="submit" disabled={isLoading || !input.trim()} />
+            {/* <button className={style["chatbotButton"]}></button> */}
           </div>
         </form>
       </div>

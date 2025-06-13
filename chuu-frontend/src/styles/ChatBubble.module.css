@@ -1,6 +1,6 @@
 .bubble {
   max-width: 80%;
-  padding: 5.5px 14px;
+  padding: 8px 14px;
   font-size: 15px;
   line-height: 1.6;
   position: relative;
@@ -13,7 +13,7 @@
 .chatMessage {
   display: flex;
   align-items: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .chatMessage.user {
@@ -37,10 +37,12 @@
   background: #35373f;
   color: #fff;
   margin-right: 30px;
+  border-radius: 20px 0 20px 20px !important;
 }
 
 .assistant > .bubble {
-  background: #12DDFF;
+  background: #12ddff;
   color: #000;
   margin-left: 9px;
+  border-radius: 0 20px 20px 20px !important;
 }
