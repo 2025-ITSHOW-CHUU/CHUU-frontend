@@ -11,6 +11,8 @@ import Result from "./pages/Mobile/Result";
 import Test from "./pages/Mobile/Test";
 import Encate from "./pages/Mobile/Encate";
 import Photo from "./pages/Mobile/Photo";
+import ChatList from "./pages/Mobile/ChatList";
+import Chatbot from "./pages/Mobile/Chatbot";
 import FinalResult from "./pages/Mobile/FinalResult";
 import UploadImage from "./pages/Mobile/UploadImage";
 import Main from "./pages/Web/Main";
@@ -30,6 +32,8 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/chatbot" element={<ChatList/>} />
+          <Route path="/chatbot/:teacherId" element={<Chatbot />}></Route>
           <Route path="/search" element={<Search />} />
           <Route path="/result" element={<Result />} />
           <Route path="/test" element={<Test />} />
