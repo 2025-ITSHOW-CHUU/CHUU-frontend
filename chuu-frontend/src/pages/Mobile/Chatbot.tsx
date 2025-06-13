@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, FormEvent } from "react";
-import style from '../../styles/Chat.module.css';
+import style from "../../styles/Chat.module.css";
 import ChatHeader from "../../components/ChatHeader";
 import ChatBubble from "../../components/ChatBubble";
 import axios from "axios";
@@ -22,7 +22,7 @@ const Chatbot: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
   const { teacherId } = useParams();
-  const roomId = searchParams.get('roomId');
+  const roomId = searchParams.get("roomId");
   const messageEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,16 +36,17 @@ const Chatbot: React.FC = () => {
 
   // 이미지 URL 생성 함수 추가
   const getImageUrl = (imagePath: string): string => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    if (!imagePath) return "";
+    if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
       return imagePath;
     }
-    return `http://localhost:3000/${imagePath}`;
+    return `https://chuu.mirim-it-show.site/${imagePath}`;
   };
 
   useEffect(() => {
     if (teacherId && roomId) {
-      axios.get(`http://localhost:3000/chatbot/${teacherId}?roomId=${roomId}`)
+      axios
+        .get(`https://chuu.mirim-it-show.site/${teacherId}?roomId=${roomId}`)
         .then((res) => setTeacherInfo(res.data))
         .catch((err) => console.error("선생님 정보 불러오기 실패", err));
     }
@@ -58,12 +59,14 @@ const Chatbot: React.FC = () => {
   }, [teacherId, roomId, teacherInfo]);
 
   const loadChatHistory = async () => {
-
     try {
-      const response = await axios.get(`http://localhost:3000/chatbot`, {
-        params: { teacherId }
-        // roomId 제외
-      });
+      const response = await axios.get(
+        `https://chuu.mirim-it-show.site/chatbot`,
+        {
+          params: { teacherId },
+          // roomId 제외
+        }
+      );
 
       console.log("📦 axios 응답 전체:", response.data);
 
@@ -71,25 +74,29 @@ const Chatbot: React.FC = () => {
         console.log("response data: ", response.data);
 
         response.data.forEach((item, index) => {
-          console.log(`🖼️ Item ${index} - role: ${item.role}, imagePath: ${item.imagePath}`);
+          console.log(
+            `🖼️ Item ${index} - role: ${item.role}, imagePath: ${item.imagePath}`
+          );
         });
-        
+
         const formattedMessages: Message[] = response.data.map((item: any) => ({
-            role: item.role,
-            content: item.message,
-            createdAt: item.createdAt,
-            avatar: item.role === "assistant" && item.imagePath ?
-              getImageUrl(item.imagePath) : undefined,
-            teacherId: item.teacherId,
+          role: item.role,
+          content: item.message,
+          createdAt: item.createdAt,
+          avatar:
+            item.role === "assistant" && item.imagePath
+              ? getImageUrl(item.imagePath)
+              : undefined,
+          teacherId: item.teacherId,
         }));
-        
-          console.log("🎭 Formatted messages:", formattedMessages);
-            setMessages(formattedMessages);
-        } else {
-            console.error("응답 데이터가 배열이 아닙니다:", response.data);
-        }
+
+        console.log("🎭 Formatted messages:", formattedMessages);
+        setMessages(formattedMessages);
+      } else {
+        console.error("응답 데이터가 배열이 아닙니다:", response.data);
+      }
     } catch (error) {
-        console.error("채팅 내역 불러오기 실패:", error);
+      console.error("채팅 내역 불러오기 실패:", error);
     }
   };
 
@@ -107,10 +114,10 @@ const Chatbot: React.FC = () => {
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
     setIsLoading(true); // 메시지 전송 전 로딩 시작
-    await new Promise((resolve) => setTimeout(resolve, 0)); 
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     try {
-      const res = await axios.post("http://localhost:3000/chatbot", {
+      const res = await axios.post("https://chuu.mirim-it-show.site/chatbot", {
         roomId,
         teacherId,
         message: trimmed,
@@ -118,8 +125,8 @@ const Chatbot: React.FC = () => {
 
       const assistantContent = res.data.assistant.response;
 
-      console.log('🔍 teacherInfo:', teacherInfo);
-      console.log('🔍 imagePath:', teacherInfo.imagePath);
+      console.log("🔍 teacherInfo:", teacherInfo);
+      console.log("🔍 imagePath:", teacherInfo.imagePath);
 
       if (!assistantContent) {
         console.error("응답이 없습니다.");
@@ -142,14 +149,15 @@ const Chatbot: React.FC = () => {
             {
               role: "assistant",
               content: assistantContent,
-              avatar: teacherInfo?.imagePath ? getImageUrl(teacherInfo.imagePath) : undefined
-            }
+              avatar: teacherInfo?.imagePath
+                ? getImageUrl(teacherInfo.imagePath)
+                : undefined,
+            },
           ]);
           setIsTyping(false);
           setTypingContent("");
         }
       }, 30);
-
     } catch (error) {
       console.error("메시지 전송 실패:", error);
       // 에러 메시지 표시
@@ -158,8 +166,8 @@ const Chatbot: React.FC = () => {
         {
           role: "assistant",
           content: "죄송합니다. 응답을 가져오는데 실패했습니다.",
-          avatar: teacherInfo?.imagePath
-        }
+          avatar: teacherInfo?.imagePath,
+        },
       ]);
     } finally {
       setIsLoading(false); // 로딩 상태 종료
@@ -185,7 +193,7 @@ const Chatbot: React.FC = () => {
       ) : (
         <ChatHeader />
       )}
-      
+
       <div className={style["chatbotContainer"]}>
         <div className={style["chatbotMessages"]}>
           {messages.map((msg, idx) => (
@@ -202,20 +210,30 @@ const Chatbot: React.FC = () => {
               key="dots"
               content={
                 <span className={style["chatbotTyping"]}>
-                  <span></span><span></span><span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </span>
               }
               role="assistant"
-              avatar={teacherInfo?.imagePath ? getImageUrl(teacherInfo.imagePath) : undefined}
+              avatar={
+                teacherInfo?.imagePath
+                  ? getImageUrl(teacherInfo.imagePath)
+                  : undefined
+              }
             />
           )}
-          
+
           {isTyping && (
             <ChatBubble
               key="typing"
               content={typingContent}
               role="assistant"
-              avatar={teacherInfo?.imagePath ? getImageUrl(teacherInfo.imagePath) : undefined}
+              avatar={
+                teacherInfo?.imagePath
+                  ? getImageUrl(teacherInfo.imagePath)
+                  : undefined
+              }
             />
           )}
 
@@ -227,13 +245,13 @@ const Chatbot: React.FC = () => {
               ref={inputRef}
               className={style["chatbotInput"]}
               value={input}
-              onChange={e => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
               // placeholder="메시지를 입력하세요."
               disabled={isLoading}
             />
-            <button 
-              className={style["chatbotButton"]} 
-              type="submit" 
+            <button
+              className={style["chatbotButton"]}
+              type="submit"
               disabled={isLoading || !input.trim()}
             >
               <TextSymbol />
