@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 function Footer({}) {
   const navigate = useNavigate();
   const handleClick = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(e.target);
     navigate(`/${e.target!.id}`);
   };
   return (
@@ -31,7 +34,7 @@ function Footer({}) {
       </div>
       <div className="chat" id="chatbot" onClick={(e: Event) => handleClick(e)}>
         <BsChatRightHeartFill />
-        <p id="chat">채팅</p>
+        <p id="chatbot">채팅</p>
       </div>
     </div>
   );
