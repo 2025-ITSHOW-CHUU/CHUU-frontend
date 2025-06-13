@@ -26,8 +26,6 @@ const Chatbot: React.FC = () => {
   const messageEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  console.log(roomId, teacherId);
-
   const [teacherInfo, setTeacherInfo] = useState<{
     name: string;
     personality: string;
