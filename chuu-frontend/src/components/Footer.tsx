@@ -31,7 +31,7 @@ function Footer({}) {
       </div>
       <div className="chat" id="chat" onClick={(e: Event) => handleClick(e)}>
         <BsChatRightHeartFill />
-        <p id="chat">채팅</p>
+        <p id="chatbot">채팅</p>
       </div>
     </div>
   );
