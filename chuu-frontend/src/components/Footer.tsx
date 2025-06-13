@@ -29,9 +29,9 @@ function Footer({}) {
         <FaClipboardList />
         <p id="test">테스트</p>
       </div>
-      <div className="chat" id="chat" onClick={(e: Event) => handleClick(e)}>
+      <div className="chat" id="chatbot" onClick={(e: Event) => handleClick(e)}>
         <BsChatRightHeartFill />
-        <p id="chatbot">채팅</p>
+        <p id="chat">채팅</p>
       </div>
     </div>
   );
