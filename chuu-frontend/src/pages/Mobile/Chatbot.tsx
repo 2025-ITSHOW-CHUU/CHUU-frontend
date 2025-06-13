@@ -255,6 +255,7 @@ const Chatbot: React.FC = () => {
             <TextSymbol
               type="submit"
               style={{ color: isLoading ? "#ffffff" : "#65e9ff" }}
+              onClick={handleSubmit}
             />
             {/* <button className={style["chatbotButton"]}></button> */}
           </div>
