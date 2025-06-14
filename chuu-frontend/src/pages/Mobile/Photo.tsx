@@ -185,7 +185,9 @@ function PhotoBooth() {
         }}
       ></canvas>
 
-      <div className={style.CaptureContainer}>
+      <div
+        className={toggle ? style.CaptureContainer : style.DownloadContainer}
+      >
         {toggle ? (
           <img
             onClick={capture}
