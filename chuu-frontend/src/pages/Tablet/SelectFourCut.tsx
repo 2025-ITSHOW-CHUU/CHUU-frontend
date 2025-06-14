@@ -48,10 +48,8 @@ function SelectFourCut() {
                 />
                 <p>{filter.title}</p>
               </div>
-              {filter.teacher !==
-                (filterJson[index + 1]?.teacher || filter.teacher) && (
-                <div style={{ width: "100%" }} />
-              )}
+              {console.log(index)}
+              {index / 4 === 1 && <div style={{ width: "100%" }} />}
             </>
           );
         })}
