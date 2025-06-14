@@ -34,8 +34,8 @@ function FourCut() {
     if (!video) return;
 
     const canvas = document.createElement("canvas");
-    canvas.width = 390;
-    canvas.height = 500;
+    canvas.width = 360;
+    canvas.height = 536;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 

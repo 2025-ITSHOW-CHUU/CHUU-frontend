@@ -1,116 +1,160 @@
 [
   {
     "teacher": "이호연",
-    "title": "흰색 호연~",
+    "title": "하늘색 프레임 TTTT 호연쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/hoyeon/frame_1.png",
+      "/images/fourcut/hoyeon/frame_2.png",
+      "/images/fourcut/hoyeon/frame_3.png",
+      "/images/fourcut/hoyeon/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_hoyeon_white.png"
+    "finalFrame": "/images/fourcut/hoyeon/frame_hoyeon_white.png"
   },
   {
     "teacher": "이호연",
-    "title": "검정색 호연~",
+    "title": "검정색 프레임 TTTT 호연쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/hoyeon/frame_1.png",
+      "/images/fourcut/hoyeon/frame_2.png",
+      "/images/fourcut/hoyeon/frame_3.png",
+      "/images/fourcut/hoyeon/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_hoyeon_black.png"
+    "finalFrame": "/images/fourcut/hoyeon/frame_hoyeon_black.png"
   },
 
   {
     "teacher": "유병석",
-    "title": "하얀색 병석~",
+    "title": "노란색 프레임 미림요정 병석쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/beongseok/frame_1.png",
+      "/images/fourcut/beongseok/frame_2.png",
+      "/images/fourcut/beongseok/frame_3.png",
+      "/images/fourcut/beongseok/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_beongseok_white.png"
+    "finalFrame": "/images/fourcut/beongseok/frame_beongseok_white.png"
   },
   {
     "teacher": "유병석",
-    "title": "검정색 병석~",
+    "title": "검정색 프레임 미림요정 병석쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/beongseok/frame_1.png",
+      "/images/fourcut/beongseok/frame_2.png",
+      "/images/fourcut/beongseok/frame_3.png",
+      "/images/fourcut/beongseok/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_beongseok_black.png"
+    "finalFrame": "/images/fourcut/beongseok/frame_beongseok_black.png"
   },
 
   {
     "teacher": "김윤지",
-    "title": "하얀색 수직 윤지쌤",
+    "title": "핑크색 프레임 미림공주 윤지쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/yunji/frame_1.png",
+      "/images/fourcut/yunji/frame_2.png",
+      "/images/fourcut/yunji/frame_3.png",
+      "/images/fourcut/yunji/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_yunji_white.png"
+    "finalFrame": "/images/fourcut/yunji/frame_yunji_white.png"
   },
   {
     "teacher": "김윤지",
-    "title": "검정색 수직 윤지쌤",
+    "title": "검정색 프레임 미림공주 윤지쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/yunji/frame_1.png",
+      "/images/fourcut/yunji/frame_2.png",
+      "/images/fourcut/yunji/frame_3.png",
+      "/images/fourcut/yunji/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_yunji_black.png"
+    "finalFrame": "/images/fourcut/yunji/frame_yunji_black.png"
   },
 
   {
     "teacher": "박지우",
-    "title": "하얀색 수직 지우쌤",
+    "title": "파란색 프레임 SWAG 지우쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/jiwoo/frame_1.png",
+      "/images/fourcut/jiwoo/frame_2.png",
+      "/images/fourcut/jiwoo/frame_3.png",
+      "/images/fourcut/jiwoo/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_jiwoo_white.png"
+    "finalFrame": "/images/fourcut/jiwoo/frame_jiwoo_white.png"
   },
   {
     "teacher": "박지우",
-    "title": "검정색 수직 지우쌤",
+    "title": "검정색 프레임 SWAG 지우쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/jiwoo/frame_1.png",
+      "/images/fourcut/jiwoo/frame_2.png",
+      "/images/fourcut/jiwoo/frame_3.png",
+      "/images/fourcut/jiwoo/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_jiwoo_black.png"
+    "finalFrame": "/images/fourcut/jiwoo/frame_jiwoo_black.png"
   },
 
   {
     "teacher": "이대형",
-    "title": "하얀색 수직 대형쌤",
+    "title": "노란색 프레임 미림AI 대형쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/daehyeong/frame_1.png",
+      "/images/fourcut/daehyeong/frame_2.png",
+      "/images/fourcut/daehyeong/frame_3.png",
+      "/images/fourcut/daehyeong/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_daehyeong_white.png"
+    "finalFrame": "/images/fourcut/daehyeong/frame_daehyeong_white.png"
   },
   {
     "teacher": "이대형",
-    "title": "검정색 수직 대형쌤",
+    "title": "검정색 프레임 미림AI 대형쌤",
     "frames": [
-      "/images/SelfieHoyeonLee.png",
-      "/images/frame1.png",
-      "/images/frame2.png",
-      "/images/frame3.png"
+      "/images/fourcut/daehyeong/frame_1.png",
+      "/images/fourcut/daehyeong/frame_2.png",
+      "/images/fourcut/daehyeong/frame_3.png",
+      "/images/fourcut/daehyeong/frame_4.png"
     ],
-    "finalFrame": "/images/fourcut/frame_daehyeong_black.png"
+    "finalFrame": "/images/fourcut/daehyeong/frame_daehyeong_black.png"
+  },
+  {
+    "teacher": "조예진",
+    "title": "하얀색 프레임 뽀야미 예진쌤",
+    "frames": [
+      "/images/fourcut/yejin/frame_1.png",
+      "/images/fourcut/yejin/frame_2.png",
+      "/images/fourcut/yejin/frame_3.png",
+      "/images/fourcut/yejin/frame_4.png"
+    ],
+    "finalFrame": "/images/fourcut/yejin/frame_yejin_white.png"
+  },
+  {
+    "teacher": "조예진",
+    "title": "검정색 프레임 뽀야미 예진쌤",
+    "frames": [
+      "/images/fourcut/yejin/frame_1.png",
+      "/images/fourcut/yejin/frame_2.png",
+      "/images/fourcut/yejin/frame_3.png",
+      "/images/fourcut/yejin/frame_4.png"
+    ],
+    "finalFrame": "/images/fourcut/yejin/frame_yejin_black.png"
+  },
+  {
+    "teacher": "정하나",
+    "title": "녹색 프레임 하나만 살려!",
+    "frames": [
+      "/images/fourcut/hana/frame_1.png",
+      "/images/fourcut/hana/frame_2.png",
+      "/images/fourcut/hana/frame_3.png",
+      "/images/fourcut/hana/frame_4.png"
+    ],
+    "finalFrame": "/images/fourcut/hana/frame_hana_white.png"
+  },
+  {
+    "teacher": "정하나",
+    "title": "검정색 하나만 살려!",
+    "frames": [
+      "/images/fourcut/hana/frame_1.png",
+      "/images/fourcut/hana/frame_2.png",
+      "/images/fourcut/hana/frame_3.png",
+      "/images/fourcut/hana/frame_4.png"
+    ],
+    "finalFrame": "/images/fourcut/hana/frame_hana_black.png"
   }
 ]

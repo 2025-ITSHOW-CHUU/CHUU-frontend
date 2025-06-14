@@ -49,7 +49,7 @@ function SelectFourCut() {
                 <p>{filter.title}</p>
               </div>
               {console.log(index)}
-              {index / 4 === 1 && <div style={{ width: "100%" }} />}
+              {(index + 1) % 4 === 0 && <div style={{ width: "100%" }} />}
             </>
           );
         })}
