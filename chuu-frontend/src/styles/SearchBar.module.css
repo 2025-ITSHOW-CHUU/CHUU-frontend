@@ -17,6 +17,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   column-gap: 15px;
+  position: relative;
 }
 
 .SearchInput {
@@ -30,8 +31,55 @@ body {
   width: 100%;
 }
 
+.SearchInput::placeholder {
+  color: #ffffff;
+  z-index: 1000000;
+}
+
 .SearchBar > svg {
   width: 22px;
   height: 22px;
   color: #d1d2d1;
+}
+
+.InputPlaceholder {
+  color: #ffffff;
+  font-size: 16px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.SearchContainer {
+  position: relative;
+  width: 100%;
+  height: 55px;
+}
+
+.FloatingLabel {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.FloatingLabel.active {
+  color: transparent;
+}
+
+.SearchInput {
+  width: 100%;
+  height: 100%;
+  padding: 0px 0px 0px 40px;
+  font-size: 16px;
+  background-color: #25282d;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  color: #fff;
+  box-sizing: border-box;
 }

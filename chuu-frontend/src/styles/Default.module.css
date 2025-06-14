@@ -6,8 +6,9 @@
   display: flex;
   flex-direction: column;
   /* background-color: #18191d; */
-  padding: 60px 25px;
+  padding: 60px 25px 1000px;
   margin: 0;
   box-sizing: border-box;
   height: 100vh;
+  margin-bottom: 50px;
 }
