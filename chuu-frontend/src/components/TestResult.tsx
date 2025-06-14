@@ -24,6 +24,7 @@ function TestResult() {
         const res = await axios.get(
           "https://chuu.mirim-it-show.site/users/max"
         );
+        console.log("res", res.data);
         const transformedData = res.data.map(
           (item: { id: string; teacherScore?: number }) => ({
             id: item.id + " 선생님",
@@ -31,6 +32,7 @@ function TestResult() {
             value: item.teacherScore ?? 0,
           })
         );
+        console.log("formaedData", transformedData);
         setData(transformedData);
       } catch (err) {
         console.log(err);

@@ -46,6 +46,7 @@ function Main() {
     getPosts();
 
     socket.on("newPost", (post: PostType) => {
+      console.log(post);
       setPosts((prevPosts: PostType[]) => [post, ...prevPosts]);
     });
 
