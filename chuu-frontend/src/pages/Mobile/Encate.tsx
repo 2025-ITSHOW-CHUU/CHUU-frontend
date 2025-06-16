@@ -104,8 +104,11 @@ function Encate() {
       <img
         src={encateQuestion[currentQuestionIndex]?.image}
         alt={encateQuestion[currentQuestionIndex]?.image}
-        width={242.68}
-        height={242.68}
+        style={{
+          maxWidth: "242.68px",
+          minHeight: "242.68px",
+          objectFit: "contain",
+        }}
       />
       <div className={`${style["EncateDiv"]}`}>
         {encateQuestion[currentQuestionIndex]?.teacher.map(

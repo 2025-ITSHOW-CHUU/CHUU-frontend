@@ -44,6 +44,7 @@ function EncateChart(props: { data: EncateChartType }) {
           show: false,
         },
       },
+      colors: ["#65E9FF", "#00EBE6", "#12DDFF"],
       plotOptions: {
         bar: {
           horizontal: true,
@@ -63,6 +64,7 @@ function EncateChart(props: { data: EncateChartType }) {
       },
       title: {
         text: `${question} : ${props.data.choice} 선생님`,
+        align: "center",
         style: {
           fontSize: "18px",
           color: "#ffffff",
@@ -92,6 +94,9 @@ function EncateChart(props: { data: EncateChartType }) {
       },
       dataLabels: {
         enabled: true, // 바 안에 값 없애기
+        style: {
+          color: "#000000",
+        },
         formatter: function (val, opts) {
           const teacher = opts.w.config.series[opts.seriesIndex].name;
           return `${teacher} 선생님`;
@@ -121,7 +126,7 @@ function EncateChart(props: { data: EncateChartType }) {
           series={series}
           type="bar"
           height={180}
-          width={"100%"}
+          width={400}
         />
       ) : (
         <p>로딩 중...</p>

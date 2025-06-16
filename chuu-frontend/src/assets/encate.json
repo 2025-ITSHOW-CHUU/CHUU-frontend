@@ -4,19 +4,19 @@
       "questionNumber": 1,
       "question": "가장 결혼을 빨리할 것 같은\n선생님은?",
       "teacher": ["박지우", "박성래", "김윤환"],
-      "image": "/images/Rings.png"
+      "image": "/images/Rings-1.png"
     },
     {
       "questionNumber": 2,
       "question": "쿠팡 VIP일 것 같은\n선생님은?",
-      "teacher": ["김영철", "손명수", "고낙은"],
-      "image": "/images/Rings.png"
+      "teacher": ["김신", "손명수", "고낙은"],
+      "image": "/images/Diamond.png"
     },
     {
       "questionNumber": 3,
       "question": "CC를 해봤을 것 같은\n선생님은?",
       "teacher": ["김윤지", "김종성", "임정훈"],
-      "image": "/images/Heart.png"
+      "image": "/images/Rings.png"
     },
     {
       "questionNumber": 4,
@@ -26,9 +26,9 @@
     },
     {
       "questionNumber": 5,
-      "question": "졸업식 날 제일 눈물 흘릴 것\n같은 선생님은?",
-      "teacher": ["조예진", "이호걸", "김보경"],
-      "image": "/images/Rings.png"
+      "question": "우리 학교\n패셔니스타는?",
+      "teacher": ["김영철", "윤다연", "김보경"],
+      "image": "/images/Hat.png"
     }
   ]
 }

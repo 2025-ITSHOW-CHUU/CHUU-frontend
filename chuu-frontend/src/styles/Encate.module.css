@@ -4,9 +4,7 @@
 }
 
 .BackContainer {
-  position: fixed;
-  top: 20px;
-  left: 15px;
+  margin-left: -10px;
 }
 
 .BackContainer > svg {
@@ -18,7 +16,6 @@
   flex-direction: column;
   justify-content: space-between;
   row-gap: 25.66px;
-  margin-top: 20px;
 }
 
 .TitleDiv {
