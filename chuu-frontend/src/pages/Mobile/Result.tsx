@@ -33,6 +33,14 @@ function Result() {
   const { setTeacherName } = useImageStore();
 
   useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const idx = teachers.teachers.findIndex((t) => t.name === selectedType);
 
     setData(teachers.teachers[idx]);

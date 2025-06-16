@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../../components/SearchBar";
 import Footer from "../../components/Footer";
 import EncateResult from "../../components/EncateResult";
@@ -17,7 +17,6 @@ function Home() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearch(value);
-    console.log(value);
   };
 
   const onClick = (dir: string) => () => {
@@ -27,6 +26,14 @@ function Home() {
   const handleChatWidgetClick = async () => {
     navigate("/chatbot");
   };
+
+  useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
 
   return (
     <div className={`${def["Body"]}`}>

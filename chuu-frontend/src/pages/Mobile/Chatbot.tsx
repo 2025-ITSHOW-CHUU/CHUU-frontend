@@ -3,7 +3,7 @@ import style from "../../styles/Chat.module.css";
 import ChatHeader from "../../components/ChatHeader";
 import ChatBubble from "../../components/ChatBubble";
 import axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 import { ReactComponent as TextSymbol } from "../../assets/text_symbol.svg";
 
@@ -33,6 +33,16 @@ const Chatbot: React.FC = () => {
     imagePath: string;
     specialties: string[];
   }>();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
 
   // 이미지 URL 생성 함수 추가
   const getImageUrl = (imagePath: string): string => {

@@ -25,8 +25,15 @@ function Encate() {
   const [answeredTeacher, setAnsweredTeacher] = useState(0);
   const [answeredList, setAnsweredList] = useState<EncateType[]>([]);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
 
   useEffect(() => {
     setEncateQuestion(encate.encate);

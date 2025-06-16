@@ -31,6 +31,14 @@ function Main() {
   };
 
   useEffect(() => {
+    const isWideScreen = window.innerWidth >= 1024;
+
+    if (!isWideScreen) {
+      navigate("/"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const getPosts = async () => {
       try {
         const response = await axios.get(

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import filterJson from "../../assets/filter.json";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/SelectFourCut.module.css";
@@ -10,6 +10,14 @@ function SelectFourCut() {
   const navigate = useNavigate();
   const { fourCutInfo, setFourCutInfo } = useFourCutInfoStore();
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    const isWideScreen = window.innerWidth >= 1024;
+
+    if (!isWideScreen) {
+      navigate("/"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
 
   const handleClick = (selectedFrame) => {
     setFourCutInfo(selectedFrame);

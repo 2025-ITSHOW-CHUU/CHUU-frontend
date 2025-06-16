@@ -13,6 +13,14 @@ function FourCutResult() {
   const finalFrame = getFourCutInfo()?.finalFrame || "";
 
   useEffect(() => {
+    const isWideScreen = window.innerWidth >= 1024;
+
+    if (!isWideScreen) {
+      navigate("/"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 

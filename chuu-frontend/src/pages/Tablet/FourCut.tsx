@@ -13,6 +13,14 @@ function FourCut() {
   const selectFrame = getFourCutInfo();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const isWideScreen = window.innerWidth >= 1024;
+
+    if (!isWideScreen) {
+      navigate("/"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
   const startCamera = () => {
     navigator.mediaDevices
       .getUserMedia({ video: true })

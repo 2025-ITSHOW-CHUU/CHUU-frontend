@@ -37,6 +37,14 @@ function ChatList() {
     else return { value: Math.floor(diffInSeconds / 86400), unit: "일" };
   };
 
+  useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
   // 포맷 함수
   const formatTimeDiff = ({ value, unit }: TimeDiff): string => {
     return `${value}${unit} 전`;

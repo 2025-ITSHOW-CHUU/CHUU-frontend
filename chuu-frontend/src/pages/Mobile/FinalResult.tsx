@@ -47,6 +47,14 @@ function FinalResult() {
   }, []);
 
   useEffect(() => {
+    const isWideScreen = window.innerWidth <= 500;
+
+    if (!isWideScreen) {
+      navigate("/web-main"); // 태블릿/데스크톱은 즉시 이동
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     // items와 totalData가 모두 비어있지 않은 경우에만 ratioTotal 실행
     if (items.length > 0 && totalData.length > 0) {
       ratioTotal();
