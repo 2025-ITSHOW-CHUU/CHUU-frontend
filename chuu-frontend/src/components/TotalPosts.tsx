@@ -23,7 +23,7 @@ function TotalPosts({}) {
     }
 
     getTotalUser()
-      .then((res) => setTotalPosts(res.data))
+      .then((res) => setTotalPosts(res.data.data))
       .catch((err) => console.error(err));
 
     return () => {

@@ -3,10 +3,24 @@ import style from "../styles/Chart.module.css";
 import { ResponsivePieCanvas } from "@nivo/pie";
 
 function Chart({ data }) {
-  console.log(data);
+  const gradientColors = [
+    "#65E9FF",
+    "#A0F3FF",
+    "#D6FAFF",
+    "#F0FDFF",
+    "#FFFFFF",
+    "#E6FCFF",
+  ];
+
+  const coloredData = data.map((item) => ({
+    ...item,
+    color: gradientColors[Math.floor(Math.random() * gradientColors.length)],
+  }));
+
   return (
     <ResponsivePieCanvas
-      data={[...data]}
+      data={coloredData}
+      colors={{ datum: "data.color" }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
