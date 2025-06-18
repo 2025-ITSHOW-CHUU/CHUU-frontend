@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Form, useLocation, useNavigate } from "react-router-dom";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 import style from "../../styles/FourcutResult.module.css";
 import axios from "axios";
@@ -24,24 +24,34 @@ function FourCutResult() {
     }
   }, [navigate]);
 
-  const sendEmailWithImage = async (email: string, imageBase64: string) => {
-    const base64Data = imageBase64.split(",")[1];
+  const base64ToFile = (base64: string, filename: string) => {
+    const arr = base64.split(",");
+    const mime = arr[0].match(/:(.*?);/)?.[1] ?? "image/png";
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new File([u8arr], filename, { type: mime });
+  };
 
-    const response = await axios.post(
+  const sendImage = async () => {
+    if (!finalImage) return;
+
+    const file = base64ToFile(finalImage, "fourcut.png");
+
+    const formData = new FormData();
+    formData.append("email", inputedEmail);
+    formData.append("image", file);
+
+    const response = await fetch(
       "https://chuu.mirim-it-show.site/upload/email",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          image: base64Data,
-        }),
+        body: formData,
       }
     );
 
-    const result = await response.data;
+    const result = await response.json();
     console.log(result);
   };
 
@@ -199,12 +209,19 @@ function FourCutResult() {
             className={style["modal-content"]}
             onClick={(e) => e.stopPropagation()}
           >
+            <h2>츄 네컷사진 보내기</h2>
             <input
-              type="text"
+              type="email"
               value={inputedEmail}
-              onChange={(e) => setInputedEmail(e.target.value)}
-              onClick={() => sendEmailWithImage(inputedEmail, finalImage)}
+              onChange={(e) => {
+                setInputedEmail(e.target.value);
+                setOpenModal(false);
+              }}
+              className={style.modalInput}
             />
+            <button onClick={() => sendImage()} className={style.modalButton}>
+              전송하기
+            </button>
           </div>
         </div>
       )}

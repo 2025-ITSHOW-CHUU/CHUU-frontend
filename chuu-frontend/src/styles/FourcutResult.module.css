@@ -69,3 +69,27 @@
   justify-content: center;
   row-gap: 20px;
 }
+
+.modalInput {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px;
+  border: 0;
+  outline: none;
+  border-radius: 20px;
+}
+
+.modalButton {
+  background: #00e0ff;
+  color: #0b0b0b;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 224, 255, 0.3);
+  width: 100%;
+}
