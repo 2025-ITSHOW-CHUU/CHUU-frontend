@@ -17,6 +17,7 @@ function FourCutResult() {
   const finalFrame = getFourCutInfo()?.finalFrame || "";
   const [inputedEmail, setInputedEmail] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [onHover, setOnHover] = useState(false);
 
   useEffect(() => {
     const isWideScreen = window.innerWidth >= 1024;
@@ -167,61 +168,59 @@ function FourCutResult() {
       </div>
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {finalImage && (
-        <div className={style.ResultContainer}>
-          <img src={finalImage} alt="4컷 사진" className={style.FourCutImage} />
-          <div className={style.ButtonContainer}>
-            <button
-              onClick={() => handleClick("upload")}
-              className={style.submitButton}
-            >
-              업로드
-            </button>
-            <button
-              onClick={() => printFile(finalImage)}
-              className={style.submitButton}
-            >
-              프린트하기
-            </button>
-
-            <button
-              onClick={() => setOpenModal(true)}
-              className={style.submitButton}
-            >
-              이메일 보내기
-            </button>
-            <button
-              onClick={() => navigate("/web-main")}
-              className={style.submitButton}
-            >
-              돌아가기
-            </button>
-          </div>
-        </div>
-      )}
-
-      {openModal && (
         <div
-          className={style["modal-overlay"]}
-          onClick={(e) => setOpenModal(false)}
+          className={style.ResultContainer}
+          onMouseEnter={() => setOnHover(true)}
+          onMouseLeave={() => setOnHover(false)}
         >
-          <div
-            className={style["modal-content"]}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>츄 네컷사진 보내기</h2>
-            <input
-              type="email"
-              value={inputedEmail}
-              onChange={(e) => {
-                setInputedEmail(e.target.value);
-                setOpenModal(false);
-              }}
-              className={style.modalInput}
+          <div className={style.ImageWrapper}>
+            <img
+              src={finalImage}
+              alt="4컷 사진"
+              className={style.FourCutImage}
             />
-            <button onClick={() => sendImage()} className={style.modalButton}>
-              전송하기
-            </button>
+            {onHover && (
+              <div className={style.OverlayButtonContainer}>
+                <button onClick={() => handleClick("upload")}>업로드</button>
+                <button onClick={() => printFile(finalImage)}>
+                  프린트하기
+                </button>
+                <button onClick={() => setOpenModal(true)}>
+                  이메일 보내기
+                </button>
+              </div>
+            )}
           </div>
+          {openModal && (
+            <div
+              className={style["modal-overlay"]}
+              onClick={(e) => setOpenModal(false)}
+            >
+              <div
+                className={style["modal-content"]}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <h2>츄 네컷사진 보내기</h2>
+                <input
+                  type="email"
+                  value={inputedEmail}
+                  onChange={(e) => {
+                    setInputedEmail(e.target.value);
+                  }}
+                  className={style.modalInput}
+                />
+                <button
+                  onClick={() => {
+                    sendImage();
+                    setOpenModal(false);
+                  }}
+                  className={style.modalButton}
+                >
+                  전송하기
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

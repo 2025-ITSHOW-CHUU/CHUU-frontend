@@ -31,6 +31,10 @@
   /* border: 50px solid #ffffff outset; */
 }
 
+.FourCutImage:hover {
+  opacity: 0.4;
+}
+
 .ButtonContainer {
   display: flex;
   gap: 20px;
@@ -99,4 +103,48 @@
   transition: all 0.25s ease;
   box-shadow: 0 4px 14px rgba(0, 224, 255, 0.3);
   width: 100%;
+}
+
+.ImageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.FourCutImage {
+  display: block;
+  height: 700px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.OverlayButtonContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검정 배경 */
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.OverlayButtonContainer button {
+  padding: 10px 16px;
+  color: #000000;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 300px;
+}
+
+.OverlayButtonContainer button:hover {
+  background-color: #00e0ff;
 }
