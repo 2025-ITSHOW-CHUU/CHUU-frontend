@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 import style from "../../styles/FourcutResult.module.css";
+import axios from "axios";
+import ModalPortal from "../../components/ModalPortal";
 
 function FourCutResult() {
   const location = useLocation();
@@ -11,6 +13,8 @@ function FourCutResult() {
   const { getFourCutInfo, setFourCutImage } = useFourCutInfoStore();
   const images: string[] = location.state?.images || [];
   const finalFrame = getFourCutInfo()?.finalFrame || "";
+  const [inputedEmail, setInputedEmail] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const isWideScreen = window.innerWidth >= 1024;
@@ -19,6 +23,27 @@ function FourCutResult() {
       navigate("/"); // 태블릿/데스크톱은 즉시 이동
     }
   }, [navigate]);
+
+  const sendEmailWithImage = async (email: string, imageBase64: string) => {
+    const base64Data = imageBase64.split(",")[1];
+
+    const response = await axios.post(
+      "https://chuu.mirim-it-show.site/upload/email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          image: base64Data,
+        }),
+      }
+    );
+
+    const result = await response.data;
+    console.log(result);
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -148,6 +173,38 @@ function FourCutResult() {
             >
               프린트하기
             </button>
+
+            <button
+              onClick={() => setOpenModal(true)}
+              className={style.submitButton}
+            >
+              이메일 보내기
+            </button>
+            <button
+              onClick={() => navigate("/web-main")}
+              className={style.submitButton}
+            >
+              돌아가기
+            </button>
+          </div>
+        </div>
+      )}
+
+      {openModal && (
+        <div
+          className={style["modal-overlay"]}
+          onClick={(e) => setOpenModal(false)}
+        >
+          <div
+            className={style["modal-content"]}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <input
+              type="text"
+              value={inputedEmail}
+              onChange={(e) => setInputedEmail(e.target.value)}
+              onClick={() => sendEmailWithImage(inputedEmail, finalImage)}
+            />
           </div>
         </div>
       )}

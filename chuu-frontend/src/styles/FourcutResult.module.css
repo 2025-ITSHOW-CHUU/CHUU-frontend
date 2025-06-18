@@ -44,3 +44,28 @@
   box-shadow: 0 4px 14px rgba(0, 224, 255, 0.3);
   width: 200px;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #c6e4e9;
+  padding: 20px;
+  border-radius: 1rem;
+  width: 350px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+}
