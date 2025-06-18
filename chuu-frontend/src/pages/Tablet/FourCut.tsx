@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../styles/Fourcut.module.css";
 import useFourCutInfoStore from "../../store/useFourCutInfoStore";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { IoIosArrowBack } from "react-icons/io";
 
 function FourCut() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -102,6 +104,9 @@ function FourCut() {
 
   return (
     <div className={style.PhotoBoxContainer}>
+      <div className={`${style["Logo"]}`}>
+        <Logo />
+      </div>
       <div className={style.CountdownContainer}>
         {count !== null && <div>{count}</div>}
       </div>

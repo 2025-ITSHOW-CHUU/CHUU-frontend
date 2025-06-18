@@ -29,6 +29,7 @@ type FourCutInfoType = {
   title: string;
   frames: string[];
   finalFrame: string;
+  mainColor: string;
 };
 
 type StoreType = {

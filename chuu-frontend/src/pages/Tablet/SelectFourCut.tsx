@@ -29,6 +29,16 @@ function SelectFourCut() {
     setModalOpen(true);
   };
 
+  const getTextColor = (bgColor: string) => {
+    const c = bgColor.substring(1);
+    const rgb = parseInt(c, 16);
+    const r = (rgb >> 16) & 0xff;
+    const g = (rgb >> 8) & 0xff;
+    const b = (rgb >> 0) & 0xff;
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luma < 230 ? "white" : "black";
+  };
+
   return (
     <div className={style.selectFrameContainer}>
       <div className={style.headerContainer}>
@@ -56,7 +66,6 @@ function SelectFourCut() {
                 />
                 <p>{filter.title}</p>
               </div>
-              {console.log(index)}
               {(index + 1) % 4 === 0 && <div style={{ width: "100%" }} />}
             </>
           );
@@ -72,6 +81,9 @@ function SelectFourCut() {
             <div
               className={style["modal-content"]}
               onClick={(e) => e.stopPropagation()}
+              style={{
+                backgroundColor: getTextColor(fourCutInfo.mainColor),
+              }}
             >
               <img src={fourCutInfo.finalFrame} alt={fourCutInfo.finalFrame} />
               <button onClick={() => handleClick(fourCutInfo)}>

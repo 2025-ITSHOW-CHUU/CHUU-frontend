@@ -4,6 +4,8 @@ import useFourCutInfoStore from "../../store/useFourCutInfoStore";
 import style from "../../styles/FourcutResult.module.css";
 import axios from "axios";
 import ModalPortal from "../../components/ModalPortal";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { IoIosArrowBack } from "react-icons/io";
 
 function FourCutResult() {
   const location = useLocation();
@@ -157,6 +159,12 @@ function FourCutResult() {
 
   return (
     <div className={style.FourcutContainer}>
+      <div
+        className={`${style["Logo"]}`}
+        onClick={() => navigate("/select-four-cut")}
+      >
+        <IoIosArrowBack size={30} />
+      </div>
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {finalImage && (
         <div className={style.ResultContainer}>

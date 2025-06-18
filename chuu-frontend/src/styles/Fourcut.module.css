@@ -1,3 +1,9 @@
+.Logo {
+  position: fixed;
+  top: 60px;
+  left: 90px;
+}
+
 .PhotoBoxContainer {
   display: flex;
   flex-direction: column;
