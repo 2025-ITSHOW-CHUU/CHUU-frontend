@@ -73,12 +73,6 @@ function PhotoBooth() {
     formData.append("image", file);
 
     await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
-
-    setInterval(() => {}, 3000);
-
-    setTimeout(() => {
-      navigate("/");
-    }, 3000); // 3초 뒤에 홈으로 이동
   };
 
   const capture = () => {
@@ -161,19 +155,14 @@ function PhotoBooth() {
     };
   };
 
-  const downloadFile = (url, fileName = "framed_photo.png") => {
+  const downloadFile = (e: Event) => {
+    e.stopPropagation();
     const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
+    a.href = framedPhoto;
+    a.download = "chuu-photo";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    setToggle(!toggle);
-    setInterval(() => {}, 3000);
-
-    setTimeout(() => {
-      navigate("/");
-    }, 3000); // 3초 뒤에 홈으로 이동
   };
 
   const retry = () => {
@@ -249,10 +238,11 @@ function PhotoBooth() {
         ) : (
           <div className={style.DownloadContainer}>
             <button onClick={retry}>다시 찍기</button>
-            <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
+            <button onClick={(e) => downloadFile(e)}>다운로드</button>
             <button onClick={() => setOpenModal(true)}>
               이메일로 전송하기
             </button>
+            <button onClick={() => navigate("/")}>돌아가기</button>
           </div>
         )}
       </div>
