@@ -3,6 +3,7 @@ import style from "../../styles/Photo.module.css";
 import useImageStore from "../../store/useImageStore";
 import { useNavigate, useLocation } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import axios from "axios";
 
 function PhotoBooth() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -10,9 +11,11 @@ function PhotoBooth() {
   const [photo, setPhoto] = useState(null);
   const [framedPhoto, setFramedPhoto] = useState(null);
   const [toggle, setToggle] = useState(true);
-  const { setFile, teacherName } = useImageStore();
+  const { setFile } = useImageStore();
   const navigate = useNavigate();
   const location = useLocation();
+  const [inputedEmail, setInputedEmail] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   const frames = {
     "이호연 선생님": "/images/SelfieHoyeonLee.png",
@@ -49,6 +52,33 @@ function PhotoBooth() {
       stream.getTracks().forEach((track) => track.stop());
       videoRef.current.srcObject = null; // 스트림을 해제
     }
+  };
+  const base64ToFile = (base64: string, filename: string) => {
+    const arr = base64.split(",");
+    const mime = arr[0].match(/:(.*?);/)?.[1] ?? "image/png";
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new File([u8arr], filename, { type: mime });
+  };
+
+  const sendImage = async () => {
+    if (!framedPhoto) return;
+
+    const file = base64ToFile(framedPhoto, "fourcut.png");
+
+    const formData = new FormData();
+    formData.append("email", inputedEmail);
+    formData.append("image", file);
+
+    await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
+
+    setInterval(() => {}, 3000);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 3000); // 3초 뒤에 홈으로 이동
   };
 
   const capture = () => {
@@ -139,7 +169,11 @@ function PhotoBooth() {
     a.click();
     document.body.removeChild(a);
     setToggle(!toggle);
-    navigate("/");
+    setInterval(() => {}, 3000);
+
+    setTimeout(() => {
+      navigate("/");
+    }, 3000); // 3초 뒤에 홈으로 이동
   };
 
   const retry = () => {
@@ -216,9 +250,43 @@ function PhotoBooth() {
           <div className={style.DownloadContainer}>
             <button onClick={retry}>다시 찍기</button>
             <button onClick={() => downloadFile(framedPhoto)}>다운로드</button>
+            <button onClick={() => setOpenModal(true)}>
+              이메일로 전송하기
+            </button>
           </div>
         )}
       </div>
+
+      {openModal && (
+        <div
+          className={style["modal-overlay"]}
+          onClick={(e) => setOpenModal(false)}
+        >
+          <div
+            className={style["modal-content"]}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>츄 네컷사진 보내기</h2>
+            <input
+              type="email"
+              value={inputedEmail}
+              onChange={(e) => {
+                setInputedEmail(e.target.value);
+              }}
+              className={style.modalInput}
+            />
+            <button
+              onClick={() => {
+                sendImage();
+                setOpenModal(false);
+              }}
+              className={style.modalButton}
+            >
+              전송하기
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

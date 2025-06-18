@@ -43,16 +43,7 @@ function FourCutResult() {
     formData.append("email", inputedEmail);
     formData.append("image", file);
 
-    const response = await fetch(
-      "https://chuu.mirim-it-show.site/upload/email",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    const result = await response.json();
-    console.log(result);
+    await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
   };
 
   useEffect(() => {
