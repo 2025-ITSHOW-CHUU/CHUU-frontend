@@ -4,7 +4,7 @@ import style from "../styles/TotalUser.module.css";
 import axios from "axios";
 
 function TotalPosts({}) {
-  const [totalUser, setTotalUser] = useState(0);
+  const [totalPosts, setTotalPosts] = useState(0);
 
   useEffect(() => {
     const socket = io("https://chuu.mirim-it-show.site/user"); // 서버 URL을 여기에 맞게 변경
@@ -13,18 +13,17 @@ function TotalPosts({}) {
       console.log("connected");
     });
 
-    socket.on("update-totaluser", (data) => {
-      console.log(data);
-      setTotalUser(data.totalUser);
+    socket.on("update-totalposts", (data) => {
+      setTotalPosts(data.totalposts);
     });
 
     async function getTotalUser() {
-      const res = await axios.get("https://chuu.mirim-it-show.site/users");
+      const res = await axios.get("https://chuu.mirim-it-show.site/post/num");
       return res;
     }
 
     getTotalUser()
-      .then((res) => setTotalUser(res.data))
+      .then((res) => setTotalPosts(res.data))
       .catch((err) => console.error(err));
 
     return () => {
@@ -35,7 +34,7 @@ function TotalPosts({}) {
     <div className={style.totalUser}>
       <h1>지금까지 참여한 게시글</h1>
       <p>츄네컷을 찍어 숫자를 올려주세요!</p>
-      <p className={style.postNum}>{totalUser}</p>
+      <p className={style.postNum}>{totalPosts}</p>
     </div>
   );
 }
