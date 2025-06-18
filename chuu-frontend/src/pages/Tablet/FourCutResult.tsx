@@ -45,6 +45,7 @@ function FourCutResult() {
     const formData = new FormData();
     formData.append("email", inputedEmail);
     formData.append("image", file);
+    formData.append("type", "fourcut");
 
     await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
     setInputedEmail("");

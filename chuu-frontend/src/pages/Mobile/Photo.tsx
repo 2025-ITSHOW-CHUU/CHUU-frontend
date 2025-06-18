@@ -71,6 +71,7 @@ function PhotoBooth() {
     const formData = new FormData();
     formData.append("email", inputedEmail);
     formData.append("image", file);
+    formData.append("type", "selfie");
 
     await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
   };
