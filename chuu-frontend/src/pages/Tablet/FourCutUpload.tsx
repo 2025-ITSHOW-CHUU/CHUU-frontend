@@ -5,6 +5,7 @@ import Hashtag from "../../components/Hashtag";
 import axios from "axios";
 import style from "../../styles/FourCutUpload.module.css";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
 type FourCutInfoType = {
   teacher: string;
@@ -74,6 +75,12 @@ function FourCutUpload() {
 
   return (
     <div className={style.fourCutContainer}>
+      <div
+        className={`${style["Logo"]}`}
+        onClick={() => navigate("/four-cut-result")}
+      >
+        <IoIosArrowBack size={30} />
+      </div>
       <img src={URL.createObjectURL(getFourCutImage()!)} alt="Uploaded" />
       <div className={style.uploadContainer}>
         <p>{selectedTeacher.name}</p>

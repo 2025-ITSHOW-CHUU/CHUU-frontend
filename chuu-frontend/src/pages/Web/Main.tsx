@@ -11,6 +11,7 @@ import { QRCodeCanvas } from "qrcode.react";
 import TestResult from "../../components/TestResult";
 import ModalPortal from "../../components/ModalPortal";
 import { useNavigate } from "react-router-dom";
+import TotalPosts from "../../components/TotalPosts";
 
 const socket = io("https://chuu.mirim-it-show.site"); // 배포 시 사용하는 주소로 변경
 
@@ -75,6 +76,7 @@ function Main() {
           <EncateResult />
           <TestResult />
           <TotalUser />
+          <TotalPosts />
           <div className={style["test-mobile"]}>
             <h1 className={style["title"]}>추구미 선생님 찾으러 가기</h1>
             <p>옆에 배치된 핸드폰으로 바로 추구미 찾기</p>

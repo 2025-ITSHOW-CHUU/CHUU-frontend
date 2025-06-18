@@ -29,3 +29,11 @@
   margin: 0;
   padding: 0;
 }
+
+.totalUser .postNum {
+  font-size: 85px;
+  color: #b3f4ff;
+  align-self: center;
+  margin: 0;
+  padding: 0;
+}

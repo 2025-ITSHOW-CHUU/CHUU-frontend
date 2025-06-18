@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 120px 20px 100px;
+  padding: 20px 20px 100px;
   row-gap: 30px;
   margin-bottom: 100px;
   margin-top: 50px;
@@ -56,9 +56,9 @@
 }
 
 .DownloadContainer > button {
-  padding: 21px 16px;
+  padding: 14px 16px;
   background-color: var(--color-bg-dark);
-  border-radius: 20px;
+  border-radius: 8px;
   border: 0;
   width: 100%;
   color: #c2c2c2;
@@ -93,4 +93,61 @@
   flex-direction: column;
   justify-content: center;
   row-gap: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #18191d;
+  padding: 20px;
+  border-radius: 1rem;
+  width: 350px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  border: 2px solid #ffffff;
+}
+
+.modal-content > h2 {
+  margin: 10px;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.modalInput {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+}
+
+.modalButton {
+  background: #00e0ff;
+  color: #0b0b0b;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
 }

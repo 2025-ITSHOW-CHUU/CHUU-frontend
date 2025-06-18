@@ -27,8 +27,8 @@ function TestResult() {
         console.log("res", res.data);
         const transformedData = res.data.map(
           (item: { id: string; teacherScore?: number }) => ({
-            id: item.id + " 선생님",
-            label: item.id + " 선생님",
+            id: item.id,
+            label: item.id,
             value: item.teacherScore ?? 0,
           })
         );

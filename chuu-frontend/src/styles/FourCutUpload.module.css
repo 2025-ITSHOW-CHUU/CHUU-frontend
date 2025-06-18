@@ -1,3 +1,10 @@
+.Logo {
+  position: fixed;
+  top: 60px;
+  left: 60px;
+  color: #ffffff;
+}
+
 .fourCutContainer {
   display: flex;
   flex-direction: row;

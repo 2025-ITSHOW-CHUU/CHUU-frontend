@@ -242,7 +242,6 @@ function PhotoBooth() {
             <button onClick={() => setOpenModal(true)}>
               이메일로 전송하기
             </button>
-            <button onClick={() => navigate("/")}>돌아가기</button>
           </div>
         )}
       </div>
@@ -256,7 +255,7 @@ function PhotoBooth() {
             className={style["modal-content"]}
             onClick={(e) => e.stopPropagation()}
           >
-            <h2>츄 네컷사진 보내기</h2>
+            <h2>츄 선생님 보내기</h2>
             <input
               type="email"
               value={inputedEmail}
@@ -264,6 +263,7 @@ function PhotoBooth() {
                 setInputedEmail(e.target.value);
               }}
               className={style.modalInput}
+              placeholder="이메일을 입력해 주세요."
             />
             <button
               onClick={() => {

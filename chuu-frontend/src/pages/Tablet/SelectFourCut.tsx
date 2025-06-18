@@ -41,7 +41,10 @@ function SelectFourCut() {
 
   return (
     <div className={style.selectFrameContainer}>
-      <div className={style.headerContainer}>
+      <div
+        className={style.headerContainer}
+        onClick={() => navigate("/web-main")}
+      >
         <IoIosArrowBack />
         <h1>프레임을 선택하세요!</h1>
       </div>
@@ -83,6 +86,7 @@ function SelectFourCut() {
               onClick={(e) => e.stopPropagation()}
               style={{
                 backgroundColor: getTextColor(fourCutInfo.mainColor),
+                border: "1px solid #ffffff",
               }}
             >
               <img src={fourCutInfo.finalFrame} alt={fourCutInfo.finalFrame} />

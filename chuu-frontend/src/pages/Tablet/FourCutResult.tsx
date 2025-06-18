@@ -47,6 +47,7 @@ function FourCutResult() {
     formData.append("image", file);
 
     await axios.post("https://chuu.mirim-it-show.site/upload/email", formData);
+    setInputedEmail("");
   };
 
   useEffect(() => {
@@ -173,6 +174,7 @@ function FourCutResult() {
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
         >
+          <h2>📸 네컷사진 📸</h2>
           <div className={style.ImageWrapper}>
             <img
               src={finalImage}
