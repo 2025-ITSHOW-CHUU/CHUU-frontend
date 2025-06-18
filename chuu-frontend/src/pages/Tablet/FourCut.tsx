@@ -42,8 +42,8 @@ function FourCut() {
     if (!video) return;
 
     const canvas = document.createElement("canvas");
-    canvas.width = 360;
-    canvas.height = 536;
+    canvas.width = 470;
+    canvas.height = 700;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -110,9 +110,7 @@ function FourCut() {
         <video ref={videoRef} autoPlay playsInline className={style.Video} />
         <img src={frames[currentStep]} alt="frame" className={style.FrameImg} />
       </div>
-      <button className={style.CaptureContainer} onClick={() => setCount(3)}>
-        사진 찍기
-      </button>
+
       <div className={style.LineContainer}>
         <div
           className={style.Line}
@@ -131,6 +129,9 @@ function FourCut() {
           style={{ borderColor: currentStep < 4 ? "#f1f1f1" : "#65e9ff" }}
         ></div>
       </div>
+      <button className={style.CaptureContainer} onClick={() => setCount(3)}>
+        사진 찍기
+      </button>
     </div>
   );
 }
